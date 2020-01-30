@@ -1,2 +1,2 @@
-# animate
+# ANÍMATE!
 Second WCS project
