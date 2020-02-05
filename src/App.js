@@ -16,8 +16,6 @@ function App() {
       <Header/>
       <FiltersNavbar/>
       <CalendarNav/>
-      
-
       <EventList/>
       <EventMap/>
       <EventDetails/>
