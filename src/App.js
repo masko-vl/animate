@@ -9,11 +9,11 @@ import EventDetails from './components/EventDetails/EventDetails.js'
 
 
 
-
 function App() {
   return (
     <div className="">
       <Header/>
+      <h1>HELLO</h1>
       <FiltersNavbar/>
       <CalendarNav/>
       <EventList/>

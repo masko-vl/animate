@@ -1,0 +1,35 @@
+.EventCard {
+    height: 15vh;
+    width: 80vw;
+    background: white;
+    color: black;
+    display: flex;
+    font-size: 8px;
+    justify-content: space-between;
+}
+
+.SmallCardPic {
+    height: 98%;
+    width: 20%;
+    padding: 1%;
+}
+
+.FirstColumn {
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.FirstColumnDescription * {
+    margin: 0;
+    padding-left: 5px;
+}
+
+.SecondColumnDescription * {
+    margin: 0;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
