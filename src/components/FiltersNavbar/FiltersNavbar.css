@@ -1,0 +1,16 @@
+.containerFiltersNav{
+    /*DISPLAY NONE para ocultar*/
+    /* display: none; */
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    border: 2px solid darkorchid;
+    padding-bottom: 70px;
+    padding-top: 50px;
+    box-sizing: border-box;
+}
+.formFilters{
+    display: flex;
+    flex-direction: column;
+    
+}
