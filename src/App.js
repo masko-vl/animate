@@ -50,15 +50,13 @@ async componentDidMount(){
           )
         })} </ul>
       </div>}  */}
-      <Header/>
-      <FiltersNavbar/>
-      <CalendarNav/>
-      <EventList/>
-      <EventMap/>
-      <EventDetails/>
      
-      
-
+        <Header/>
+        <FiltersNavbar/>
+        <CalendarNav/>
+        <EventList/>
+        <EventMap/>
+        <EventDetails/>
     </div>
   );}
 }
