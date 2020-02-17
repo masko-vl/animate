@@ -4,7 +4,7 @@ import './App.css';
 import Header from './components/Header/Header.js'
 import FiltersNavbar from './components/FiltersNavbar/FiltersNavbar.js'
 import CalendarNav from './components/CalendarNav/CalendarNav.js'
-// import EventList from './components/EventList/EventList.js'
+import EventList from './components/EventList/EventList.js'
 import EventMap from './components/EventMap/EventMap.js'
 import EventDetails from './components/EventDetails/EventDetails.js'
 import { render } from 'react-dom';
@@ -30,7 +30,7 @@ getDate = () => {
 async componentDidMount(){
     //insert the current date in the url
   const {data} = await axios(`https://analisi.transparenciacatalunya.cat/resource/rhpv-yr4f.json?$where=data_inici%3E=%22${this.getDate()}%22`)
-        console.log(data)
+        // console.log(data)
         this.setState({
           data, 
           isLoading: false
@@ -53,8 +53,8 @@ async componentDidMount(){
       <Header/>
       <h1>HELLO</h1>
       <FiltersNavbar/>
-      <CalendarNav/>
-      {/* <EventList/> */}
+      <CalendarNav/> 
+      <EventList/> 
       <EventMap/>
       <EventDetails/>
      

@@ -14,13 +14,16 @@ const DisplayedDates = (startDate, endDate) => {
     var dateArr = getDateArray(startDate, endDate);
     for (var i = 0; i < dateArr.length; i++) {
     document.write("<p>" + dateArr[i] + "</p>");
+    // const formatted = `${dayName}, ${date} ${monthName} ${year}`
+
 }}
 
 class CalendarNav extends Component {
     state = {
-        startDate: new Date("2017-10-01"), // today by default
-        endDate: new Date("2017-12-04"), //date.today + 6 months
+        startDate: new Date(), // today by default
+        endDate: new Date().setMonth(6), //date.today + 6 months
     }
+
 
     render() {
         return(

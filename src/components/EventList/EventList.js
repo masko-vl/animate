@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './EventList.css';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -8,6 +7,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,23 +21,42 @@ const useStyles = makeStyles(theme => ({
 }));
 
 class EventList extends Component {
-    state = {
-        title: "title1",
-        description: "lorem ipsum event 1",
-        startTime: "08:00",
-        endTime: "21:00",
-        placeName: "",
-        address: "12 carrer d'en Roca, 08002 Barcelona",
-        distance: "2km",
-        eventType : "sport",
-        cardPic:"https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg",
-    }
+  state = {
+      title: "title1",
+      description: "lorem ipsum event 1",
+      startTime: "08:00",
+      endTime: "21:00",
+      placeName: "",
+      address: "12 carrer d'en Roca, 08002 Barcelona",
+      distance: "2km",
+      eventType : "sport",
+      cardPic:"https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg",
+      price: "free"
+  }
 
-export function AlignItemsList() {
-  const classes = useStyles();
+     async componentDidMount() {
+    //     // exemple :
+    //     // const [titleResponse, descriptionResponse, startTimeResponse, endTimeResponse, placeNameResponse, addressResponse, eventTypeResponse, cardPicResponse] = await Promise.all([
+    //     //     axios.get(`https://analisi.transparenciacatalunya.cat/resource/rhpv-yr4f.json`),
+    //     //     axios.get(`https://analisi.transparenciacatalunya.cat/resource/rhpv-yr4f.json`)
+         //   ]);
 
+    //     this.setState({
+    //         title: titleResponse,
+    //         description: descriptionResponse,
+    //         startTime: startTimeResponse,
+    //         endTime: endTimeResponse,
+    //         placeName: placeNameResponse,
+    //         address: addressResponse,
+    //         distance: distanceResponse,
+    //         eventType : eventTypeResponse,
+    //         cardPic: cardPicResponse
+    //     })
+     }
+
+  render() {
   return (
-    <List className={classes.root}>
+    <List className={useStyles.root}>
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
           <Avatar alt="Remy Sharp" src="https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg" />
@@ -49,7 +68,7 @@ export function AlignItemsList() {
               <Typography
                 component="span"
                 variant="body2"
-                className={classes.inline}
+                className={useStyles.inline}
                 color="textPrimary"
               >
                 Ali Connors
@@ -73,12 +92,14 @@ export function AlignItemsList() {
               <Typography
                 component="span"
                 variant="body2"
-                className={classes.inline}
+                className={useStyles.inline}
                 color="textPrimary"
               >
                 to Scott, Alex, Jennifer
               </Typography>
-              {" — Wish I could come, but I'm out of town this…"}
+              {" — Small description of the event"}
+              {" — Where is it"}<br></br>
+              {" — Date and times"}
             </React.Fragment>
           }
         />
@@ -95,59 +116,23 @@ export function AlignItemsList() {
               <Typography
                 component="span"
                 variant="body2"
-                className={classes.inline}
+                className={useStyles.inline}
                 color="textPrimary"
               >
                 Sandra Adams
               </Typography>
-              {' — Do you have Paris recommendations? Have you ever…'}
+              {" — Small description of the event"}
+              {" — Where is it"}<br></br>
+              {" — Date and times"}
             </React.Fragment>
           }
         />
       </ListItem>
     </List>
-  );
-}
+  )}};
 
-
-// ---------------------------------------------
-// --------------------------------------------
-
-// class EventList extends Component {
-//     state = {
-//         title: "title1",
-//         description: "lorem ipsum event 1",
-//         startTime: "08:00",
-//         endTime: "21:00",
-//         placeName: "",
-//         address: "12 carrer d'en Roca, 08002 Barcelona",
-//         distance: "2km",
-//         eventType : "sport",
-//         cardPic:"https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg",
-//     }
-
-// ---------------------------
-    
-    // async componentDidMount() {
-    //     // exemple :
-    //     // const [titleResponse, descriptionResponse, startTimeResponse, endTimeResponse, placeNameResponse, addressResponse, eventTypeResponse, cardPicResponse] = await Promise.all([
-    //     //     axios.get(`https://analisi.transparenciacatalunya.cat/resource/rhpv-yr4f.json`),
-    //     //     axios.get(`https://analisi.transparenciacatalunya.cat/resource/rhpv-yr4f.json`)
-    //     //   ]);
-
-    //     this.setState({
-    //         title: titleResponse,
-    //         description: descriptionResponse,
-    //         startTime: startTimeResponse,
-    //         endTime: endTimeResponse,
-    //         placeName: placeNameResponse,
-    //         address: addressResponse,
-    //         distance: distanceResponse,
-    //         eventType : eventTypeResponse,
-    //         cardPic: cardPicResponse
-    //     })
-    // }
-//  ----------------------
+  export default EventList;
+  
 //     render (){
 //         return(
 //             <figure className="EventCard">
@@ -217,9 +202,7 @@ export function AlignItemsList() {
 //         address: "Passeig Olímpic, s/n, 08004 Barcelona",
 //         distance: "60m",
 //         smallPicture:"https://cdn02.visitbarcelona.com/files/5445-7632-Imagen/palau-sant-jordi-anella-olimpica-barcelona-pf-c1.jpg"
-     }
 //  ]
 
 
 
- export default EventList;
