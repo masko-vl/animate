@@ -11,56 +11,47 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SelectEvent() {
+export default function SelectEvent({changeEvent, event2}) {
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    age: '',
-    name: 'hai',
-  });
+  const [state, setState] = React.useState({});
 
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
   React.useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth);
-  }, []);
-
-  const handleChange = name => event => {
-    setState({
-      ...state,
-      [name]: event.target.value,
-    });
-  };
+  });
 
   return (
     <div>
       <FormControl variant="outlined" className={classes.formControl}>
-        <InputLabel ref={inputLabel} htmlFor="outlined-age-native-simple">
+        <InputLabel ref={inputLabel} htmlFor="event">
           Select type of event :)
         </InputLabel>
         <Select
           native
-          value={state.age}
-          onChange={handleChange('age')}
+          value={event2}
+          onChange={changeEvent}
           labelWidth={labelWidth}
-          inputProps={{
-            name: 'age',
-            id: 'outlined-age-native-simple',
-          }}
+          
         >
           <option value="" />
-          <option value={1}>FESTIVALS AND MUESTRAS</option>
-          <option value={2}>CONCERTS</option>
-          <option value={3}>SARDANAS</option>
-          <option value={4}>PARTIES</option>
-          <option value={5}>THEATRE</option>
-          <option value={6}>KIDS</option>
-          <option value={7}>GIGANTES</option>
-          <option value={8}>RUTAS Y VISITAS</option>
-          <option value={9}>DANZA</option>
-          <option value={10}>CONFERENCIAS</option>
-          <option value={11}>CURSOS</option>
-          <option value={12}>CICLOS</option>
-          <option value={13}>CARNAVALES</option>
+          <option value={'all'}>ALL EVENTS</option>
+          <option value={'festivals-i-mostres'}>FESTIVALS AND MUESTRAS</option>
+          <option value={'concerts'}>CONCERTS</option>
+          <option value={'exposicions'}>EXPOSITIONS</option>
+          <option value={'sardanes'}>SARDANAS</option>
+          <option value={'festes'}>PARTIES</option>
+          <option value={'teatre'}>THEATRE</option>
+          <option value={'infantil'}>KIDS</option>
+          <option value={'fires-i-mercats'}>FERIAS Y MERCADOS</option>
+          <option value={'rutes-i-visites'}>RUTAS Y VISITAS</option>
+          <option value={'dansa'}>DANZA</option>
+          <option value={'conferencies'}>CONFERENCIAS</option>
+          <option value={'cursos'}>CURSOS</option>
+          <option value={'cicles'}>CICLOS</option>
+          <option value={'carnavals'}>CARNAVALES</option>
+          <option value={'setmana-santa'}>SEMANA SANTA</option>
+
         </Select>
       </FormControl>
       

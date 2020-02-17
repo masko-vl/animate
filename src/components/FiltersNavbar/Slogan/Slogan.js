@@ -1,6 +1,4 @@
-import React, { Component } from 'react';
-
-import Typography from '@material-ui/core/Typography';
+import React from 'react';
 const sloganStyle = {
     fontFamily:'Tahoma, Geneva, sans-serif',
     fontSize: '5vw',

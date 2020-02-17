@@ -12,13 +12,13 @@ const useStyles = makeStyles(theme => ({
     },
   }));
   
-  export default function ButtonForm() {
+  export default function ButtonForm({chooseFilters}) {
     const classes = useStyles();
-  
+    
     return (
       <div className={classes.root}>
         
-        <Button variant="contained" color="default">
+        <Button variant="contained" color="default" onClick={chooseFilters}>
         ANÍMATE!
         </Button>
        

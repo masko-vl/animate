@@ -14,19 +14,19 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function GroupedSelect() {
+export default function SelectCity({changeCity}) {
   const classes = useStyles();
 
   return (
     <div>
       <FormControl variant="outlined" className={classes.formControl}>
-        <InputLabel htmlFor="grouped-select">Grouping</InputLabel>
-        <Select defaultValue="" input={<Input id="grouped-select" />}>
+        <InputLabel htmlFor="grouped-select">Select city</InputLabel>
+        <Select defaultValue="" onChange={changeCity} input={<Input id="grouped-select" />}>
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
           <ListSubheader>Barcelona</ListSubheader>
-          <MenuItem value={1}>Barcelona</MenuItem>
+          <MenuItem value={'barcelona'}>Barcelona</MenuItem>
           <MenuItem value={2}>Badalona</MenuItem>
           <ListSubheader>Girona</ListSubheader>
           <MenuItem value={3}>Girona</MenuItem>
