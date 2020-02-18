@@ -1,0 +1,20 @@
+.dates-container{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  .date-card {
+      font-size: 12px;
+    border: 1px darkgrey;
+    border-radius: 3px;
+    min-width: 50px;
+    height: 50px;
+    padding: 10px;
+    text-align: center;
+  }
+  .date-card:nth-child(odd) {
+    background-color: rgb(224, 224, 224)
+  }
+  .date-text{
+    font-weight: 500;
+  }

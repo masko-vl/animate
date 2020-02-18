@@ -3,17 +3,14 @@ import axios from 'axios'
 import './App.css';
 import Header from './components/Header/Header.js'
 import FiltersNavbar from './components/FiltersNavbar/FiltersNavbar.js'
-import CalendarNav from './components/CalendarNav/CalendarNav.js'
-import EventList from './components/EventList/EventList.js'
-import EventMap from './components/EventMap/EventMap.js'
 import EventDetails from './components/EventDetails/EventDetails.js'
-import { render } from 'react-dom';
 
 
 class App extends Component {
   state = {
     data: {},
-    isLoading: true
+    isLoading: true,
+    dateCut: ''
     
 }
 getDate = () => {
@@ -30,37 +27,27 @@ getDate = () => {
 async componentDidMount(){
     //insert the current date in the url
   const {data} = await axios(`https://analisi.transparenciacatalunya.cat/resource/rhpv-yr4f.json?$where=data_inici%3E=%22${this.getDate()}%22`)
-        console.log(data)
-        this.setState({
-          data, 
-          isLoading: false
-        })
-        
+  // for(let i =0; i<3; i++) {
+   console.log(data)
+  // }
+        // this.setState({
+        //   data, 
+        //   isLoading: false,
+        //dateCut: data[999].data_inici.substr(0,10).split('-').join(',')
+        // })
   }
+
+  
 
   render(){
     return (
-    <div className="">
-      {/* {this.state.isLoading
-      ? <h1>LOADING...</h1>
-      :<div><ul>
-        {this.state.data.map(function(event, i){
-          return(
-            <li key={i}>{event.denominaci}</li>
-          )
-        })} </ul>
-      </div>}  */}
-      <Header/>
-      <FiltersNavbar/>
-      <CalendarNav/>
-      <EventList/>
-      <EventMap/>
-      <EventDetails/>
-     
-      
-
-    </div>
-  );}
+      <div className="">      
+          <Header/>
+          <FiltersNavbar dataApi={this.state.data}/>
+          <EventDetails/>
+      </div>
+    );
+  }
 }
 
 export default App;
