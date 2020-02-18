@@ -11,9 +11,10 @@ const getDateArray = (start, end) => {
 }
 
 const DisplayedDates = (startDate, endDate) => {
+    var arr = []
     var dateArr = getDateArray(startDate, endDate);
     for (var i = 0; i < dateArr.length; i++) {
-    document.write("<p>" + dateArr[i] + "</p>");
+    document.adoptNode(dateArr[i]);
     // const formatted = `${dayName}, ${date} ${monthName} ${year}`
 
 }}
