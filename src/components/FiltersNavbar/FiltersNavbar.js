@@ -11,16 +11,18 @@ import SelectEvent from "./SelectEvent/SelectEvent.js";
 import SelectCity from "./SelectCity/SelectCity.js";
 import ButtonForm from "./ButtonForm/ButtonForm.js"
 import Slogan from './Slogan/Slogan'
+import CalendarNav from './../CalendarNav/CalendarNav.js'
+
 
 
 
 const sectionStyle = {
-    /* height: '100vh', */
-    backgroundColor: '#20B2AA',
-    /* backgroundSize: 'cover#4169E1',
-    backgroundRepeat: 'no-repeat', */
+    /* height: '100vh', 
+    backgroundColor: 'lightgrey',
+     backgroundSize: 'cover4169E1',
+    backgroundRepeat: 'no-repeat', 
     color:'white',
-    
+    */
   };
 
 class FiltersNavbar extends Component {
@@ -120,10 +122,12 @@ class FiltersNavbar extends Component {
                 <DatePicker date2={this.state.date} changeDate={this.saveDate} dateCut={this.props.dateCut}/>
             </MuiPickersUtilsProvider>
         </Grid>
-        <Grid item xs={12}><ButtonForm chooseFilters={this.chooseFilters}/></Grid>
-       
+        <Grid item xs={12}><ButtonForm chooseFilters={this.chooseFilters}/></Grid> 
     </Grid>
+    <CalendarNav/>
     </div>
+    
+
   )
 }}
 
