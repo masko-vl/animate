@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -7,6 +7,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
+import EventDetails from './../EventDetails/EventDetails.js';
 
 
 const useStyles = makeStyles(theme => ({
@@ -22,7 +23,7 @@ const useStyles = makeStyles(theme => ({
 
 class EventList extends Component {
   state = {
-      title: "title1",
+      title: this.props.denominaci,
       description: "lorem ipsum event 1",
       startTime: "08:00",
       endTime: "21:00",
@@ -34,126 +35,100 @@ class EventList extends Component {
       price: "free"
   }
 
-     async componentDidMount() {
-    //     // exemple :
-    //     // const [titleResponse, descriptionResponse, startTimeResponse, endTimeResponse, placeNameResponse, addressResponse, eventTypeResponse, cardPicResponse] = await Promise.all([
-    //     //     axios.get(`https://analisi.transparenciacatalunya.cat/resource/rhpv-yr4f.json`),
-    //     //     axios.get(`https://analisi.transparenciacatalunya.cat/resource/rhpv-yr4f.json`)
-         //   ]);
+  // displayData = (props) => {
+  //   //insert the current date in the url
+  //  for(let i =0; i< 3; i++) {
+  //  console.log(props.data[i])
+  //  }
+  //       this.setState({
+  //         data, 
+  //         isLoading: false
+  //       })
+  // }
 
-    //     this.setState({
-    //         title: titleResponse,
-    //         description: descriptionResponse,
-    //         startTime: startTimeResponse,
-    //         endTime: endTimeResponse,
-    //         placeName: placeNameResponse,
-    //         address: addressResponse,
-    //         distance: distanceResponse,
-    //         eventType : eventTypeResponse,
-    //         cardPic: cardPicResponse
-    //     })
-     }
 
   render() {
   return (
-    <List className={useStyles.root}>
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Remy Sharp" src="https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="Event 1"
-          secondary={
-            <React.Fragment>
-              <Typography
-                component="span"
-                variant="body2"
-                className={useStyles.inline}
-                color="textPrimary"
-              >
-                Ali Connors
-              </Typography>
-              {" — Small description of the event"}
-              {" — Where is it"}<br></br>
-              {" — Date and times"}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
-      <Divider variant="inset" component="li" />
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Travis Howard" src="https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="Event 2"
-          secondary={
-            <React.Fragment>
-              <Typography
-                component="span"
-                variant="body2"
-                className={useStyles.inline}
-                color="textPrimary"
-              >
-                to Scott, Alex, Jennifer
-              </Typography>
-              {" — Small description of the event"}
-              {" — Where is it"}<br></br>
-              {" — Date and times"}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
-      <Divider variant="inset" component="li" />
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Cindy Baker" src="https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="Event 3"
-          secondary={
-            <React.Fragment>
-              <Typography
-                component="span"
-                variant="body2"
-                className={useStyles.inline}
-                color="textPrimary"
-              >
-                Sandra Adams
-              </Typography>
-              {" — Small description of the event"}
-              {" — Where is it"}<br></br>
-              {" — Date and times"}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
-    </List>
+    <Fragment>
+      <List className={useStyles.root}>
+        <ListItem alignItems="flex-start">
+          <ListItemAvatar>
+            <Avatar alt="Remy Sharp" src="https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg" />
+          </ListItemAvatar>
+          <ListItemText
+            primary={this.state.title}
+            secondary={
+              <React.Fragment>
+                <Typography
+                  component="span"
+                  variant="body2"
+                  className={useStyles.inline}
+                  color="textPrimary"
+                >
+                  Ali Connors
+                </Typography>
+                {" — Small description of the event"}
+                {" — Where is it"}<br></br>
+                {" — Date and times"}
+              </React.Fragment>
+            }
+          />
+        </ListItem>
+        <Divider variant="inset" component="li" />
+        <ListItem alignItems="flex-start">
+          <ListItemAvatar>
+            <Avatar alt="Travis Howard" src="https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg" />
+          </ListItemAvatar>
+          <ListItemText
+            primary="Event 2"
+            secondary={
+              <React.Fragment>
+                <Typography
+                  component="span"
+                  variant="body2"
+                  className={useStyles.inline}
+                  color="textPrimary"
+                >
+                  to Scott, Alex, Jennifer
+                </Typography>
+                {" — Small description of the event"}
+                {" — Where is it"}<br></br>
+                {" — Date and times"}
+              </React.Fragment>
+            }
+          />
+        </ListItem>
+        <Divider variant="inset" component="li" />
+        <ListItem alignItems="flex-start">
+          <ListItemAvatar>
+            <Avatar alt="Cindy Baker" src="https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg" />
+          </ListItemAvatar>
+          <ListItemText
+            primary="Event 3"
+            secondary={
+              <React.Fragment>
+                <Typography
+                  component="span"
+                  variant="body2"
+                  className={useStyles.inline}
+                  color="textPrimary"
+                >
+                  Sandra Adams
+                </Typography>
+                {" — Small description of the event"}
+                {" — Where is it"}<br></br>
+                {" — Date and times"}
+              </React.Fragment>
+            }
+          />
+        </ListItem>
+      </List>
+    <EventDetails/>
+    </Fragment>
   )}};
 
   export default EventList;
   
-//     render (){
-//         return(
-//             <figure className="EventCard">
-//                 <img className="SmallCardPic"
-//                     src={this.state.cardPic}
-//                     alt={this.state.title} />
-//                 <div className="FirstColumnDescription">
-//                     <p className="title">{this.state.title}</p>
-//                     <p className="description">{this.state.description}</p>
-//                     <p className="address">{this.state.address}</p>
-//                 </div>
-//                 <div className="SecondColumnDescription">
-//                     <p className="startTime">{this.state.startTime}</p>
-//                     <p className="endTime">{this.state.endTime}</p>
-//                     <p className="distance">{this.state.distance}</p>
-//                     <a className="eventIcon" src={this.state.eventType}></a>/
-//                 </div>
-//             </figure>
-//         )
-//     }
-// }
 
 // -----------------------------------------------
 

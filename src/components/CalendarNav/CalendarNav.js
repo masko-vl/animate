@@ -1,38 +1,40 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
+import 'dayjs/locale/ca';
+import { format } from 'date-fns';
+import './CalendarNav.css';
+import EventList from './../EventList/EventList.js';
+import EventMap from './../EventMap/EventMap.js'
 
 const getDateArray = (start, end) => {
     var arr = [];
-    var dt = new Date(start);
+    var dt = start;
     while (dt <= end) {
-        arr.push(new Date(dt));
+        arr.push(format(dt, 'dd.MM'));
         dt.setDate(dt.getDate() + 1);
     }
     return arr;
 }
-
-const DisplayedDates = (startDate, endDate) => {
-    var arr = []
-    var dateArr = getDateArray(startDate, endDate);
-    for (var i = 0; i < dateArr.length; i++) {
-    document.adoptNode(dateArr[i]);
-    // const formatted = `${dayName}, ${date} ${monthName} ${year}`
-
-}}
-
 class CalendarNav extends Component {
     state = {
         startDate: new Date(), // today by default
-        endDate: new Date().setMonth(6), //date.today + 6 months
+        endDate: new Date().setMonth(2), //date.today + 2 months
     }
-
-
     render() {
+      let dates = getDateArray(this.state.startDate, this.state.endDate)
         return(
-            <div>
-                {DisplayedDates(this.state.startDate,this.state.endDate)}
-            </div>
+            <Fragment>
+                <div className="dates-container">
+                    {dates.map((date, i) => (
+                    <div className="date-card" key={i}>
+                        <h3 className="date-text">{date}</h3>
+                    </div>
+                    ))}
+                </div>
+
+                <EventList data={this.state.data}/>
+                <EventMap/>
+            </Fragment>
         )
     }
 };
-
 export default CalendarNav;

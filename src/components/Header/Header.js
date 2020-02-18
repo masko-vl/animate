@@ -4,8 +4,7 @@ import '../Header/Header.css';
  const Header= props =>(
     <header className='header'>
         <nav className='header_navigation'>
-        <div></div>
-        <div className='header_logo'><a href = "/">LOGO: ANIMATE!</a></div>
+        <img className='NavLogo' src ="./logo.png"/>
         <div className='space'/>
         <div className='header_items'>
             <ul>
