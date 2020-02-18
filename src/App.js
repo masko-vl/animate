@@ -13,7 +13,8 @@ import { render } from 'react-dom';
 class App extends Component {
   state = {
     data: {},
-    isLoading: true
+    isLoading: true,
+    dateCut: ''
     
 }
 getDate = () => {
@@ -30,13 +31,16 @@ getDate = () => {
 async componentDidMount(){
     //insert the current date in the url
   const {data} = await axios(`https://analisi.transparenciacatalunya.cat/resource/rhpv-yr4f.json?$where=data_inici%3E=%22${this.getDate()}%22`)
-        //console.log(data)
+        console.log(data)
         this.setState({
           data, 
-          isLoading: false
+          isLoading: false,
+          dateCut: data[999].data_inici.substr(0,10).split('-').join(',')
         })
         
   }
+
+  
 
   render(){
     return (
@@ -52,7 +56,7 @@ async componentDidMount(){
       </div>}  */}
      
         <Header/>
-        <FiltersNavbar dataApi={this.state.data}/>
+        <FiltersNavbar dataApi={this.state.data} dateCut={this.state.dateCut}/>
         <CalendarNav/>
         <EventList/>
         <EventMap/>

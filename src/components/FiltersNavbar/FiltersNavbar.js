@@ -117,7 +117,7 @@ class FiltersNavbar extends Component {
         <Grid item xs={12}><SelectEvent event2={this.state.event} changeEvent={this.saveCategory}/></Grid>
         <Grid item xs={12}> 
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <DatePicker date2={this.state.date} changeDate={this.saveDate}/>
+                <DatePicker date2={this.state.date} changeDate={this.saveDate} dateCut={this.props.dateCut}/>
             </MuiPickersUtilsProvider>
         </Grid>
         <Grid item xs={12}><ButtonForm chooseFilters={this.chooseFilters}/></Grid>
