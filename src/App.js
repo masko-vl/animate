@@ -30,7 +30,7 @@ getDate = () => {
 async componentDidMount(){
     //insert the current date in the url
   const {data} = await axios(`https://analisi.transparenciacatalunya.cat/resource/rhpv-yr4f.json?$where=data_inici%3E=%22${this.getDate()}%22`)
-         console.log(data)
+
         this.setState({
           data, 
           isLoading: false
@@ -44,22 +44,20 @@ async componentDidMount(){
       {/* {this.state.isLoading
       ? <h1>LOADING...</h1>
       :<div><ul>
-        {this.state.data.map(function(event, i){
+        {this.state.data.map(function(event, i){z
           return(
             <li key={i}>{event.denominaci}</li>
           )
         })} </ul>
       </div>}  */}
-      <Header/>
-      <h1>HELLO</h1>
-      <FiltersNavbar/>
-      {/* <CalendarNav/>  */}
-      <EventList/> 
-      <EventMap/>
-      <EventDetails/>
-     
-      
 
+     
+        <Header/>
+        <FiltersNavbar dataApi={this.state.data}/>
+        <CalendarNav/>
+        <EventList/>
+        <EventMap/>
+        <EventDetails/>
     </div>
   );}
 }
