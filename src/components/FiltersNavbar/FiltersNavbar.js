@@ -1,13 +1,11 @@
 
 import React, { Component } from "react";
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import { makeStyles } from '@material-ui/core/styles';
 import DateFnsUtils from '@date-io/date-fns';
 import 'typeface-roboto';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-import Background from "./BackGround/background1.jpg"
 import DatePicker from './DatePicker/DatePicker.js';
 import SelectEvent from "./SelectEvent/SelectEvent.js";
 import SelectCity from "./SelectCity/SelectCity.js";
@@ -18,9 +16,9 @@ import Slogan from './Slogan/Slogan'
 
 const sectionStyle = {
     /* height: '100vh', */
-    backgroundImage: `url(${Background})`,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
+    backgroundColor: '#20B2AA',
+    /* backgroundSize: 'cover#4169E1',
+    backgroundRepeat: 'no-repeat', */
     color:'white',
     
   };
