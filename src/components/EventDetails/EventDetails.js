@@ -16,10 +16,9 @@ import CategoryIcon from '@material-ui/icons/Category';
 
 const useStyles = makeStyles({
   root: {
-    width: "auto",
+    width: "100%",
     border: "solid 2px grey",
-    
-
+   
     
     // change the width to the auto from 345
 
@@ -40,19 +39,24 @@ export default function EventDetails() {
           title="Event details"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">Event Name</Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-          Palau de la Música Catalana</Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-          <LocationOnIcon fontsize ="small" color="action"/>C/ Palau de la Música, 4-6, 08003 Barcelona
+          <Typography gutterBottom variant="h5" component="h2">
+            Event Name
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-          <WatchLaterIcon fontzise='small' color='action' />
-              18.00 - 20.00
-               </Typography>
+            Palau de la Música Catalana
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+          <LocationOnIcon fontSize ="small" color="action"/>C/ Palau de la Música, 4-6, 08003 Barcelona
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+          <div>
+            <div><WatchLaterIcon fontSiz e='small' color='action' /></div>
+            <div>18.00 - 20.00</div>
+          </div> 
+          </Typography>
           <Typography variant="body2" color="textSecondary" component="p"><CategoryIcon />music
           </Typography>
-         <div><Typography variant="body2" color="textSecondary" component="p">
+         <div className='meme'><Typography variant="body2" color="textSecondary" component="p">
           <EuroIcon />20 $</Typography></div> 
           <Typography variant="body2" color="textSecondary" component="p"><PublicIcon />www.odod.com</Typography>
          <Typography variant="body2" component="p">
@@ -60,14 +64,14 @@ export default function EventDetails() {
          </Typography>     
         </CardContent>
       </CardActionArea>
-      <CardActions>
+      {/* <CardActions>
         <Button size="small" color="primary">
           Share
         </Button>
         <Button size="small" color="primary">
           Learn More
         </Button>
-      </CardActions>
+      </CardActions> */}
     </Card>
   );
 }

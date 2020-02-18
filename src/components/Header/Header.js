@@ -15,10 +15,10 @@ import FilterListIcon from '@material-ui/icons/FilterList';
         <div className='space'/>
         <div className='header_items'>
             <ul>
-                <li><a href='/'><HomeIcon fontSize="medium" color="action" /></a></li>
-                <li><a href='/'><MapIcon fontsize ="large" color="action"/> </a></li>
-                <li><a href='/'><DateRangeIcon fontsize ="large" color="action"/> </a></li>
-                <li><a href='/'><FilterListIcon fontsize ="large" color="action"/> </a></li>
+                <li><a href='/'><HomeIcon fontSize="large" color="action" /></a></li>
+                <li><a href='/'><MapIcon fontSize ="large" color="action"/> </a></li>
+                <li><a href='/'><DateRangeIcon fontSize ="large" color="action"/> </a></li>
+                <li><a href='/'><FilterListIcon fontSize ="large" color="action"/> </a></li>
             </ul>
         </div>
         </nav>
