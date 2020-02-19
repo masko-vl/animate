@@ -1,4 +1,6 @@
 import React, {Component, Fragment} from 'react';
+
+
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -123,7 +125,7 @@ class EventList extends Component {
           />
         </ListItem>
       </List>
-    <EventDetails/>
+        <EventDetails/>
     </Fragment>
   )}};
 

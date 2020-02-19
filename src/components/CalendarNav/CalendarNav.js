@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from 'react';
+
 import 'dayjs/locale/ca';
 import { format } from 'date-fns';
 import './CalendarNav.css';
@@ -30,7 +31,6 @@ class CalendarNav extends Component {
                     </div>
                     ))}
                 </div>
-
                 <EventList data={this.state.data}/>
                 <EventMap/>
             </Fragment>
