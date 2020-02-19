@@ -3,7 +3,7 @@
     top: 0;
     left:0;
     /* position: fixed; in case we want the navbar sticky*/
-    background-color:  mediumorchid;
+    border: solid 2px grey;
     height: 15%;
 }
 .header_navigation {
@@ -13,12 +13,20 @@
 .header_items ul {
     list-style: none;
     display:flex;
+    
 
 
 }
 .header_items li {
-    padding: 0 0.5rem;
+    padding: 0 1rem;
 }
 .space {
     flex:1;
+}
+span {
+    color: grey;
+}
+.header.header-logo {
+   width : 15px;
+   height: 15px;
 }
