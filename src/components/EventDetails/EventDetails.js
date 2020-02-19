@@ -50,7 +50,7 @@ export default function EventDetails() {
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
           <div>
-            <div><WatchLaterIcon fontSiz e='small' color='action' /></div>
+            <div><WatchLaterIcon fontSize='small' color='action' /></div>
             <div>18.00 - 20.00</div>
           </div> 
           </Typography>

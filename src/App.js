@@ -30,11 +30,11 @@ async componentDidMount(){
   // for(let i =0; i<3; i++) {
    console.log(data)
   // }
-        // this.setState({
-        //   data, 
-        //   isLoading: false,
-        //dateCut: data[999].data_inici.substr(0,10).split('-').join(',')
-        // })
+         this.setState({
+            data, 
+            isLoading: false,
+            dateCut: data[999].data_inici.substr(0,10).split('-').join(',')
+         })
   }
 
   
