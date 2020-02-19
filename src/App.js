@@ -9,7 +9,8 @@ import EventDetails from './components/EventDetails/EventDetails.js'
 class App extends Component {
   state = {
     data: {},
-    isLoading: true
+    isLoading: true,
+    dateCut: ''
     
 }
 getDate = () => {
@@ -31,9 +32,12 @@ async componentDidMount(){
   // }
         // this.setState({
         //   data, 
-        //   isLoading: false
+        //   isLoading: false,
+        //dateCut: data[999].data_inici.substr(0,10).split('-').join(',')
         // })
   }
+
+  
 
   render(){
     return (
