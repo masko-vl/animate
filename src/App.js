@@ -22,20 +22,19 @@ getDate = () => {
   var yyyy = today.getFullYear();
 
   today = yyyy + '-' + mm + '-' + dd;
-  console.log(today);
+  //console.log(today);
   return today;
 }
 async componentDidMount(){
     //insert the current date in the url
   const {data} = await axios(`https://analisi.transparenciacatalunya.cat/resource/rhpv-yr4f.json?$where=data_inici%3E=%22${this.getDate()}%22`)
-  // for(let i =0; i<3; i++) {
-   console.log(data)
-  // }
-         this.setState({
-            data, 
-            isLoading: false,
-            dateCut: data[999].data_inici.substr(0,10).split('-').join(',')
+  console.log(data)
+        this.setState({
+          data, 
+          isLoading: false,
+          dateCut: data[999].data_inici.substr(0,10).split('-').join(',')
          })
+         //console.log( this.state.dateCut)
   }
   showMapState = () => {
     this.setState({
@@ -49,8 +48,7 @@ async componentDidMount(){
     return (
       <div className="">      
           <Header showMap={this.showMapState}/>
-          <FiltersNavbar dataApi={this.state.data} showMap={this.state.showMap}/>
-          <EventDetails/>
+          <FiltersNavbar dataApi={this.state.data} dateCut={this.state.dateCut}/>
       </div>
     );
   }

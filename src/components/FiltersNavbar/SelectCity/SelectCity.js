@@ -22,13 +22,11 @@ export default function SelectCity({changeCity}) {
       <FormControl variant="outlined" className={classes.formControl}>
         <InputLabel htmlFor="grouped-select">Select city</InputLabel>
         <Select defaultValue="" onChange={changeCity} input={<Input id="grouped-select" />}>
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <ListSubheader>Barcelona</ListSubheader>
+          
+          <ListSubheader value='disabled'>Barcelona</ListSubheader>
           <MenuItem value={'barcelona'}>Barcelona</MenuItem>
           <MenuItem value={2}>Badalona</MenuItem>
-          <ListSubheader>Girona</ListSubheader>
+          <ListSubheader value='disabled'>Girona</ListSubheader>
           <MenuItem value={3}>Girona</MenuItem>
           <MenuItem value={4}>Reus</MenuItem>
         </Select>
