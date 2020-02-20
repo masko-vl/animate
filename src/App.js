@@ -10,7 +10,8 @@ class App extends Component {
   state = {
     data: {},
     isLoading: true,
-    dateCut: ''
+    dateCut: '',
+    showMap: false
     
 }
 getDate = () => {
@@ -36,14 +37,19 @@ async componentDidMount(){
             dateCut: data[999].data_inici.substr(0,10).split('-').join(',')
          })
   }
+  showMapState = () => {
+    this.setState({
+      showMap: true
+    })
+  }
 
   
 
   render(){
     return (
       <div className="">      
-          <Header/>
-          <FiltersNavbar dataApi={this.state.data}/>
+          <Header showMap={this.showMapState}/>
+          <FiltersNavbar dataApi={this.state.data} showMap={this.state.showMap}/>
           <EventDetails/>
       </div>
     );

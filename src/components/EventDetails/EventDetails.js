@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     border: "solid 2px grey",
    
     
-    // change the width to the auto from 345
+    // change the width to the 100%  from 345
 
   },
 });
@@ -49,15 +49,15 @@ export default function EventDetails() {
           <LocationOnIcon fontSize ="small" color="action"/>C/ Palau de la Música, 4-6, 08003 Barcelona
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-          <div>
-            <div><WatchLaterIcon fontSize='small' color='action' /></div>
-            <div>18.00 - 20.00</div>
-          </div> 
+          
+            <WatchLaterIcon fontSize='small' color='action' />
+            18.00 - 20.00
+          
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p"><CategoryIcon />music
           </Typography>
-         <div className='meme'><Typography variant="body2" color="textSecondary" component="p">
-          <EuroIcon />20 $</Typography></div> 
+          <Typography variant="body2" color="textSecondary" component="p">
+          <EuroIcon />20 $</Typography>
           <Typography variant="body2" color="textSecondary" component="p"><PublicIcon />www.odod.com</Typography>
          <Typography variant="body2" component="p">
          Event details paragraph

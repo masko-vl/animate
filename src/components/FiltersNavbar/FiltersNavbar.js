@@ -107,7 +107,6 @@ class FiltersNavbar extends Component {
     //const classes = useStyles();
   return(
       <div  style={ sectionStyle }>
-      
     <Grid   
         container
         direction="column"
@@ -124,7 +123,7 @@ class FiltersNavbar extends Component {
         </Grid>
         <Grid item xs={12}><ButtonForm chooseFilters={this.chooseFilters}/></Grid> 
     </Grid>
-    <CalendarNav/>
+    <CalendarNav />
     </div>
     
 
