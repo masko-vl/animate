@@ -43,7 +43,6 @@ async componentDidMount(){
       <div className="">      
           <Header/>
           <FiltersNavbar dataApi={this.state.data} dateCut={this.state.dateCut}/>
-          <EventDetails/>
       </div>
     );
   }

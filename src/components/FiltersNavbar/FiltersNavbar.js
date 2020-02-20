@@ -13,7 +13,17 @@ import ButtonForm from "./ButtonForm/ButtonForm.js"
 import Slogan from './Slogan/Slogan'
 import CalendarNav from './../CalendarNav/CalendarNav.js'
 
+const saveToday = () => {
+  //select today
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0
+  var yyyy = today.getFullYear();
 
+  today = mm + '/' + dd + '/' + yyyy;
+  //console.log(today);
+  return today;
+}
 
 
 const sectionStyle = {
@@ -72,11 +82,12 @@ class FiltersNavbar extends Component {
     //console.log(this.state.date)
     
   }
-  chooseFilters= (props, ) => {
-    //console.log(this.props.dataApi)
+  chooseFilters= (props) => {
     //return api data from App.js
     let dataPased=this.props.dataApi
-    const array = [];
+
+    //create a array where whe are pushing the new data filtered
+    const dataFiltered = [];
     //console.log(dateEvent)
 
     //take all the filters for use it in data for the display of filtred events
@@ -96,39 +107,30 @@ class FiltersNavbar extends Component {
      dataPased.map((event)=>{
        if(event.comarca_i_municipi === `agenda:ubicacions/barcelona/barcelones/${city}` &&  category === 'all' && event.data_inici === `${dateEvent}T00:00:00.000` ){
         //insert in state al the data filtred
-        array.push(event)
+        dataFiltered.push(event)
        
        
         //if we pase all the filters city/category/date
       }else if(event.comarca_i_municipi === `agenda:ubicacions/barcelona/barcelones/${city}` && event.tags_categor_es === `agenda:categories/${category}` && event.data_inici === `${dateEvent}T00:00:00.000`){
         //insert in state al the data filtred
-         array.push(event)
-       
+         dataFiltered.push(event)
       }
-      
-      
-        //try to put from data all the cities and provinces
-
-        //put in the date picker errors catch for dates where there aren't events
     }) 
    }
    //save in state al the events filtered
-     this.setState({data:array})
-     console.log(this.state.data)
+     this.setState({data:dataFiltered})
+     console.log(dataFiltered)
     
-
-
-   /*  {this.state.data.map(function(event, i){z
-      return(
-        <li key={i}>{event.denominaci}</li>
-      )
-    })} */
-
-
+   /*THINGS TO BE DONE:
+      -PUT FROM API ALL THE CITIES FOR CATEGORIES 
+      -CHANGE IN A BETER WAY THE ALERTS CAUGHT
+      -CREATE A BUTTON IN CALENDAR THAT TAKES A METHOD HERE FOR CHANGE THE DATE FILTERED FOR THE EVENT
+      -CHANGE THE WAY OF DISPLAYS THE ALERTS AND AD THE MOMENT WHEN THERE'S NO EVENTS IN THIS DAY
+      -EXTRA:TO SHOW THE NUMBER OF EVENTS FILTERED BY THE FILTERS FOR MORE INFORMATION POR THE USER (IT'S NEEDED TO CHANGE THE LOGIC OF THE FILTES, SO IT SAVE THE INFO WHILE YOU ARE CHANGING THE FILTERS, NOT ONLY AT THE END ONCLICK BUTTON)
+      */
   }
   
   render(){
-    //const classes = useStyles();
   return(
       <div  style={ sectionStyle }>
       
@@ -148,7 +150,7 @@ class FiltersNavbar extends Component {
         </Grid>
         <Grid item xs={12}><ButtonForm chooseFilters={this.chooseFilters}/></Grid> 
     </Grid>
-    <CalendarNav/>
+    <CalendarNav apiFiltered={this.state.data}/>
     </div>
     
 
