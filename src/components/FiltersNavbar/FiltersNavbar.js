@@ -13,17 +13,15 @@ import ButtonForm from "./ButtonForm/ButtonForm.js"
 import Slogan from './Slogan/Slogan'
 import CalendarNav from './../CalendarNav/CalendarNav.js'
 
-const saveToday = () => {
-  //select today
-  var today = new Date();
-  var dd = String(today.getDate()).padStart(2, '0');
-  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0
-  var yyyy = today.getFullYear();
+const todayDate=()=>{
+  
+    var date = new Date(),
+      mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+      day = ("0" + date.getDate()).slice(-2);
+    return [date.getFullYear(), mnth, day].join("-");
+  }
+const DateFormat= todayDate()
 
-  today = mm + '/' + dd + '/' + yyyy;
-  //console.log(today);
-  return today;
-}
 
 
 const sectionStyle = {
@@ -40,7 +38,7 @@ class FiltersNavbar extends Component {
   state={
     city:'',
     category:'',
-    date: new Date(), /*today by default */
+    date: DateFormat, /*today by default */
     data: []
 
   }
@@ -65,6 +63,7 @@ class FiltersNavbar extends Component {
 
 
   saveDate=(e)=>{
+    console.log()
     //convert string that we resive from calendar picker to yyyy/mm/dd format for api uses
     function convert(e) {
       var date = new Date(e),
