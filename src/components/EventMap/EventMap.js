@@ -15,7 +15,8 @@ export default class EventMap extends Component {
       [41.3814343, 2.2],
       [41.3814343, 2.171]
     ]
-    
+    // let markers = [parseFloat.events[1].latitud, parseFloat.events[1].longitud]
+    // this.props.apiFiltered
     return (
       <Map center={position} zoom={this.state.zoom}>
       <TileLayer
