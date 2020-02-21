@@ -4,14 +4,16 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
+//style from material-ui package, changed the minWith to have the same width as the others inputs
 const useStyles = makeStyles(theme => ({
   formControl: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(2),/*space between inputs */
     minWidth: 250,
   },
 }));
 
 export default function SelectEvent({changeEvent, event2}) {
+
   const classes = useStyles();
   const [state, setState] = React.useState({});
 
@@ -28,13 +30,14 @@ export default function SelectEvent({changeEvent, event2}) {
           Select type of event :)
         </InputLabel>
         <Select
+        /*default properties with material-ui */
           native
-          value={event2}
-          onChange={changeEvent}
+          value={event2}/* prop that we pas from filters to */
+          onChange={changeEvent} /*function to use in filtersNav.js to pick the value chosen */
           labelWidth={labelWidth}
           
         >
-          <option value="" />
+          <option value=''></option>
           <option value={'all'}>ALL EVENTS</option>
           <option value={'festivals-i-mostres'}>FESTIVALS AND MUESTRAS</option>
           <option value={'concerts'}>CONCERTS</option>

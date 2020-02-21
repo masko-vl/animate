@@ -15,6 +15,7 @@ export default class EventMap extends Component {
       [41.3814343, 2.2],
       [41.3814343, 2.171]
     ]
+    
     return (
       <Map center={position} zoom={this.state.zoom}>
       <TileLayer

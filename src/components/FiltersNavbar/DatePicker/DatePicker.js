@@ -4,9 +4,10 @@ import { KeyboardDatePicker } from "@material-ui/pickers";
 
  
   
-const DatePicker = props => (
-  //console.log(props.dataApi[999]['data_inici'])
-   
+const DatePicker = props => {
+  //console.log(props.dateCut)
+   return(
+      //package datepicker use, changed from hook version
       <Fragment>
         <KeyboardDatePicker 
           autoOk
@@ -17,11 +18,12 @@ const DatePicker = props => (
           value={props.date2}
           InputAdornmentProps={{ position: "start" }}
           onChange={date => props.changeDate(date)}
-          maxDate={new Date(props.dateCut)} 
+          maxDate={new Date(props.dateCut)} /*is the date of the last event that it´s pased by api, it's converted in state from App.js this prop */
+          minDate={new Date()}
         />
       </Fragment> 
     
-)
+)}
       
 
 /* 
