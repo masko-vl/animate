@@ -34,7 +34,7 @@ class CalendarNav extends Component {
                     ))}
                 </div>
                 <EventList apiFiltered={this.props.apiFiltered}/>
-                <EventMap apiFiltered={this.props.apiFiltered}/>
+                {/* <EventMap apiFiltered={this.props.apiFiltered}/> */}
             </Fragment>
         )
     }

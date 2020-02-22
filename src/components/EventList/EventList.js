@@ -43,13 +43,12 @@ const EventList = (props) => {
                   className={useStyles.inline}
                   color="textPrimary"
                 >
-                  Ali Connors
                 </Typography>
-                {x.descripcio.slice(0, 100) + "..."}
-                {x.data_inici + "-" + x.data_fi}<br></br>
-                {x.horari}<br></br>
-                {x.entrades ? x.entrades : "free"}<br></br>
-                {x.horari}<br></br>
+                {x.descripcio.slice(0, 100) + "..."}<br/>
+                {x.data_inici == x.data_fi ? "" : "until " + new Date(x.data_fi.toString()).toString().slice(0, 9) } <br />
+                {x.horari.length > 50? x.horari.slice(0, 50) + "[..." : x.horari}<br/>
+                {/* for entrades : doing an array of all elements to make one with prices only. once we only have the prices, lloking forthe smallest to display : from + price */}
+                {"from " + x.entrades ? x.entrades + "€" : "free"}<br/>  
               </React.Fragment>
             }
           />
@@ -63,55 +62,3 @@ const EventList = (props) => {
 
   export default EventList;
   
-
-// -----------------------------------------------
-
-//  Exemple EventList
-
-
-//  const eventsList = [
-//     {
-//         title: "title1",
-//         eventType: "sport",
-//         description: "lorem ipsum event 1",
-//         openingTimes: [
-//             {
-//             date1: "01.02",
-//             startTime: "14:00",
-//             endTime:"21:00"
-//             },
-//             {
-//             date2: "01.02",
-//             startTime: "08:00",
-//             endTime: "21:00"
-//             },
-//             {
-//             date3: "03.02",
-//             startTime: "08:00",
-//             endTime: "21:00"
-//             }
-//         ],
-//         placeName: "",
-//         address: "12 carrer d'en Roca, 08002 Barcelona",
-//         distance: "2km",
-//         smallPicture:"https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg"
-//     },
-//     {
-//         title: "title2",
-//         eventType: "music",
-//         description: "blablablabla",
-//         openingTimes: [
-//             {
-//                 date1: "23.03",
-//                 startTime: "15h",
-//                 endTime: "18h",
-//             }
-//         ],
-//         placeName: "Palau Sant Jordi",
-//         address: "Passeig Olímpic, s/n, 08004 Barcelona",
-//         distance: "60m",
-//         smallPicture:"https://cdn02.visitbarcelona.com/files/5445-7632-Imagen/palau-sant-jordi-anella-olimpica-barcelona-pf-c1.jpg"
-//  ]
-
-
-
