@@ -1,15 +1,14 @@
 import React, {Component, Fragment} from 'react';
 
-
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import EventDetails from './../EventDetails/EventDetails.js';
+import { render } from '@testing-library/react';
 
 
 const useStyles = makeStyles(theme => ({
@@ -23,42 +22,19 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-class EventList extends Component {
-  state = {
-      title: this.props.denominaci,
-      description: "lorem ipsum event 1",
-      startTime: "08:00",
-      endTime: "21:00",
-      placeName: "",
-      address: "12 carrer d'en Roca, 08002 Barcelona",
-      distance: "2km",
-      eventType : "sport",
-      cardPic:"https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg",
-      price: "free"
-  }
-
-  // displayData = (props) => {
-  //   //insert the current date in the url
-  //  for(let i =0; i< 3; i++) {
-  //  console.log(props.data[i])
-  //  }
-  //       this.setState({
-  //         data, 
-  //         isLoading: false
-  //       })
-  // }
-
-
-  render() {
-  return (
-    <Fragment>
+const EventList = (props) => { 
+  render()
+    return(
+      props.apiFiltered.map(x => 
+        
+      <Fragment>
       <List className={useStyles.root}>
         <ListItem alignItems="flex-start">
           <ListItemAvatar>
             <Avatar alt="Remy Sharp" src="https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg" />
           </ListItemAvatar>
           <ListItemText
-            primary={this.state.title}
+            primary={x.denominaci}
             secondary={
               <React.Fragment>
                 <Typography
@@ -69,65 +45,21 @@ class EventList extends Component {
                 >
                   Ali Connors
                 </Typography>
-                {" — Small description of the event"}
-                {" — Where is it"}<br></br>
-                {" — Date and times"}
-              </React.Fragment>
-            }
-          />
-        </ListItem>
-        <Divider variant="inset" component="li" />
-        <ListItem alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar alt="Travis Howard" src="https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg" />
-          </ListItemAvatar>
-          <ListItemText
-            primary="Event 2"
-            secondary={
-              <React.Fragment>
-                <Typography
-                  component="span"
-                  variant="body2"
-                  className={useStyles.inline}
-                  color="textPrimary"
-                >
-                  to Scott, Alex, Jennifer
-                </Typography>
-                {" — Small description of the event"}
-                {" — Where is it"}<br></br>
-                {" — Date and times"}
-              </React.Fragment>
-            }
-          />
-        </ListItem>
-        <Divider variant="inset" component="li" />
-        <ListItem alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar alt="Cindy Baker" src="https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg" />
-          </ListItemAvatar>
-          <ListItemText
-            primary="Event 3"
-            secondary={
-              <React.Fragment>
-                <Typography
-                  component="span"
-                  variant="body2"
-                  className={useStyles.inline}
-                  color="textPrimary"
-                >
-                  Sandra Adams
-                </Typography>
-                {" — Small description of the event"}
-                {" — Where is it"}<br></br>
-                {" — Date and times"}
+                {x.descripcio.slice(0, 100) + "..."}
+                {x.data_inici + "-" + x.data_fi}<br></br>
+                {x.horari}<br></br>
+                {x.entrades ? x.entrades : "free"}<br></br>
+                {x.horari}<br></br>
               </React.Fragment>
             }
           />
         </ListItem>
       </List>
         <EventDetails/>
-    </Fragment>
-  )}};
+        </Fragment>  
+    )
+  )
+};
 
   export default EventList;
   

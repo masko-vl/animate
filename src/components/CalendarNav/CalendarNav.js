@@ -17,12 +17,12 @@ const getDateArray = (start, end) => {
 }
 class CalendarNav extends Component {
     state = {
-        data: this.props.data,
+        date: this.props.apiFiltered,
         startDate: new Date(), // today by default
         endDate: new Date().setMonth(2), //date.today + 2 months
     }
+    
     render() {
-        console.log(this.props.data)
       let dates = getDateArray(this.state.startDate, this.state.endDate)
         return(
             <Fragment>
@@ -33,7 +33,7 @@ class CalendarNav extends Component {
                     </div>
                     ))}
                 </div>
-                <EventList data={this.state.data}/>
+                <EventList apiFiltered={this.props.apiFiltered}/>
                 <EventMap apiFiltered={this.props.apiFiltered}/>
             </Fragment>
         )
