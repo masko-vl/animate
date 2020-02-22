@@ -20,7 +20,7 @@ const todayDate=()=>{
       day = ("0" + date.getDate()).slice(-2);
     return [date.getFullYear(), mnth, day].join("-");
   }
-const DateFormat= todayDate()
+//const DateFormat= todayDate()
 
 
 
@@ -38,7 +38,7 @@ class FiltersNavbar extends Component {
   state={
     city:'',
     category:'',
-    date: DateFormat, /*today by default */
+    date: todayDate(), /*today by default */
     data: []
 
   }
@@ -83,8 +83,11 @@ class FiltersNavbar extends Component {
   }
   chooseFilters= (props) => {
     //return api data from App.js
+    this.props.dataApi.map((event, index)=>{
+      console.log(event.comarca_i_municipi)
+   })
     let dataPased=this.props.dataApi
-
+  
     //create a array where whe are pushing the new data filtered
     const dataFiltered = [];
     //console.log(dateEvent)
@@ -140,7 +143,7 @@ class FiltersNavbar extends Component {
         alignItems="center">  
         <Grid item xs={12}><Slogan/></Grid> 
         <Grid item xs={12}><Typography variant="h5" component="h3" color='inherit'>Choose your preferences!</Typography> </Grid>
-        <Grid item xs={12}><SelectCity changeCity={this.saveCity}/></Grid>
+        <Grid item xs={12}><SelectCity changeCity={this.saveCity} dataApi={this.props.dataApi}/></Grid>
         <Grid item xs={12}><SelectEvent  changeEvent={this.saveCategory}/></Grid>
         <Grid item xs={12}> 
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
