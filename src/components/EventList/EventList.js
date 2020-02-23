@@ -22,16 +22,38 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const minPrice = (sentence) => {
+  const array = sentence.split(" ")
+  const numbersArray = []
+  let result = ""
+  for (let i = 0; i < array.length; i++) {
+    if (!isNaN(Number(array[i])) == true) {
+      numbersArray.push(Number(array[i]));
+    }  
+    if (numbersArray.length > 0) {
+      result = " from " + Math.min(...numbersArray) + "€"
+    } else {
+      result = "Click for more Info"
+    };
+
+  }
+  return result 
+};
 
 const EventList = (props) => { 
   render()
     return(
       props.apiFiltered.map(x => 
-        
+
+
+        // VOIR SI JE GARDE CE FORMAT POUR LA LISTE D'ÉVÉNEMENTS
       <Fragment>
+              {console.log(x)}
+
       <List className={useStyles.root}>
         <ListItem alignItems="flex-start">
           <ListItemAvatar>
+          {/* CHOISIR IMAGE SELON CATEGORIE */}
             <Avatar alt="Remy Sharp" src="https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg" />
           </ListItemAvatar>
           <ListItemText
@@ -46,10 +68,10 @@ const EventList = (props) => {
                 >
                 </Typography>
                 {x.descripcio.slice(0, 100) + "..."}<br/>
-                {x.data_inici == x.data_fi ? "" : "until " + new Date(x.data_fi.toString()).toString().slice(0, 9) } <br />
-                {x.horari.length > 50? x.horari.slice(0, 50) + "[..." : x.horari}<br/>
+                {x.data_inici == x.data_fi ? "" : "until " + new Date(x.data_fi.toString()).toString().slice(0, 9)} <br />
+                {x.horari ? x.horari.slice(0, 50) + "[...]" : "Click to get time table"}<br/>
                 {/* for entrades : doing an array of all elements to make one with prices only. once we only have the prices, lloking forthe smallest to display : from + price */}
-                {"from " + x.entrades ? x.entrades + "€" : "free"}<br/>  
+                {x.entrades ? "Price :" + minPrice(x.entrades): "free"}<br/>  
               </React.Fragment>
             }
           />

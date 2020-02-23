@@ -17,6 +17,7 @@ const getDateArray = (start, end) => {
 }
 class CalendarNav extends Component {
     state = {
+        // RECUPERER DATES DE L'API POUR CREER UN OBJET {format_date_a_afficher: date_api} ==> Onclick, récupérer la valeur pour faire le setstate du filter
         date: this.props.apiFiltered,
         startDate: new Date(), // today by default
         endDate: new Date().setMonth(2), //date.today + 2 months
