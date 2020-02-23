@@ -8,8 +8,15 @@ export default class EventMap extends Component {
   state = {
     lat: 41.5912,
     lng: 1.5209,
-    zoom: 8
+    zoom: 8,
+   //  isOpen: false
   }
+
+//   toggleModal = () => {
+//    this.setState({
+//      isOpen: !this.state.isOpen
+//    });
+//  }
 // in tha state are the coordinates of Catalunya
   render() {
      console.log('gfcgycuh', this.props.apiFiltered)
@@ -21,6 +28,7 @@ export default class EventMap extends Component {
     //   [41.3814343, 2.2],
     //   [41.3814343, 2.171]
     // ]
+   //  if the array of the props are empty, to keep the state, only if its filtred render the
     if (this.props.apiFiltered.length ===0){
        this.props.apiFiltered.push({latitud:41.5912, longitud:1.5209})
     }
@@ -46,12 +54,18 @@ export default class EventMap extends Component {
         <Marker position={[parseFloat(event.latitud),parseFloat(event.longitud)]}>
           <Popup>
           <img width='120px' src='https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg' />
-            <br />{event['denominaci']}<br /> Easily customizable.
+            <br />{event['denominaci']}<br /> 
+        <EventDetails apiFiltered={this.props.apiFiltered} >
+        </EventDetails>
           </Popup>
         </Marker>
       ))}
-
-      </Map>
+      {/* <EventDetails apiFiltered={this.props.apiFiltered} 
+      onClose={this.toggleModal}>
+        <div>{this.props.apiFiltered.map(detail => (
+          <h1>{detail.espai}</h1>))}</div>
+        </EventDetails> */}
+      </Map> 
     )
   }
 }

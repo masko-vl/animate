@@ -1,6 +1,4 @@
 import React from 'react';
-import '../EventDetails/EventDetails.css';
-import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -14,93 +12,100 @@ import EuroIcon from '@material-ui/icons/Euro';
 import PublicIcon from '@material-ui/icons/Public';
 import CategoryIcon from '@material-ui/icons/Category';
 
-const useStyles = makeStyles({
-  root: {
-    width: "100%",
-    border: "solid 2px grey",
-   
+import { makeStyles } from '@material-ui/core/styles';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
+
+const useStyles = makeStyles(theme => ({
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: "220",
     
-    // change the width to the 100%  from 345
-
+    
   },
-});
+  paper: {
+    backgroundColor: theme.palette.background.paper,
+    border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  }
+}));
 
-export default function EventDetails() {
+export default function EventDetails () {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
 
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  
   return (
-    <Card className={classes.root} >
-      <CardActionArea>
-        <CardMedia
+    <div>
+      <button type="button" onClick={handleOpen}>
+        Find more
+      </button>
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        className={classes.modal}
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open}>
+          <div className={classes.paper}>
+          <CardMedia
           component="img"
           alt="Event details"
-          height="auto"
+          height ="120"
           image="https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg"
           title="Event details"
         />
-        <CardContent>
+        <CardContent className={classes.root}>
           <Typography gutterBottom variant="h5" component="h2">
-            Event Name
+            Event name
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             Palau de la Música Catalana
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-          <LocationOnIcon fontSize ="small" color="action"/>C/ Palau de la Música, 4-6, 08003 Barcelona
+          <LocationOnIcon fontSize ="small" color="action"/>
+          C/ Palau de la Música, 4-6, 08003 Barcelona
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-          
-            <WatchLaterIcon fontSize='small' color='action' />
+          <WatchLaterIcon fontSize='small' color='action' />
             18.00 - 20.00
-          
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p"><CategoryIcon />music
+          <Typography variant="body2" color="textSecondary" component="p">
+          <CategoryIcon />
+          music
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
           <EuroIcon />20 $</Typography>
-          <Typography variant="body2" color="textSecondary" component="p"><PublicIcon />www.odod.com</Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+          <PublicIcon />www.odod.com</Typography>
          <Typography variant="body2" component="p">
          Event details paragraph
          </Typography>     
         </CardContent>
-      </CardActionArea>
-      {/* <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions> */}
-    </Card>
-  );
-}
-
-
-//  function EventDetails(){
-//      return(
-//          <div className='events-details'>
-//            <h2 className='title'>Title</h2>
-//            <p>startTime endTime</p>
-//            <p>placename</p>
-//            <p>address</p>
-//            <p>description</p>
-//            <p>event tipe</p>
-//            <p>url</p>
-//          </div>
-//      )
-//  }
-
-
-/* state = {
-    title: "title1",
-    description: "lorem ipsum event 1",
-    startTime: "08:00",
-    endTime: "21:00",
-    placeName: "",
-    : "12 carrer d'en Roca, 08002 Barcelona",
-    distance: "2km",
-    eventType : "sport"
-url evento: */ 
-
-// export default EventDetails;
+            {/* <h2 id="transition-modal-title">Transition modal</h2>
+            <p id="transition-modal-description">react-transition-group animates me.</p> */}
+          </div>
+        </Fade>
+      </Modal>
+    </div>
+    
+  )
+};
+// console.log('gfcgycuh', this.props.apiFiltered)
