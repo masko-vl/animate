@@ -6,7 +6,11 @@ const sloganStyle = {
   };
 const Slogan = () =>{
     return(
-<div style={sloganStyle}><h2 >Enjoy what the city is offering to you</h2><h3> We organise, you get ANIMATE! </h3></div> 
-    )}
+    <div>
+        <img src="https://www.theflyingpigvan.com/wp-content/uploads/2018/04/TFP-LogoFull_Large-1.png" />
+        <h1> Animate Hijo de De Puta. Besos </h1>
+    </div>
+    )
+}
 
 export default Slogan

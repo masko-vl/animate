@@ -49,10 +49,7 @@ const decodeHTMLEntities= (str)=> {
 
 export default function EventDetails (props) {
   if (props.apiFiltered === undefined){
-<<<<<<< HEAD
-=======
-    // console.log('if statement')
->>>>>>> 05bd8af8f2b2e57ec59eeb40512d16f1a139478d
+
     props={
       apiFiltered: {
        
@@ -61,10 +58,7 @@ export default function EventDetails (props) {
   }
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-<<<<<<< HEAD
-=======
-  // console.log('props?', props.apiFiltered)
->>>>>>> 05bd8af8f2b2e57ec59eeb40512d16f1a139478d
+
   const handleOpen = () => {
     setOpen(true);
   };
