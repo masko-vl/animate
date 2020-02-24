@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import axios from 'axios'
+import React, {Component} from 'react';
+import axios from 'axios';
 import './App.css';
-import Header from './components/Header/Header.js'
-import FiltersNavbar from './components/FiltersNavbar/FiltersNavbar.js'
-import EventDetails from './components/EventDetails/EventDetails.js'
+import Header from './components/Header/Header.js';
+import FiltersNavbar from './components/FiltersNavbar/FiltersNavbar.js';
 
 
 class App extends Component {
@@ -42,7 +41,6 @@ async componentDidMount(){
     })
   }
 
-  
 
   render(){
     return (
@@ -52,6 +50,7 @@ async componentDidMount(){
       </div>
     );
   }
-}
+  }
+
 
 export default App;

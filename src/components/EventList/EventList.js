@@ -1,13 +1,14 @@
-import React, {Component, Fragment} from 'react';
+import React, {Fragment} from 'react';
+
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import EventDetails from './../EventDetails/EventDetails.js';
+import { render } from '@testing-library/react';
 
 
 const useStyles = makeStyles(theme => ({
@@ -21,163 +22,73 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-class EventList extends Component {
-  state = {
-      title: this.props.denominaci,
-      description: "lorem ipsum event 1",
-      startTime: "08:00",
-      endTime: "21:00",
-      placeName: "",
-      address: "12 carrer d'en Roca, 08002 Barcelona",
-      distance: "2km",
-      eventType : "sport",
-      cardPic:"https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg",
-      price: "free"
+// This function gets the smallest number from a string containing all kinds of characters. We'll use it to return the smallest price of an event, that sets in the api price sentence.
+const minPrice = (sentence) => {
+  const array = sentence.split(" ")
+  const numbersArray = []
+  let result = ""
+  for (let i = 0; i < array.length; i++) {
+    if (!isNaN(Number(array[i])) == true) {
+      numbersArray.push(Number(array[i]));
+    }  
+    if (numbersArray.length > 0) {
+      result = " from " + Math.min(...numbersArray) + "€"
+    } else {
+      result = "Click for more Info"
+    };
+
   }
+  return result 
+};
 
-  // displayData = (props) => {
-  //   //insert the current date in the url
-  //  for(let i =0; i< 3; i++) {
-  //  console.log(props.data[i])
-  //  }
-  //       this.setState({
-  //         data, 
-  //         isLoading: false
-  //       })
-  // }
+// This function returns the name of the category from the api
+const categoryName = (apiCategory) => {
+  const array = apiCategory.split("/")
+  return array[array.length - 1]
+}
+
+const EventList = (props) => { 
+  render()
+  console.log(props.apiFiltered)
+
+    return(
+      props.apiFiltered.map(x => 
 
 
-  render() {
-  return (
-    <Fragment>
-      <List className={useStyles.root}>
-        <ListItem alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar alt="Remy Sharp" src="https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg" />
-          </ListItemAvatar>
-          <ListItemText
-            primary={this.state.title}
-            secondary={
-              <React.Fragment>
-                <Typography
-                  component="span"
-                  variant="body2"
-                  className={useStyles.inline}
-                  color="textPrimary"
-                >
-                  Ali Connors
-                </Typography>
-                {" — Small description of the event"}
-                {" — Where is it"}<br></br>
-                {" — Date and times"}
-              </React.Fragment>
-            }
-          />
-        </ListItem>
-        <Divider variant="inset" component="li" />
-        <ListItem alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar alt="Travis Howard" src="https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg" />
-          </ListItemAvatar>
-          <ListItemText
-            primary="Event 2"
-            secondary={
-              <React.Fragment>
-                <Typography
-                  component="span"
-                  variant="body2"
-                  className={useStyles.inline}
-                  color="textPrimary"
-                >
-                  to Scott, Alex, Jennifer
-                </Typography>
-                {" — Small description of the event"}
-                {" — Where is it"}<br></br>
-                {" — Date and times"}
-              </React.Fragment>
-            }
-          />
-        </ListItem>
-        <Divider variant="inset" component="li" />
-        <ListItem alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar alt="Cindy Baker" src="https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg" />
-          </ListItemAvatar>
-          <ListItemText
-            primary="Event 3"
-            secondary={
-              <React.Fragment>
-                <Typography
-                  component="span"
-                  variant="body2"
-                  className={useStyles.inline}
-                  color="textPrimary"
-                >
-                  Sandra Adams
-                </Typography>
-                {" — Small description of the event"}
-                {" — Where is it"}<br></br>
-                {" — Date and times"}
-              </React.Fragment>
-            }
-          />
-        </ListItem>
-      </List>
-    <EventDetails/>
-    </Fragment>
-  )}};
+        // Do we keep this component format?
+      <Fragment>
+}
+        <List className={useStyles.root}>
+          <ListItem alignItems="flex-start">
+            <ListItemAvatar>
+            {/* Choosing image according to the category. All images are registered in "images" and have the name of the list category (as we need to get the category names of the api >> being sure that the filters names don't have been modified !!!*/}
+              {/* <Avatar x.tags_categor_es alt={categoryName(x.tags_categor_es)} src={"../images/"+categoryName(x.tags_categor_es)} /> */}
+            </ListItemAvatar>
+            <ListItemText
+              primary={x.denominaci}
+              secondary={
+                <React.Fragment>
+                  <Typography
+                    component="span"
+                    variant="body2"
+                    className={useStyles.inline}
+                    color="textPrimary"
+                  >
+                  </Typography>
+                  {x.descripcio.slice(0, 100) + "..."}<br/> 
+                  {x.data_inici == x.data_fi ? "" : "until " + new Date(x.data_fi.toString()).toString().slice(0, 9)} <br />
+                  {x.horari ? x.horari.slice(0, 50) + "[...]" : "Click to get time table"}<br/>
+                  {x.entrades ? "Price :" + minPrice(x.entrades): "free"}<br/>  
+                </React.Fragment>
+              }
+            />
+          </ListItem>
+        </List>
+        <EventDetails/>
+      </Fragment>  
+    )
+  )
+};
 
   export default EventList;
   
-
-// -----------------------------------------------
-
-//  Exemple EventList
-
-
-//  const eventsList = [
-//     {
-//         title: "title1",
-//         eventType: "sport",
-//         description: "lorem ipsum event 1",
-//         openingTimes: [
-//             {
-//             date1: "01.02",
-//             startTime: "14:00",
-//             endTime:"21:00"
-//             },
-//             {
-//             date2: "01.02",
-//             startTime: "08:00",
-//             endTime: "21:00"
-//             },
-//             {
-//             date3: "03.02",
-//             startTime: "08:00",
-//             endTime: "21:00"
-//             }
-//         ],
-//         placeName: "",
-//         address: "12 carrer d'en Roca, 08002 Barcelona",
-//         distance: "2km",
-//         smallPicture:"https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg"
-//     },
-//     {
-//         title: "title2",
-//         eventType: "music",
-//         description: "blablablabla",
-//         openingTimes: [
-//             {
-//                 date1: "23.03",
-//                 startTime: "15h",
-//                 endTime: "18h",
-//             }
-//         ],
-//         placeName: "Palau Sant Jordi",
-//         address: "Passeig Olímpic, s/n, 08004 Barcelona",
-//         distance: "60m",
-//         smallPicture:"https://cdn02.visitbarcelona.com/files/5445-7632-Imagen/palau-sant-jordi-anella-olimpica-barcelona-pf-c1.jpg"
-//  ]
-
-
-
