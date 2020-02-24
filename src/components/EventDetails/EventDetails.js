@@ -111,7 +111,7 @@ export default function EventDetails (props) {
           {props.apiFiltered['data_inici']}-{props.apiFiltered['data_fi']}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-          <CategoryIcon />
+          <CategoryIcon style={{ fontSize: 20 }} />
           {props.apiFiltered['tags_categor_es']}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">

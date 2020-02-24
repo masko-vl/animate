@@ -11,7 +11,7 @@ export default class EventMap extends Component {
 
 // in tha state are the coordinates of Catalunya
   render() {
-     console.log('gfcgycuh', this.props.apiFiltered)
+    //  console.log('gfcgycuh', this.props.apiFiltered)
     const position = [this.state.lat, this.state.lng]
     
    //  if the array of the props are empty, to keep the state, only if its filtred render the

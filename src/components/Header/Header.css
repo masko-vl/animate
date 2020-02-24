@@ -3,7 +3,7 @@
     top: 0;
     left:0;
     /* position: fixed; in case we want the navbar sticky*/
-    border: solid 2px grey;
+    border: solid 1px black;
     height: 15%;
 }
 .header_navigation {
@@ -26,10 +26,13 @@
 span {
     color: grey;
 }
-.header.header-logo {
-   width : 15px;
-   height: 15px;
+.logo {
+    height: 10vmin;
+
 }
 .icons:hover {
-    background-color:grey;
+    background-color:rgba(218, 230, 222, 0.774);
+}
+a {
+    color: black;
 }
