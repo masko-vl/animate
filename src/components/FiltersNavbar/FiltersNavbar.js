@@ -132,7 +132,6 @@ class FiltersNavbar extends Component {
   render(){
   return(
       <div  style={ sectionStyle }>
-      
     <Grid   
         container
         direction="column"
