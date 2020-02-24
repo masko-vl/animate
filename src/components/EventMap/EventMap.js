@@ -2,48 +2,24 @@ import React, { Component } from 'react';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import EventDetails from '../EventDetails/EventDetails'
 
-
-
 export default class EventMap extends Component {
   state = {
     lat: 41.5912,
     lng: 1.5209,
-    zoom: 8,
-   //  isOpen: false
+    zoom: 8
   }
 
-//   toggleModal = () => {
-
-//    this.setState({
-//      isOpen: !this.state.isOpen
-//    });
-//  }
 // in tha state are the coordinates of Catalunya
   render() {
      console.log('gfcgycuh', this.props.apiFiltered)
     const position = [this.state.lat, this.state.lng]
     
-    // in the const position I stored the lng and lat
-    // let markers = [
-    //   [ 41.3814343, 2.169289299999946],
-    //   [41.3814343, 2.2],
-    //   [41.3814343, 2.171]
-    // ]
    //  if the array of the props are empty, to keep the state, only if its filtred render the
     if (this.props.apiFiltered.length ===0){
        this.props.apiFiltered.push({latitud:41.5912, longitud:1.5209})
     };
-    // let a = parseFloat(events[1].longitud);
-    // let b = parseFloat(events[1].latitud);
-    // used the parseFloat method to convert from string to inter keeping the decimals
-   //  let markers= [
-   //    [parseFloat(this.props.apiFiltered[0].latitud),parseFloat(this.props.apiFiltered[0].longitud)],
-   //    // [events[2].longitud, events[2].latitud],
-   //    // [events[3].longitud, events[3].latitud]
-   //  ]
-   // //  apiFiltered
-   //  console.log(markers)
     
+    // used the parseFloat method to convert from string to inter keeping the decimals
     return (
       <Map center={position} zoom={this.state.zoom}>
       <TileLayer
@@ -52,20 +28,16 @@ export default class EventMap extends Component {
               />
               {/* creating a map over the markers, for each markers, that we have declared below, to display a marker on map */}
         {this.props.apiFiltered.map(event => (
-        <Marker position={[parseFloat(event.latitud),parseFloat(event.longitud)]}>
+        <Marker key={event.codi} position={[parseFloat(event.latitud),parseFloat(event.longitud)]}>
           <Popup>
-          <img width='120px' src='https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg' />
-            <br />{event['denominaci']}<br /> {event['data_inici']}
+          <img width='120px' src='https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg' alt='photogategory' />
+            <br /><b>{event['denominaci']}</b><br /> {event['data_inici']}
+            {/* passing the props as the event, to recieve the event details of the pop clicked */}
         <EventDetails apiFiltered={event}>
         </EventDetails>
           </Popup>
         </Marker>
       ))}
-      {/* <EventDetails apiFiltered={this.props.apiFiltered} 
-      onClose={this.toggleModal}>
-        <div>{this.props.apiFiltered.map(detail => (
-          <h1>{detail.espai}</h1>))}</div>
-        </EventDetails> */}
       </Map> 
     )
   }

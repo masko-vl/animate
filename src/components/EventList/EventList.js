@@ -55,6 +55,11 @@ const undefinedCategory = () => {
 
 const EventList = (props) => { 
   render()
+<<<<<<< HEAD
+=======
+  //console.log(props.apiFiltered)
+
+>>>>>>> 05bd8af8f2b2e57ec59eeb40512d16f1a139478d
     return(
       props.apiFiltered.map(x => 
 
@@ -79,8 +84,16 @@ const EventList = (props) => {
                     color="textPrimary"
                   >
                   </Typography>
+<<<<<<< HEAD
                   {x.descripcio.slice(0, 100) + "..."}<br/> 
                   {x.data_inici == x.data_fi ? "" : "until " + new Date(x.data_fi.toString()).toString().slice(0, 9)} <br />
+=======
+                
+                  {/* {x.descripcio.slice(0, 100) + "..."}<br/>  */}
+                  {/* {x.data_inici == x.data_fi ? "" : "until " + new Date(x.data_fi.toString()).toString().slice(0, 9)} <br /> */}
+                 
+
+>>>>>>> 05bd8af8f2b2e57ec59eeb40512d16f1a139478d
 
                   {x.horari ? x.horari.slice(0, 50) + "[...]" : "Click to get time table"}<br/> 
                   {x.entrades ? "Price :" + minPrice(x.entrades): "free"}<br/>  

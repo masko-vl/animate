@@ -13,7 +13,7 @@ import ButtonForm from "./ButtonForm/ButtonForm.js";
 import Slogan from './Slogan/Slogan'
 import CalendarNav from './../CalendarNav/CalendarNav.js'
 
-const todayDate=()=>{
+const formatApiDate=()=>{
   
     var date = new Date(),
       mnth = ("0" + (date.getMonth() + 1)).slice(-2),
@@ -46,7 +46,7 @@ class FiltersNavbar extends Component {
   state={
     city:'',
     category:'',
-    date: todayDate(), /*today by default */
+    date: formatApiDate(), /*today by default */
     data: []
 
   }
@@ -134,6 +134,16 @@ class FiltersNavbar extends Component {
       -EXTRA:TO SHOW THE NUMBER OF EVENTS FILTERED BY THE FILTERS FOR MORE INFORMATION POR THE USER (IT'S NEEDED TO CHANGE THE LOGIC OF THE FILTES, SO IT SAVE THE INFO WHILE YOU ARE CHANGING THE FILTERS, NOT ONLY AT THE END ONCLICK BUTTON)
       */
   }
+  update=(e)=>{
+    //convert to api format
+     let date= formatApiDate(e.target.innerText)
+    this.setState({date:date}) 
+
+    console.log(this.state.date);
+    
+    
+    
+  }
   
   render(){
   return(
@@ -154,7 +164,7 @@ class FiltersNavbar extends Component {
         </Grid>
         <Grid item xs={12}><ButtonForm chooseFilters={this.chooseFilters}/></Grid> 
     </Grid>
-    <CalendarNav apiFiltered={this.state.data} getDateArray={getDateArray(new Date(), new Date(this.props.dateCut))}/>
+    <CalendarNav apiFiltered={this.state.data} update={this.update} getDateArray={getDateArray(new Date(), new Date(this.props.dateCut))}/>
     </div>
     
 
