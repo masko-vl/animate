@@ -63,7 +63,6 @@ class FiltersNavbar extends Component {
 
 
   saveDate=(e)=>{
-    console.log()
     //convert string that we resive from calendar picker to yyyy/mm/dd format for api uses
     function convert(e) {
       var date = new Date(e),
@@ -114,8 +113,10 @@ class FiltersNavbar extends Component {
     }) 
    }
    //save in state al the events filtered
+
      this.setState({data:dataFiltered})
-     console.log(dataFiltered)
+     console.log(this.state.data)
+
     
    /*THINGS TO BE DONE:
       -PUT FROM API ALL THE CITIES FOR CATEGORIES 

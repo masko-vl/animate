@@ -1,28 +1,28 @@
-// const Calendar = function(start, end) {
-//     const
-//       arr = new Array(),
-//       dt = new Date(start);
-  
-//     while (dt <= end) {
-//     Array.prototype.push(new Date(dt));
-//       dt.setDate(dt.getDate() + 1);
-//     }
-//     return arr;
+const categoryName = (apiCategory) => {
+    array = apiCategory.split("/")
+    return array[array.length - 1]
+}
+
+console.log(categoryName("agenda:categories/rutes-i-visites"))
+
+
+
+
+// THAT WORKS ;
+//example = "price from 12 to 10 but sometimes 22 €"
+
+// const minPrice = (sentence) => {
+//   const array = sentence.split(" ")
+//   const numbersArray = []
+//   let result = ""
+//   for (let i = 0; i < array.length; i++) {
+//     if (!isNaN(Number(array[i])) == true) {
+//       numbersArray.push(Number(array[i]));
+//     }  
+//     result = Math.min(...numbersArray);
+
 //   }
+//   return result
+// };
 
-//   const sixMonthsCalendar = Calendar(new Date(),new Date().setMonth(6))
-
-//   console.log(Object.values(sixMonthsCalendar))
-
-addDays = () => {
-    const { startDate } = this.props.pageData.parcelDetails.parcelDetails;
-    const date = new Date(startDate);
-    let datesCollection = []
-  
-    for (var i = 1; i < 12; i++) {
-      const newDate = new Date(date.getTime() + i * 1000 * 60 * 60 * 24);
-      datesCollection.push(`${newDate.getDate()}/${newDate.getMonth() + 1}/${newDate.getFullYear()}`);
-    }
-  
-   console.log(typeof(datesCollection))
-  }
+// console.log(minPrice(example))

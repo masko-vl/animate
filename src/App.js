@@ -1,15 +1,16 @@
-import React, { Component } from 'react';
-import axios from 'axios'
+import React, {Component} from 'react';
+import axios from 'axios';
 import './App.css';
-import Header from './components/Header/Header.js'
-import FiltersNavbar from './components/FiltersNavbar/FiltersNavbar.js'
+import Header from './components/Header/Header.js';
+import FiltersNavbar from './components/FiltersNavbar/FiltersNavbar.js';
 
 
 class App extends Component {
   state = {
     data: {},
     isLoading: true,
-    dateCut: ''
+    dateCut: '',
+    
     
 }
 
@@ -54,14 +55,12 @@ async componentDidMount(){
 
   render(){
     return (
-      <div className="">      
-          <Header/>
+      <div className="">
           {this.state.isLoading?<h1>IS LOADING FILTER...</h1>:<FiltersNavbar dataApi={this.state.data} dateCut={this.state.dateCut} valueCities={this.state.valueCities}/>}
-          
-
       </div>
     );
   }
-}
+  }
+
 
 export default App;
