@@ -10,6 +10,11 @@ class App extends Component {
     data: {},
     isLoading: true,
     dateCut: '',
+<<<<<<< HEAD
+=======
+    
+    
+>>>>>>> db505cdc0cff5d3efa79925fc14d55f846c185d9
 }
 
 getDate = () => {
@@ -34,8 +39,6 @@ async componentDidMount(){
          })
          //console.log( this.state.dateCut)
   }
-
-  
 
 
   render(){

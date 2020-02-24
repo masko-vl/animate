@@ -5,6 +5,7 @@ import { format } from 'date-fns';
 import './CalendarNav.css';
 import EventList from './../EventList/EventList.js';
 import EventMap from './../EventMap/EventMap.js'
+import Header from '../Header/Header'
 
 const getDateArray = (start, end) => {
     var arr = [];
@@ -21,8 +22,19 @@ class CalendarNav extends Component {
         date: this.props.apiFiltered,
         startDate: new Date(), // today by default
         endDate: new Date().setMonth(2), //date.today + 2 months
+        eventListDisplay : true
     }
-    
+    showMap=()=>{
+        this.setState({
+            eventListDisplay: false
+        })
+      }
+      showList=()=>{
+        this.setState({
+            eventListDisplay: true
+        }) 
+    }
+
     render() {
       let dates = getDateArray(this.state.startDate, this.state.endDate)
         return(
@@ -34,8 +46,13 @@ class CalendarNav extends Component {
                     </div>
                     ))}
                 </div>
-                <EventList apiFiltered={this.props.apiFiltered}/>
-                {/* <EventMap apiFiltered={this.props.apiFiltered}/> */}
+                <Header showList={this.showList} showMap={this.showMap}/>
+                {
+                    this.state.eventListDisplay
+                    ? <EventList apiFiltered={this.props.apiFiltered} />
+                    : <EventMap apiFiltered={this.props.apiFiltered}/>
+                }
+              
             </Fragment>
         )
     }
