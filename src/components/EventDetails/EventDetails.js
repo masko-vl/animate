@@ -1,10 +1,10 @@
 import React from 'react';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
+// import Card from '@material-ui/core/Card';
+// import CardActionArea from '@material-ui/core/CardActionArea';
+// import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
@@ -33,10 +33,23 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2, 4, 3),
   }
 }));
+// this function replace the ebncdings from the text we recieve from API
+const decodeHTMLEntities= (str)=> {
+  if(str && typeof str === 'string') {
+    // strip script/html tags
+    str = str.replace(/<script[^>]*>([\S\s]*?)<\/script>/gmi, '');
+    str = str.replace(/<\/?\w(?:[^"'>]|"[^"]*"|'[^']*')*>/gmi, '');
+    str = str.replace(/&nbsp;/g, ' ');
+    str = str.replace(/&amp;/g, ' ');
+    str =str.replace(/nbsp/g, ' ');
+  }
+
+  return str;
+}
 
 export default function EventDetails (props) {
   if (props.apiFiltered === undefined){
-    console.log('if statement')
+    // console.log('if statement')
     props={
       apiFiltered: {
        
@@ -45,7 +58,7 @@ export default function EventDetails (props) {
   }
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-console.log('props?', props.apiFiltered)
+  // console.log('props?', props.apiFiltered)
   const handleOpen = () => {
     setOpen(true);
   };
@@ -91,26 +104,24 @@ console.log('props?', props.apiFiltered)
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
           <LocationOnIcon fontSize ="small" color="action"/>
-          C/ Palau de la Música, 4-6, 08003 Barcelona
+          {props.apiFiltered['adre_a']}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
           <WatchLaterIcon fontSize='small' color='action' />
-            18.00 - 20.00
+          {props.apiFiltered['data_inici']}-{props.apiFiltered['data_fi']}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
           <CategoryIcon />
-          music
+          {props.apiFiltered['tags_categor_es']}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-          <EuroIcon />20 $</Typography>
+          <EuroIcon />{props.apiFiltered['entrades']}</Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-          <PublicIcon />www.odod.com</Typography>
+          <PublicIcon />{props.apiFiltered['url']} </Typography>
          <Typography variant="body2" component="p">
-         Event details paragraph
+         {decodeHTMLEntities(props.apiFiltered['descripcio_html'])}
          </Typography>     
         </CardContent>
-            {/* <h2 id="transition-modal-title">Transition modal</h2>
-            <p id="transition-modal-description">react-transition-group animates me.</p> */}
           </div>
         </Fade>
       </Modal>

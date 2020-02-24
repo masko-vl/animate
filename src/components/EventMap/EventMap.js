@@ -52,7 +52,7 @@ export default class EventMap extends Component {
               />
               {/* creating a map over the markers, for each markers, that we have declared below, to display a marker on map */}
         {this.props.apiFiltered.map(event => (
-        <Marker position={[parseFloat(event.latitud),parseFloat(event.longitud)]}>
+        <Marker key={event.codi} position={[parseFloat(event.latitud),parseFloat(event.longitud)]}>
           <Popup>
           <img width='120px' src='https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg' />
             <br />{event['denominaci']}<br /> {event['data_inici']}
