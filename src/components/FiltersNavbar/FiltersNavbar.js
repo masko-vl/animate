@@ -5,11 +5,11 @@ import DateFnsUtils from '@date-io/date-fns';
 import 'typeface-roboto';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-
+import { format } from 'date-fns';
 import DatePicker from './DatePicker/DatePicker.js';
 import SelectEvent from "./SelectEvent/SelectEvent.js";
 import SelectCity from "./SelectCity/SelectCity.js";
-import ButtonForm from "./ButtonForm/ButtonForm.js"
+import ButtonForm from "./ButtonForm/ButtonForm.js";
 import Slogan from './Slogan/Slogan'
 import CalendarNav from './../CalendarNav/CalendarNav.js'
 
@@ -21,7 +21,15 @@ const todayDate=()=>{
     return [date.getFullYear(), mnth, day].join("-");
   }
 
-
+const getDateArray = (start, end) => {
+  var arr = [];
+  var dt = start;
+  while (dt <= end) {
+      arr.push(format(dt, 'dd.MM'));
+      dt.setDate(dt.getDate() + 1);
+  }
+  return arr;
+}
 
 
 const sectionStyle = {
@@ -115,7 +123,7 @@ class FiltersNavbar extends Component {
    //save in state al the events filtered
 
      this.setState({data:dataFiltered})
-     console.log(this.state.data)
+     //console.log(this.state.data)
 
     
    /*THINGS TO BE DONE:
@@ -146,7 +154,7 @@ class FiltersNavbar extends Component {
         </Grid>
         <Grid item xs={12}><ButtonForm chooseFilters={this.chooseFilters}/></Grid> 
     </Grid>
-    <CalendarNav apiFiltered={this.state.data}/>
+    <CalendarNav apiFiltered={this.state.data} getDateArray={getDateArray(new Date(), new Date(this.props.dateCut))}/>
     </div>
     
 

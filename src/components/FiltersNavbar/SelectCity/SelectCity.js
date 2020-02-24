@@ -18,19 +18,22 @@ const citySelect=(value)=>{
   let arrayCities = value.split('/')
   let city = arrayCities[arrayCities.length - 1]
   city = city.replace(/([-])/g," ")
+
   return city
 }
 
+
+
 export default function SelectCity({changeCity, valueCities}) {
   const classes = useStyles();
- 
   return (
 
     <div>
+   
       <FormControl variant="outlined" className={classes.formControl}>
         <InputLabel htmlFor="grouped-select">Select city</InputLabel>
         <Select defaultValue="" onChange={changeCity} input={<Input id="grouped-select" />}>
-        {/* */}
+        {/*show the city categories */}
         {!valueCities? <MenuItem value={'barcelona'}>Barcelona</MenuItem>:valueCities.map((cityvalue, index)=>{
             return(<MenuItem key={index} value={cityvalue}>{citySelect(cityvalue)}</MenuItem>)
           }) }      
