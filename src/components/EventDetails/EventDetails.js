@@ -34,10 +34,18 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function EventDetails () {
+export default function EventDetails (props) {
+  if (props.apiFiltered === undefined){
+    console.log('if statement')
+    props={
+      apiFiltered: {
+       
+      }
+    }
+  }
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-
+console.log('props?', props.apiFiltered)
   const handleOpen = () => {
     setOpen(true);
   };
@@ -45,12 +53,14 @@ export default function EventDetails () {
   const handleClose = () => {
     setOpen(false);
   };
-  
+
   return (
+
     <div>
       <button type="button" onClick={handleOpen}>
         Find more
       </button>
+     
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -74,10 +84,10 @@ export default function EventDetails () {
         />
         <CardContent className={classes.root}>
           <Typography gutterBottom variant="h5" component="h2">
-            Event name
+          {props.apiFiltered['denominaci']}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Palau de la Música Catalana
+            {props.apiFiltered['espai']}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
           <LocationOnIcon fontSize ="small" color="action"/>
@@ -105,7 +115,6 @@ export default function EventDetails () {
         </Fade>
       </Modal>
     </div>
-    
   )
 };
 // console.log('gfcgycuh', this.props.apiFiltered)

@@ -13,6 +13,7 @@ export default class EventMap extends Component {
   }
 
 //   toggleModal = () => {
+
 //    this.setState({
 //      isOpen: !this.state.isOpen
 //    });
@@ -31,7 +32,7 @@ export default class EventMap extends Component {
    //  if the array of the props are empty, to keep the state, only if its filtred render the
     if (this.props.apiFiltered.length ===0){
        this.props.apiFiltered.push({latitud:41.5912, longitud:1.5209})
-    }
+    };
     // let a = parseFloat(events[1].longitud);
     // let b = parseFloat(events[1].latitud);
     // used the parseFloat method to convert from string to inter keeping the decimals
@@ -54,8 +55,8 @@ export default class EventMap extends Component {
         <Marker position={[parseFloat(event.latitud),parseFloat(event.longitud)]}>
           <Popup>
           <img width='120px' src='https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg' />
-            <br />{event['denominaci']}<br /> 
-        <EventDetails apiFiltered={this.props.apiFiltered} >
+            <br />{event['denominaci']}<br /> {event['data_inici']}
+        <EventDetails apiFiltered={event}>
         </EventDetails>
           </Popup>
         </Marker>
