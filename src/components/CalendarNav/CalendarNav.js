@@ -29,12 +29,12 @@ class CalendarNav extends Component {
     }
 
     render() {
-      
+      //console.log(this.state.dates)
         return(
             <Fragment>
                 <div className="dates-container">
                     {this.state.dates.map((date, i) => (
-                    <div className="date-card" key={i}>
+                    <div className="date-card" key={i} onClick={this.props.update}>
                         <h3 className="date-text">{date}</h3>
                     </div>
                     ))}
