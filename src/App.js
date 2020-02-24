@@ -10,7 +10,7 @@ class App extends Component {
     data: {},
     isLoading: true,
     dateCut: '',
-    showMap: false
+    
     
 }
 getDate = () => {
@@ -35,17 +35,13 @@ async componentDidMount(){
          })
          //console.log( this.state.dateCut)
   }
-  showMapState = () => {
-    this.setState({
-      showMap: true
-    })
-  }
+
 
 
   render(){
     return (
       <div className="">      
-          <Header showMap={this.showMapState}/>
+          
           <FiltersNavbar dataApi={this.state.data} dateCut={this.state.dateCut}/>
       </div>
     );

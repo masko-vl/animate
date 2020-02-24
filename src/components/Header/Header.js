@@ -14,8 +14,8 @@ import FilterListIcon from '@material-ui/icons/FilterList';
         <div className='space'/>
         <div className='header_items'>
             <ul>
-                <li><button onClick={props.showMap}><MapIcon fontSize ="large" color="action" id="map"/></button></li>
-                <li><a href='/'><DateRangeIcon fontSize ="large" color="action"/> </a></li>
+                <li onClick={props.showMap}><MapIcon fontSize ="large" color="action" id="map"/></li>
+                <li onClick={props.showList}><DateRangeIcon fontSize ="large" color="action"/> </li>
                 <li><a href='/'><FilterListIcon fontSize ="large" color="action"/> </a></li>
             </ul>
         </div>
