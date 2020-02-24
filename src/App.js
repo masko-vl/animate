@@ -53,7 +53,6 @@ async componentDidMount(){
   render(){
     return (
       <div className="">
-          <FiltersNavbar dataApi={this.state.data} dateCut={this.state.dateCut}/>
           {this.state.isLoading?<h1>IS LOADING FILTER...</h1>:<FiltersNavbar dataApi={this.state.data} dateCut={this.state.dateCut} valueCities={this.state.valueCities}/>}
       </div>
     );

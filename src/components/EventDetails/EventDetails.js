@@ -36,7 +36,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function EventDetails (props) {
   if (props.apiFiltered === undefined){
-    console.log('if statement')
     props={
       apiFiltered: {
        
@@ -45,7 +44,6 @@ export default function EventDetails (props) {
   }
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-console.log('props?', props.apiFiltered)
   const handleOpen = () => {
     setOpen(true);
   };
@@ -117,4 +115,3 @@ console.log('props?', props.apiFiltered)
     </div>
   )
 };
-// console.log('gfcgycuh', this.props.apiFiltered)

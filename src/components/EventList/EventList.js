@@ -55,8 +55,6 @@ const undefinedCategory = () => {
 
 const EventList = (props) => { 
   render()
-  console.log(props.apiFiltered)
-
     return(
       props.apiFiltered.map(x => 
 
@@ -81,11 +79,8 @@ const EventList = (props) => {
                     color="textPrimary"
                   >
                   </Typography>
-                  {console.log(x.descripcio)}
                   {x.descripcio.slice(0, 100) + "..."}<br/> 
                   {x.data_inici == x.data_fi ? "" : "until " + new Date(x.data_fi.toString()).toString().slice(0, 9)} <br />
-                  {console.log(x.horari)}
-
 
                   {x.horari ? x.horari.slice(0, 50) + "[...]" : "Click to get time table"}<br/> 
                   {x.entrades ? "Price :" + minPrice(x.entrades): "free"}<br/>  
