@@ -20,7 +20,7 @@ const todayDate=()=>{
       day = ("0" + date.getDate()).slice(-2);
     return [date.getFullYear(), mnth, day].join("-");
   }
-const DateFormat= todayDate()
+
 
 
 
@@ -38,7 +38,7 @@ class FiltersNavbar extends Component {
   state={
     city:'',
     category:'',
-    date: DateFormat, /*today by default */
+    date: todayDate(), /*today by default */
     data: []
 
   }
@@ -83,33 +83,30 @@ class FiltersNavbar extends Component {
   chooseFilters= (props) => {
     //return api data from App.js
     let dataPased=this.props.dataApi
-
+   
     //create a array where whe are pushing the new data filtered
     const dataFiltered = [];
-    //console.log(dateEvent)
 
     //take all the filters for use it in data for the display of filtred events
     const city = this.state.city
     const dateEvent = this.state.date
     const category = this.state.category
-    //console.log(this.props.dateCut)
+    
     if(city=== ''){
       alert('It is obligatory to choose a city')
       
-    }else if(city === 'disabled'){
-      alert('Chose a city not the province')
     }else if(category ===''){
       alert('Choose events category')
     }else{
     //create a loop in the events api array and pass if statement for select the events and display diferent errors
      dataPased.map((event)=>{
-       if(event.comarca_i_municipi === `agenda:ubicacions/barcelona/barcelones/${city}` &&  category === 'all' && event.data_inici === `${dateEvent}T00:00:00.000` ){
+       if(event.comarca_i_municipi === `${city}` &&  category === 'all' && event.data_inici === `${dateEvent}T00:00:00.000` ){
         //insert in state al the data filtred
         dataFiltered.push(event)
        
        
         //if we pase all the filters city/category/date
-      }else if(event.comarca_i_municipi === `agenda:ubicacions/barcelona/barcelones/${city}` && event.tags_categor_es === `agenda:categories/${category}` && event.data_inici === `${dateEvent}T00:00:00.000`){
+      }else if(event.comarca_i_municipi === `${city}` && event.tags_categor_es === `agenda:categories/${category}` && event.data_inici === `${dateEvent}T00:00:00.000`){
         //insert in state al the data filtred
          dataFiltered.push(event)
       }
@@ -140,7 +137,7 @@ class FiltersNavbar extends Component {
         alignItems="center">  
         <Grid item xs={12}><Slogan/></Grid> 
         <Grid item xs={12}><Typography variant="h5" component="h3" color='inherit'>Choose your preferences!</Typography> </Grid>
-        <Grid item xs={12}><SelectCity changeCity={this.saveCity}/></Grid>
+        <Grid item xs={12}><SelectCity changeCity={this.saveCity} valueCities={this.props.valueCities}/></Grid>
         <Grid item xs={12}><SelectEvent  changeEvent={this.saveCategory}/></Grid>
         <Grid item xs={12}> 
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
