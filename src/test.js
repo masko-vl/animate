@@ -1,3 +1,13 @@
+const categoryName = (apiCategory) => {
+    array = apiCategory.split("/")
+    return array[array.length - 1]
+}
+
+console.log(categoryName("agenda:categories/rutes-i-visites"))
+
+
+
+
 // THAT WORKS ;
 //example = "price from 12 to 10 but sometimes 22 €"
 

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, {Component} from 'react';
 import axios from 'axios';
 import './App.css';
 import Header from './components/Header/Header.js';
@@ -38,7 +38,6 @@ async componentDidMount(){
 
   render(){
     return (
-
       <div className="">      
           <Header/>
           <FiltersNavbar dataApi={this.state.data} dateCut={this.state.dateCut}/>

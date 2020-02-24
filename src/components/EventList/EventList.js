@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, {Fragment} from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
@@ -22,6 +22,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+// This function gets the smallest number from a string containing all kinds of characters. We'll use it to return the smallest price of an event, that sets in the api price sentence.
 const minPrice = (sentence) => {
   const array = sentence.split(" ")
   const numbersArray = []
@@ -40,45 +41,51 @@ const minPrice = (sentence) => {
   return result 
 };
 
+// This function returns the name of the category from the api
+const categoryName = (apiCategory) => {
+  const array = apiCategory.split("/")
+  return array[array.length - 1]
+}
+
 const EventList = (props) => { 
   render()
+  console.log(props.apiFiltered)
+
     return(
       props.apiFiltered.map(x => 
 
 
-        // VOIR SI JE GARDE CE FORMAT POUR LA LISTE D'ÉVÉNEMENTS
+        // Do we keep this component format?
       <Fragment>
-              {console.log(x)}
-
-      <List className={useStyles.root}>
-        <ListItem alignItems="flex-start">
-          <ListItemAvatar>
-          {/* CHOISIR IMAGE SELON CATEGORIE */}
-            <Avatar alt="Remy Sharp" src="https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg" />
-          </ListItemAvatar>
-          <ListItemText
-            primary={x.denominaci}
-            secondary={
-              <React.Fragment>
-                <Typography
-                  component="span"
-                  variant="body2"
-                  className={useStyles.inline}
-                  color="textPrimary"
-                >
-                </Typography>
-                {x.descripcio.slice(0, 100) + "..."}<br/>
-                {x.data_inici == x.data_fi ? "" : "until " + new Date(x.data_fi.toString()).toString().slice(0, 9)} <br />
-                {x.horari ? x.horari.slice(0, 50) + "[...]" : "Click to get time table"}<br/>
-                {/* for entrades : doing an array of all elements to make one with prices only. once we only have the prices, lloking forthe smallest to display : from + price */}
-                {x.entrades ? "Price :" + minPrice(x.entrades): "free"}<br/>  
-              </React.Fragment>
-            }
-          />
-        </ListItem>
-      </List>
+}
+        <List className={useStyles.root}>
+          <ListItem alignItems="flex-start">
+            <ListItemAvatar>
+            {/* Choosing image according to the category. All images are registered in "images" and have the name of the list category (as we need to get the category names of the api >> being sure that the filters names don't have been modified !!!*/}
+              {/* <Avatar x.tags_categor_es alt={categoryName(x.tags_categor_es)} src={"../images/"+categoryName(x.tags_categor_es)} /> */}
+            </ListItemAvatar>
+            <ListItemText
+              primary={x.denominaci}
+              secondary={
+                <React.Fragment>
+                  <Typography
+                    component="span"
+                    variant="body2"
+                    className={useStyles.inline}
+                    color="textPrimary"
+                  >
+                  </Typography>
+                  {x.descripcio.slice(0, 100) + "..."}<br/> 
+                  {x.data_inici == x.data_fi ? "" : "until " + new Date(x.data_fi.toString()).toString().slice(0, 9)} <br />
+                  {x.horari ? x.horari.slice(0, 50) + "[...]" : "Click to get time table"}<br/>
+                  {x.entrades ? "Price :" + minPrice(x.entrades): "free"}<br/>  
+                </React.Fragment>
+              }
+            />
+          </ListItem>
+        </List>
         <EventDetails/>
-        </Fragment>  
+      </Fragment>  
     )
   )
 };
