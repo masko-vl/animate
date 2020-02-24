@@ -3,27 +3,20 @@ import axios from 'axios';
 import './App.css';
 import Header from './components/Header/Header.js';
 import FiltersNavbar from './components/FiltersNavbar/FiltersNavbar.js';
-
-
 class App extends Component {
   state = {
     data: {},
     isLoading: true,
     dateCut: '',
-<<<<<<< HEAD
-=======
     
     
->>>>>>> db505cdc0cff5d3efa79925fc14d55f846c185d9
 }
-
 getDate = () => {
   //SELECT THE CURRENT DATE
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
   var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
   var yyyy = today.getFullYear();
-
   today = yyyy + '-' + mm + '-' + dd;
   //console.log(today);
   return today;
@@ -39,8 +32,6 @@ async componentDidMount(){
          })
          //console.log( this.state.dateCut)
   }
-
-
   render(){
     return (
       <div className="">      
@@ -49,6 +40,4 @@ async componentDidMount(){
     );
   }
   }
-
-
 export default App;
