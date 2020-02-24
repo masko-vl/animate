@@ -9,6 +9,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import EventDetails from './../EventDetails/EventDetails.js';
 import { render } from '@testing-library/react';
+import FiltersNavbar from '../FiltersNavbar/FiltersNavbar.js';
 
 
 const useStyles = makeStyles(theme => ({

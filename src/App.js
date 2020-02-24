@@ -9,9 +9,9 @@ class App extends Component {
   state = {
     data: {},
     isLoading: true,
-    dateCut: ''
-    
+    dateCut: '',
 }
+
 getDate = () => {
   //SELECT THE CURRENT DATE
   var today = new Date();
@@ -35,11 +35,12 @@ async componentDidMount(){
          //console.log( this.state.dateCut)
   }
 
+  
+
 
   render(){
     return (
       <div className="">      
-          <Header/>
           <FiltersNavbar dataApi={this.state.data} dateCut={this.state.dateCut}/>
       </div>
     );
