@@ -8,7 +8,7 @@ import logo from './Logo/logo.svg'
  const Header= props =>(
     <header className='header'>
         <nav className='header_navigation'>
-        <img src={logo} className='logo' alt='logo'/>
+        <a href='/'><img src={logo} className='logo' alt='logo'/></a>
         {/* <div className='header_logo'>
         </div>width="auto" */}
         <div className='space'/>
