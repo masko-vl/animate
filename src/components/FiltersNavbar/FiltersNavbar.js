@@ -13,7 +13,7 @@ import ButtonForm from "./ButtonForm/ButtonForm.js";
 import Slogan from './Slogan/Slogan'
 import CalendarNav from './../CalendarNav/CalendarNav.js'
 
-const formatApiDate=()=>{
+const todayDate=()=>{
   
     var date = new Date(),
       mnth = ("0" + (date.getMonth() + 1)).slice(-2),
@@ -29,6 +29,12 @@ const getDateArray = (start, end) => {
       dt.setDate(dt.getDate() + 1);
   }
   return arr;
+}
+const convert=(e) =>{
+  var date = new Date(e),
+    mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+    day = ("0" + date.getDate()).slice(-2);
+  return [date.getFullYear(), mnth, day].join("-");
 }
 
 
@@ -46,7 +52,7 @@ class FiltersNavbar extends Component {
   state={
     city:'',
     category:'',
-    date: formatApiDate(), /*today by default */
+    date: todayDate(), /*today by default */
     data: []
 
   }
@@ -69,15 +75,15 @@ class FiltersNavbar extends Component {
     }) 
   }
 
-
+  
   saveDate=(e)=>{
     //convert string that we resive from calendar picker to yyyy/mm/dd format for api uses
-    function convert(e) {
+    /* function convert(e) {
       var date = new Date(e),
         mnth = ("0" + (date.getMonth() + 1)).slice(-2),
         day = ("0" + date.getDate()).slice(-2);
       return [date.getFullYear(), mnth, day].join("-");
-    }
+    } */
     const validDateFormat= convert(e)
     //console.log(validDateFormat)
 
@@ -127,7 +133,6 @@ class FiltersNavbar extends Component {
 
     
    /*THINGS TO BE DONE:
-      -PUT FROM API ALL THE CITIES FOR CATEGORIES 
       -CHANGE IN A BETER WAY THE ALERTS CAUGHT
       -CREATE A BUTTON IN CALENDAR THAT TAKES A METHOD HERE FOR CHANGE THE DATE FILTERED FOR THE EVENT
       -CHANGE THE WAY OF DISPLAYS THE ALERTS AND AD THE MOMENT WHEN THERE'S NO EVENTS IN THIS DAY
@@ -136,10 +141,12 @@ class FiltersNavbar extends Component {
   }
   update=(e)=>{
     //convert to api format
-     let date= formatApiDate(e.target.innerText)
-    this.setState({date:date}) 
+     //let changeDate= convert(e.target.innerText)
+     console.log(new Date(e.target.innerText))
+    //this.setState({date:date}) 
 
-    console.log(this.state.date);
+    //JULIIIEEEE TE QUIERO JAJAJ!! COMO NOTA AQUI EL FORMATO DE FECHA QUE RECIBE EL E.TARGET.INNER NO ES VALIDO PARA EL CONVERT, LO RECIBE COMO SI FUERA AL REVES, EL DD COMO SI FUERA MES Y EL MM. COMO SI FUERA DIA. HABRIA QUE CAMBIAR AQUI COMO LLEGA LA FECHA Y LUEGO PASARLA AL SET STATE. 
+  
     
     
     
