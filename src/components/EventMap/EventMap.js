@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import EventDetails from '../EventDetails/EventDetails'
+import {minPrice, categoryAvatar, undefinedCategoryAvatar, decodeHTMLEntities} from './../../sharedFunctions.js'
 
 // format of the date we recieve from API
 function convert(e) {
@@ -9,49 +10,16 @@ function convert(e) {
     day = ("0" + date.getDate()).slice(-2);
   return [day,mnth,date.getFullYear()].join("/");
 }
-// This function gets the smallest number from a string containing all kinds of characters. We'll use it to return the smallest price of an event, that sets in the api price sentence.
-const minPrice = (sentence) => {
-  const array = sentence.split(" ")
-  const numbersArray = []
-  let result = ""
-  for (let i = 0; i < array.length; i++) {
-    if (!isNaN(Number(array[i])) == true) {
-      numbersArray.push(Number(array[i]));
-    }  
-    if (numbersArray.length > 0) {
-      result = " from " + Math.min(...numbersArray) + "€"
-    } else {
-      result = "Click to find more"
-    };
 
-  }
-  return result 
-};
-
-const decodeHTMLEntities= (str)=> {
-  if(str && typeof str === 'string') {
-    // strip script/html tags
-    str = str.replace(/<script[^>]*>([\S\s]*?)<\/script>/gmi, '');
-    str = str.replace(/<\/?\w(?:[^"'>]|"[^"]*"|'[^']*')*>/gmi, '');
-    str = str.replace(/&nbsp;/g, ' ');
-    str = str.replace(/&amp;/g, ' ');
-    str =str.replace(/nbsp/g, ' ');
-  }
-
-  return str;
-}
-// .custom-popup .leaflet-popup-tip-container {
-//   width:30px;
-//   height:15px;
-//   }
 export default class EventMap extends Component {
+  // in tha state are the coordinates of Catalunya
   state = {
     lat: 41.5912,
     lng: 1.5209,
     zoom: 8
   }
 
-// in tha state are the coordinates of Catalunya
+
   render() {
     //  console.log('gfcgycuh', this.props.apiFiltered)
     const position = [this.state.lat, this.state.lng]
@@ -72,7 +40,15 @@ export default class EventMap extends Component {
         {this.props.apiFiltered.map(event => (
         <Marker key={event.codi} position={[parseFloat(event.latitud),parseFloat(event.longitud)]}>
           <Popup>
-          <img width='100px' src='https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg' alt='photogategory' />
+           <img width='150' height='100'
+           src= {event['tags_categor_es'] 
+           ? 
+            categoryAvatar(event['tags_categor_es']) 
+            : undefinedCategoryAvatar()} 
+            alt={event['tags_categor_es'] 
+            ? 
+            categoryAvatar(event['tags_categor_es']) 
+            : undefinedCategoryAvatar()}></img>
             <br /><b>{event['denominaci']}</b>
             <br /> {convert(event['data_inici'])}{'-'}{convert(event['data_fi'])}
             <br />{event['horari']}
