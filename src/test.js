@@ -1,32 +1,16 @@
-import { format } from 'date-fns';
+//CREATES DATES ARRAY WITH KEY(format we want to display): VALUE(format we want to catch on click)
 
-const getDateArray = (start, end) => {
-    var arr = [];
-    var dt = start;
-    while (dt <= end) {
-        arr.push(format(dt, 'dd.MM'));
-        dt.setDate(dt.getDate() + 1);
-    }
-    return arr;
-}
 
-console.log(getDateArray(new Date(), new Date().setMonth(2)))
+const calendar = {}
 
-// THAT WORKS ;
-//example = "price from 12 to 10 but sometimes 22 €"
+const dateValue = (dates) => {
+    dates.map ((x, i) => {
+       calendar[x] = x +"-2020"
+    })
+    return calendar
+} 
 
-// const minPrice = (sentence) => {
-//   const array = sentence.split(" ")
-//   const numbersArray = []
-//   let result = ""
-//   for (let i = 0; i < array.length; i++) {
-//     if (!isNaN(Number(array[i])) == true) {
-//       numbersArray.push(Number(array[i]));
-//     }  
-//     result = Math.min(...numbersArray);
+const datesExample = ["02-04", "06.07", "03-96"]
+console.log(dateValue(datesExample))
 
-//   }
-//   return result
-// };
 
-// console.log(minPrice(example))
