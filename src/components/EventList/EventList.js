@@ -24,8 +24,8 @@ const useStyles = makeStyles(theme => ({
 const EventList = (props) => { 
   render()
     return(
-      props.apiFiltered.map(x => 
-      <Fragment>
+      props.apiFiltered.map((x, i) => 
+      <Fragment key={i}>
         <List className={useStyles.root}>
           <ListItem alignItems="flex-start">
             <ListItemAvatar>
@@ -42,7 +42,7 @@ const EventList = (props) => {
                     color="textPrimary"
                   >
                   </Typography>
-                  {x.descripcio.slice(0, 100) + "..."}<br/> 
+                  {x.descripcio ? x.descripcio.slice(0, 100) + "..." : "Click here for more information!!" }<br/>
                   {x.data_inici == x.data_fi ? "" : "until " + new Date(x.data_fi.toString()).toString().slice(0, 9)} <br />
                   {x.horari ? x.horari.slice(0, 50) + "[...]" : "Click to get time table"}<br/> 
                   {x.entrades ? "Price :" + minPrice(x.entrades): "free"}<br/>  

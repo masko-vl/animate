@@ -16,7 +16,7 @@ import logo from './Logo/Logo.svg'
             <ul>
                 <li className='icons' onClick={props.showMap}><MapIcon style={{ fontSize: 30 }} color="black" id="map"/></li>
                 <li className='icons' onClick={props.showList}><DateRangeIcon style={{ fontSize: 30 }} color="black"/> </li>
-                <li className='icons'><a href='/'><FilterListIcon style={{ fontSize: 30 }} color="black"/> </a></li>
+                <li className='icons' onClick={props.showFilters}><a href='/'><FilterListIcon style={{ fontSize: 30 }} color="black"/> </a></li>
             </ul>
         </div>
         </nav>
