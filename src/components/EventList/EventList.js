@@ -27,7 +27,6 @@ const EventList = (props) => {
     return(
       props.apiFiltered.map((x, i) => 
       <Fragment key={i}>
-      {console.log(x)}
         <List className={useStyles.root}>
           <ListItem alignItems="flex-start">
             <ListItemAvatar>
@@ -56,7 +55,7 @@ const EventList = (props) => {
             />
           </ListItem>
         </List>
-        <EventDetails apiFiltered={props.apiFiltered}/>
+        <EventDetails apiFiltered={x}/>
       </Fragment>  
     )
   )
