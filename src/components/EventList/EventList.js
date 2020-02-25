@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-
+import {eventsCategories} from '../images/images.js';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -9,7 +9,6 @@ import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import EventDetails from './../EventDetails/EventDetails.js';
 import { render } from '@testing-library/react';
-import undefinedEventImage from './../images/undefined_event.jpg'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,6 +20,7 @@ const useStyles = makeStyles(theme => ({
     display: 'inline',
   },
 }));
+
 
 // This function gets the smallest number from a string containing all kinds of characters. We'll use it to return the smallest price of an event, that sets in the api price sentence.
 const minPrice = (sentence) => {
@@ -41,12 +41,17 @@ const minPrice = (sentence) => {
   return result 
 };
 
-// This function returns the name of the category from the api
+// GETTING THE IMAGE CORREPONDING TO THE API NAME OF CATHEGORY
 const categoryAvatar = (apiCategory) => {
   const array = apiCategory.split("/")
+// get the name of the category from the api
   const category = array[array.length - 1]
-      {/* Choosing image according to the category. All images are registered in "images" and have the name of the list category (as we need to get the category names of the api >> being sure that the filters names don't have been modified !!!*/}
-  return <Avatar alt = {category} src={"./images/" + category+".jpg"} />
+  console.log(category)
+
+// Choosing the corresponding image in the images.js file. !! Each name of image should take the exact same name as the api cathegory name to make them match !!
+  // return <Avatar alt = {category} src={eventsCategories[category]} />
+  const categoryImage = eventsCategories[category]
+  return <Avatar alt ={category} src={categoryImage} />
 };
 
 const undefinedCategory = () => {
@@ -65,8 +70,7 @@ const EventList = (props) => {
           <ListItem alignItems="flex-start">
             <ListItemAvatar>
             {/* Choosing image according to the category. All images are registered in "images" and have the name of the list category (as we need to get the category names of the api >> being sure that the filters names don't have been modified !!!*/}
-            {/* {x.tags_categor_es ? categoryAvatar(x.tags_categor_es) : undefinedCategory()} */}
-            <Avatar alt ="event" src={undefinedEventImage} />
+            {x.tags_categor_es ? categoryAvatar(x.tags_categor_es) : undefinedCategory()}
             </ListItemAvatar>
             <ListItemText
               primary={x.denominaci}

@@ -13,4 +13,4 @@ const Slogan = () =>{
     )
 }
 
-export default Slogan
+export default Slogan;

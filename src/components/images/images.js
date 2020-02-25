@@ -15,3 +15,23 @@ import semana_santa from "./../images/semana_santa.jpg";
 import teatre from "./../images/teatre.jpg";
 import undefined_event from "./../images/undefined_event.jpg";
 
+
+
+export const eventsCategories = {
+    carnavales: carnavales,
+    ciclos: ciclos,
+    concerts: concerts,
+    conferencias: conferencias,
+    cursos: cursos,
+    danza: danza,
+    kids: kids,
+    exposition: exposition,
+    festivals_and_muestras: festivals_and_muestras,
+    fires_i_mercats: fires_i_mercats,
+    parties: parties,
+    rutas_y_visitas: rutas_y_visitas,
+    sardanas: sardanas,
+    semana_santa: semana_santa,
+    teatre: teatre,
+    undefined_event: undefined_event 
+}
