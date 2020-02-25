@@ -7,9 +7,7 @@ class App extends Component {
   state = {
     data: {},
     isLoading: true,
-    dateCut: '',
-    
-    
+    dateCut: '', 
 }
 
 getDate = () => {

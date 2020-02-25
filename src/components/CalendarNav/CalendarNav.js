@@ -27,17 +27,12 @@ class CalendarNav extends Component {
         }) 
     }
 
-    render() {
+    render(props) {
       
         return(
             <Fragment>
                
                 <Header showList={this.showList} showMap={this.showMap}/>
-                {
-                    this.state.eventListDisplay
-                    ? <EventList apiFiltered={this.props.apiFiltered} />
-                    : <EventMap apiFiltered={this.props.apiFiltered}/>
-                }
                 <div className="dates-container">
                     {this.state.dates.map((date, i) => (
                     <div className="date-card" key={i}>
@@ -45,7 +40,11 @@ class CalendarNav extends Component {
                     </div>
                     ))}
                 </div>
-              
+                {
+                    this.state.eventListDisplay
+                    ? <EventList apiFiltered={this.props.apiFiltered} />
+                    : <EventMap apiFiltered={this.props.apiFiltered}/>
+                }              
             </Fragment>
         )
     }
