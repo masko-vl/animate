@@ -24,15 +24,13 @@ import React from 'react';
   };
 
 
-  // GETTING THE IMAGE CORREPONDING TO THE API NAME OF CATHEGORY (in the render : categoryAvatar(x.tags_categor_es))
+// GETTING THE IMAGE CORREPONDING TO THE API NAME OF CATHEGORY (in the render : categoryAvatar(x.tags_categor_es))
 export const categoryAvatar = (apiCategory) => {
     const array = apiCategory.split("/")
-  // get the name of the category from the api
+    // get the name of the category from the api
     const category = array[array.length - 1]
-    console.log(category)
-  
-  // Choosing the corresponding image in the images.js file. (don't forget to import the images file!!) !! Each name of image should take the exact same name as the api cathegory name to make them match !!
-    // return <Avatar alt = {category} src={eventsCategories[category]} />
+
+    // Choosing the corresponding image in the images.js file. (don't forget to import the images file!!) !! Each name of image should take the exact same name as the api cathegory name to make them match !!
     const categoryImage = eventsCategories[category]
     return <Avatar alt ={category} src={categoryImage} />
   };
@@ -40,6 +38,6 @@ export const categoryAvatar = (apiCategory) => {
 
   // GETTING AN IMAGE IN CASE OF UNDEFINED CATEGORY
   export const undefinedCategoryAvatar = () => {
-    return <Avatar alt ="event" src="./images/undefined_category.jpg" />
+    return <Avatar alt ="animate event" src={eventsCategories["undefined_event"]} />
   }
 

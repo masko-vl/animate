@@ -14,6 +14,7 @@ import sardanas from "./../images/sardanas.jpg";
 import semana_santa from "./../images/semana_santa.jpg";
 import teatre from "./../images/teatre.jpg";
 import undefined_event from "./../images/undefined_event.jpg";
+import logo from "./../images/logo.png";
 
 
 
@@ -33,5 +34,6 @@ export const eventsCategories = {
     sardanas: sardanas,
     semana_santa: semana_santa,
     teatre: teatre,
-    undefined_event: undefined_event 
+    undefined_event: undefined_event,
+    logo: logo,
 }
