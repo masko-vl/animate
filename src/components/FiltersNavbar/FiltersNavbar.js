@@ -147,9 +147,6 @@ class FiltersNavbar extends Component {
     date = convert(date)
     this.setState({date:date}) 
     console.log(date)
-  
-    
-    
     
   }
   
