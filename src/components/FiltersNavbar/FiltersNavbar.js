@@ -25,7 +25,7 @@ const getDateArray = (start, end) => {
   var arr = [];
   var dt = start;
   while (dt <= end) {
-      arr.push(format(dt, 'dd.MM'));
+      arr.push(format(dt, 'dd-MM-yyyy'));
       dt.setDate(dt.getDate() + 1);
   }
   return arr;
@@ -142,10 +142,11 @@ class FiltersNavbar extends Component {
   update=(e)=>{
     //convert to api format
      //let changeDate= convert(e.target.innerText)
-     console.log(new Date(e.target.innerText))
-    //this.setState({date:date}) 
-
-    //JULIIIEEEE TE QUIERO JAJAJ!! COMO NOTA AQUI EL FORMATO DE FECHA QUE RECIBE EL E.TARGET.INNER NO ES VALIDO PARA EL CONVERT, LO RECIBE COMO SI FUERA AL REVES, EL DD COMO SI FUERA MES Y EL MM. COMO SI FUERA DIA. HABRIA QUE CAMBIAR AQUI COMO LLEGA LA FECHA Y LUEGO PASARLA AL SET STATE. 
+     
+    let date = new Date(e.target.innerText.replace(/(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3"))
+    date = convert(date)
+    this.setState({date:date}) 
+    console.log(date)
   
     
     
