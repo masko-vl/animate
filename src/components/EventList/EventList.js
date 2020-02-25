@@ -7,6 +7,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Typography from '@material-ui/core/Typography';
 import EventDetails from './../EventDetails/EventDetails.js';
 import { render } from '@testing-library/react';
+import Avatar from '@material-ui/core/Avatar';
 import {minPrice, categoryAvatar, undefinedCategoryAvatar} from './../../sharedFunctions.js'
 
 const useStyles = makeStyles(theme => ({
@@ -26,10 +27,15 @@ const EventList = (props) => {
     return(
       props.apiFiltered.map(x => 
       <Fragment>
+             { console.log(x)}
+
         <List className={useStyles.root}>
           <ListItem alignItems="flex-start">
             <ListItemAvatar>
-            {x.tags_categor_es ? categoryAvatar(x.tags_categor_es) : undefinedCategoryAvatar()}
+            {x.tags_categor_es 
+            ? <Avatar alt="evento animate" src={categoryAvatar(x.tags_categor_es)} />  
+            : <Avatar alt="evento animate" src={undefinedCategoryAvatar()} /> 
+            }
             </ListItemAvatar>
             <ListItemText
               primary={x.denominaci}
@@ -42,7 +48,7 @@ const EventList = (props) => {
                     color="textPrimary"
                   >
                   </Typography>
-                  {x.descripcio.slice(0, 100) + "..."}<br/> 
+                  {x.descripcio ? x.descripcio.slice(0, 100) + "..." : "Click here for more information!!" }<br/> 
                   {x.data_inici == x.data_fi ? "" : "until " + new Date(x.data_fi.toString()).toString().slice(0, 9)} <br />
                   {x.horari ? x.horari.slice(0, 50) + "[...]" : "Click to get time table"}<br/> 
                   {x.entrades ? "Price :" + minPrice(x.entrades): "free"}<br/>  

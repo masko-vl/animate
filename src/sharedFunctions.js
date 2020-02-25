@@ -1,5 +1,4 @@
 import {eventsCategories} from './components/images/images.js';
-import Avatar from '@material-ui/core/Avatar';
 import React from 'react';
 
 //USING THE EVENTS IMAGES :
@@ -35,12 +34,13 @@ export const categoryAvatar = (apiCategory) => {
 
     // Choosing the corresponding image in the images.js file. (don't forget to import the images file!!) !! Each name of image should take the exact same name as the api cathegory name to make them match !!
     const categoryImage = eventsCategories[category]
-    return <Avatar alt ={category} src={categoryImage} />
+    return categoryImage
+    
   };
 
 
   // GETTING AN IMAGE IN CASE OF UNDEFINED CATHEGORY
   export const undefinedCategoryAvatar = () => {
-    return <Avatar alt ="animate event" src={eventsCategories["undefined_event"]} />
+    return eventsCategories["undefined_event"]
   }
 
