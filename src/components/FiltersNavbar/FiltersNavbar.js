@@ -46,6 +46,22 @@ const sectionStyle = {
     color:'white',
     */
   };
+  const updateFilteredApi=(apiPased, city, category, dateEvent)=>{
+    const dataFiltered=[];
+    apiPased.map((event)=>{
+      if(event.comarca_i_municipi === `${city}` &&  category === 'all' && event.data_inici === `${dateEvent}T00:00:00.000` ){
+       //insert in state al the data filtred
+       dataFiltered.push(event)
+      
+      
+       //if we pase all the filters city/category/date
+     }else if(event.comarca_i_municipi === `${city}` && event.tags_categor_es === `agenda:categories/${category}` && event.data_inici === `${dateEvent}T00:00:00.000`){
+       //insert in state al the data filtred
+        dataFiltered.push(event)
+     }
+   })
+   return dataFiltered
+  }
 
 class FiltersNavbar extends Component {
   //save in this state al the categories the user decide to after save in data the event that displays with this parameters
@@ -53,7 +69,8 @@ class FiltersNavbar extends Component {
     city:'',
     category:'',
     date: todayDate(), /*today by default */
-    data: []
+    data: [],
+    showFilters: true
 
   }
   saveCity=(e)=>{
@@ -95,9 +112,6 @@ class FiltersNavbar extends Component {
     
   }
   chooseFilters= (props) => {
-    //return api data from App.js
-    let dataPased=this.props.dataApi
-   
     //create a array where whe are pushing the new data filtered
     const dataFiltered = [];
 
@@ -113,22 +127,14 @@ class FiltersNavbar extends Component {
       alert('Choose events category')
     }else{
     //create a loop in the events api array and pass if statement for select the events and display diferent errors
-     dataPased.map((event)=>{
-       if(event.comarca_i_municipi === `${city}` &&  category === 'all' && event.data_inici === `${dateEvent}T00:00:00.000` ){
-        //insert in state al the data filtred
-        dataFiltered.push(event)
-       
-       
-        //if we pase all the filters city/category/date
-      }else if(event.comarca_i_municipi === `${city}` && event.tags_categor_es === `agenda:categories/${category}` && event.data_inici === `${dateEvent}T00:00:00.000`){
-        //insert in state al the data filtred
-         dataFiltered.push(event)
-      }
-    }) 
+    this.setState({data:updateFilteredApi(this.props.dataApi, city, category, dateEvent)})
+     
    }
    //save in state al the events filtered
 
-     this.setState({data:dataFiltered})
+     this.setState({
+       showFilters: false
+    })
      //console.log(this.state.data)
 
     
@@ -141,19 +147,33 @@ class FiltersNavbar extends Component {
   }
   update=(e)=>{
     //convert to api format
-     //let changeDate= convert(e.target.innerText)
-     
     let date = new Date(e.target.innerText.replace(/(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3"))
     date = convert(date)
-    this.setState({date:date}) 
     console.log(date)
+    this.setState({date:date}) 
+    //change data api filtered
+    const city = this.state.city
+    const dateEvent = date
+    const category = this.state.category
     
+
+    this.setState({data:updateFilteredApi(this.props.dataApi, city, category, dateEvent)})
+
+   
+   
+    
+  }
+  showFilters=()=>{
+    this.setState({
+      showFilters: true
+   })
   }
   
   render(){
   return(
       <div  style={ sectionStyle }>
-    <Grid   
+      {this.state.showFilters 
+      ? <Grid   
         container
         direction="column"
         justify="center"
@@ -168,8 +188,10 @@ class FiltersNavbar extends Component {
             </MuiPickersUtilsProvider>
         </Grid>
         <Grid item xs={12}><ButtonForm chooseFilters={this.chooseFilters}/></Grid> 
-    </Grid>
-    <CalendarNav apiFiltered={this.state.data} update={this.update} getDateArray={getDateArray(new Date(), new Date(this.props.dateCut))}/>
+      </Grid>
+    : <CalendarNav showFilters={this.showFilters} apiFiltered={this.state.data} update={this.update} getDateArray={getDateArray(new Date(), new Date(this.props.dateCut))}/>}
+    
+    
     </div>
     
 

@@ -1,5 +1,4 @@
 import {eventsCategories} from './components/images/images.js';
-import Avatar from '@material-ui/core/Avatar';
 import React from 'react';
 
 //USING THE EVENTS IMAGES :
