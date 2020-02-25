@@ -27,7 +27,7 @@ class CalendarNav extends Component {
         }) 
     }
 
-    render() {
+    render(props) {
       
         return(
             <Fragment>
@@ -44,9 +44,7 @@ class CalendarNav extends Component {
                     this.state.eventListDisplay
                     ? <EventList apiFiltered={this.props.apiFiltered} />
                     : <EventMap apiFiltered={this.props.apiFiltered}/>
-                }
-              
-              
+                }              
             </Fragment>
         )
     }
