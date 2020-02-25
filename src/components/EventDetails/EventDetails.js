@@ -15,7 +15,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-
+import {categoryAvatar, decodeHTMLEntities, undefinedCategoryAvatar} from './../../sharedFunctions.js'
 
 const useStyles = makeStyles(theme => ({
   modal: {
@@ -33,33 +33,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2, 4, 3),
   }
 }));
-// this function replace the ebncdings from the text we recieve from API
-const decodeHTMLEntities= (str)=> {
-  if(str && typeof str === 'string') {
-    // strip script/html tags
-    str = str.replace(/<script[^>]*>([\S\s]*?)<\/script>/gmi, '');
-    str = str.replace(/<\/?\w(?:[^"'>]|"[^"]*"|'[^']*')*>/gmi, '');
-    str = str.replace(/&nbsp;/g, ' ');
-    str = str.replace(/&amp;/g, ' ');
-    str =str.replace(/nbsp/g, ' ');
-    str = str.replace(/amp;/g, ' ');
-  }
 
-  return str;
-}
- // This function returns the name of the category from the api
-// const categoryAvatar = (apiCategory) => {
-//   const array = apiCategory.split("/")
-//   const category = array[array.length - 1]
-//       {/* Choosing image according to the category. All images are registered in "images" and have the name of the list category (as we need to get the category names of the api >> being sure that the filters names don't have been modified !!!*/}
-//   return <Avatar alt = {category} src={"../../images/" + category+".jpg"} />
-// };
-// // returs fro undefind categories
-// const undefinedCategory = () => {
-//   return <Avatar alt ="event" src="../../images/undefined_category.jpg" />
-// }
-
-  //convert string that we resive from calendar picker to yyyy/mm/dd format for api uses
   function convert(e) {
     var date = new Date(e),
       mnth = ("0" + (date.getMonth() + 1)).slice(-2),
@@ -71,7 +45,6 @@ const decodeHTMLEntities= (str)=> {
 export default function EventDetails (props) {
   // il statemnt that not showing you anything till you get the api call
   if (props.apiFiltered === undefined){
-
     props={
       apiFiltered: {
        
@@ -112,12 +85,13 @@ export default function EventDetails (props) {
         <Fade in={open}>
           <div className={classes.paper}>
           <CardMedia
-          component="img"
-          alt="Event details"
-          height ="120"
-          image="https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg"
-          title="Event details"
-        />
+          // component="img"
+          // alt="Event details"
+          // height ="120"
+          
+          // // image="https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg"
+          // title="Event details"
+        />{props.apiFiltered ['tags_categor_es'] ? categoryAvatar(props.apiFiltered ['tags_categor_es']) : undefinedCategoryAvatar()}
         <CardContent className={classes.root}>
           <Typography gutterBottom variant="h5" component="h2">
           {props.apiFiltered['denominaci']}
@@ -133,11 +107,10 @@ export default function EventDetails (props) {
           <WatchLaterIcon style={{ fontSize: 10 }} />
           {convert(props.apiFiltered['data_inici'])}{'-'}{convert(props.apiFiltered['data_fi'])}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-          <CategoryIcon style={{ fontSize: 10 }} />
+          {/* <Typography variant="body2" color="textSecondary" component="p"> */}
+          {/* <CategoryIcon style={{ fontSize: 10 }} />
           {props.apiFiltered['tags_categor_es']}
-          {/* {props.apiFiltered ['tags_categor_es'] ? categoryAvatar(props.apiFiltered ['tags_categor_es']) : undefinedCategory()} */}
-          </Typography>
+          </Typography> */}
           <Typography variant="body2" color="textSecondary" component="p">
           <EuroIcon style={{ fontSize: 10 }}/>
           {props.apiFiltered['entrades']}
@@ -156,3 +129,4 @@ export default function EventDetails (props) {
     </div>
   )
 };
+ 

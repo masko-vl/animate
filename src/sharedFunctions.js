@@ -44,3 +44,17 @@ export const categoryAvatar = (apiCategory) => {
     return <Avatar alt ="animate event" src={eventsCategories["undefined_event"]} />
   }
 
+// REPLACE THE ENCODINGS FROM THE text we recieve from API
+  export const decodeHTMLEntities= (str)=> {
+    if(str && typeof str === 'string') {
+    // strip script/html tags
+    str = str.replace(/<script[^>]*>([\S\s]*?)<\/script>/gmi, '');
+    str = str.replace(/<\/?\w(?:[^"'>]|"[^"]*"|'[^']*')*>/gmi, '');
+    str = str.replace(/&nbsp;/g, ' ');
+    str = str.replace(/&amp;/g, ' ');
+    str =str.replace(/nbsp/g, ' ');
+    str = str.replace(/amp;/g, ' ');
+  }
+
+  return str;
+}
