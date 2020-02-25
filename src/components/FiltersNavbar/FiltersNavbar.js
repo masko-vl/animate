@@ -30,6 +30,12 @@ const getDateArray = (start, end) => {
   }
   return arr;
 }
+const convert=(e) =>{
+  var date = new Date(e),
+    mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+    day = ("0" + date.getDate()).slice(-2);
+  return [date.getFullYear(), mnth, day].join("-");
+}
 
 
 const sectionStyle = {
@@ -69,15 +75,15 @@ class FiltersNavbar extends Component {
     }) 
   }
 
-
+  
   saveDate=(e)=>{
     //convert string that we resive from calendar picker to yyyy/mm/dd format for api uses
-    function convert(e) {
+    /* function convert(e) {
       var date = new Date(e),
         mnth = ("0" + (date.getMonth() + 1)).slice(-2),
         day = ("0" + date.getDate()).slice(-2);
       return [date.getFullYear(), mnth, day].join("-");
-    }
+    } */
     const validDateFormat= convert(e)
     //console.log(validDateFormat)
 
@@ -127,12 +133,23 @@ class FiltersNavbar extends Component {
 
     
    /*THINGS TO BE DONE:
-      -PUT FROM API ALL THE CITIES FOR CATEGORIES 
       -CHANGE IN A BETER WAY THE ALERTS CAUGHT
       -CREATE A BUTTON IN CALENDAR THAT TAKES A METHOD HERE FOR CHANGE THE DATE FILTERED FOR THE EVENT
       -CHANGE THE WAY OF DISPLAYS THE ALERTS AND AD THE MOMENT WHEN THERE'S NO EVENTS IN THIS DAY
       -EXTRA:TO SHOW THE NUMBER OF EVENTS FILTERED BY THE FILTERS FOR MORE INFORMATION POR THE USER (IT'S NEEDED TO CHANGE THE LOGIC OF THE FILTES, SO IT SAVE THE INFO WHILE YOU ARE CHANGING THE FILTERS, NOT ONLY AT THE END ONCLICK BUTTON)
       */
+  }
+  update=(e)=>{
+    //convert to api format
+     //let changeDate= convert(e.target.innerText)
+     console.log(new Date(e.target.innerText))
+    //this.setState({date:date}) 
+
+    //JULIIIEEEE TE QUIERO JAJAJ!! COMO NOTA AQUI EL FORMATO DE FECHA QUE RECIBE EL E.TARGET.INNER NO ES VALIDO PARA EL CONVERT, LO RECIBE COMO SI FUERA AL REVES, EL DD COMO SI FUERA MES Y EL MM. COMO SI FUERA DIA. HABRIA QUE CAMBIAR AQUI COMO LLEGA LA FECHA Y LUEGO PASARLA AL SET STATE. 
+  
+    
+    
+    
   }
   
   render(){
@@ -154,7 +171,7 @@ class FiltersNavbar extends Component {
         </Grid>
         <Grid item xs={12}><ButtonForm chooseFilters={this.chooseFilters}/></Grid> 
     </Grid>
-    <CalendarNav apiFiltered={this.state.data} getDateArray={getDateArray(new Date(), new Date(this.props.dateCut))}/>
+    <CalendarNav apiFiltered={this.state.data} update={this.update} getDateArray={getDateArray(new Date(), new Date(this.props.dateCut))}/>
     </div>
     
 

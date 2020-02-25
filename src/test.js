@@ -1,12 +1,16 @@
-const categoryName = (apiCategory) => {
-    array = apiCategory.split("/")
-    return array[array.length - 1]
+import { format } from 'date-fns';
+
+const getDateArray = (start, end) => {
+    var arr = [];
+    var dt = start;
+    while (dt <= end) {
+        arr.push(format(dt, 'dd.MM'));
+        dt.setDate(dt.getDate() + 1);
+    }
+    return arr;
 }
 
-console.log(categoryName("agenda:categories/rutes-i-visites"))
-
-
-
+console.log(getDateArray(new Date(), new Date().setMonth(2)))
 
 // THAT WORKS ;
 //example = "price from 12 to 10 but sometimes 22 €"

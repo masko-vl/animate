@@ -71,7 +71,7 @@ const decodeHTMLEntities= (str)=> {
 export default function EventDetails (props) {
   // il statemnt that not showing you anything till you get the api call
   if (props.apiFiltered === undefined){
-    // console.log('if statement')
+
     props={
       apiFiltered: {
        
@@ -81,7 +81,7 @@ export default function EventDetails (props) {
 
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  // console.log('props?', props.apiFiltered)
+
   const handleOpen = () => {
     setOpen(true);
   };
@@ -156,4 +156,3 @@ export default function EventDetails (props) {
     </div>
   )
 };
-// console.log('gfcgycuh', this.props.apiFiltered)
