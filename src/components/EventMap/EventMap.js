@@ -40,8 +40,15 @@ export default class EventMap extends Component {
         {this.props.apiFiltered.map(event => (
         <Marker key={event.codi} position={[parseFloat(event.latitud),parseFloat(event.longitud)]}>
           <Popup>
-          {/* <img width='100px' src='https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg' alt='photogategory' /> */}
-            {event['tags_categor_es'] ? categoryAvatar(event['tags_categor_es']) : undefinedCategoryAvatar()}
+           <img width='150' height='100'
+           src= {event['tags_categor_es'] 
+           ? 
+            categoryAvatar(event['tags_categor_es']) 
+            : undefinedCategoryAvatar()} 
+            alt={event['tags_categor_es'] 
+            ? 
+            categoryAvatar(event['tags_categor_es']) 
+            : undefinedCategoryAvatar()}></img>
             <br /><b>{event['denominaci']}</b>
             <br /> {convert(event['data_inici'])}{'-'}{convert(event['data_fi'])}
             <br />{event['horari']}

@@ -85,13 +85,16 @@ export default function EventDetails (props) {
         <Fade in={open}>
           <div className={classes.paper}>
           <CardMedia
-          // component="img"
-          // alt="Event details"
-          // height ="120"
-          
-          // // image="https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg"
-          // title="Event details"
-        />{props.apiFiltered ['tags_categor_es'] ? categoryAvatar(props.apiFiltered ['tags_categor_es']) : undefinedCategoryAvatar()}
+          component="img"
+          alt="Event details"
+          width ="120"
+          height='120'
+          image={props.apiFiltered ['tags_categor_es'] 
+          ? 
+          categoryAvatar(props.apiFiltered ['tags_categor_es']) : undefinedCategoryAvatar()}
+          title="Event details"
+        />
+        {/* {props.apiFiltered ['tags_categor_es'] ? categoryAvatar(props.apiFiltered ['tags_categor_es']) : undefinedCategoryAvatar()} */}
         <CardContent className={classes.root}>
           <Typography gutterBottom variant="h5" component="h2">
           {props.apiFiltered['denominaci']}

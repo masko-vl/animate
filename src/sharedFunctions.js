@@ -29,20 +29,21 @@ import React from 'react';
 
 // GETTING THE IMAGE CORREPONDING TO THE API NAME OF CATHEGORY (in the render call the function that way : categoryAvatar(x.tags_categor_es))
 export const categoryAvatar = (apiCategory) => {
-    const array = apiCategory.split("/")
-    // get the name of the category from the api
-    const category = array[array.length - 1]
+  const array = apiCategory.split("/")
+  // get the name of the category from the api
+  const category = array[array.length - 1]
 
-    // Choosing the corresponding image in the images.js file. (don't forget to import the images file!!) !! Each name of image should take the exact same name as the api cathegory name to make them match !!
-    const categoryImage = eventsCategories[category]
-    return <Avatar alt ={category} src={categoryImage} />
-  };
+  // Choosing the corresponding image in the images.js file. (don't forget to import the images file!!) !! Each name of image should take the exact same name as the api cathegory name to make them match !!
+  const categoryImage = eventsCategories[category]
+  return categoryImage
+  
+};
 
 
-  // GETTING AN IMAGE IN CASE OF UNDEFINED CATHEGORY
-  export const undefinedCategoryAvatar = () => {
-    return <Avatar alt ="animate event" src={eventsCategories["undefined_event"]} />
-  }
+// GETTING AN IMAGE IN CASE OF UNDEFINED CATHEGORY
+export const undefinedCategoryAvatar = () => {
+  return eventsCategories["undefined_event"]
+}
 
 // REPLACE THE ENCODINGS FROM THE text we recieve from API
   export const decodeHTMLEntities= (str)=> {
