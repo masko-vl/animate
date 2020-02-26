@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     return (
       <div className={classes.root}>
         
-        <Button variant="contained" color="default" onClick={chooseFilters}>
+        <Button variant="contained" color="default" id={'animate'} onClick={chooseFilters}>
         ANÍMATE!
         </Button>
        
