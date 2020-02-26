@@ -29,7 +29,7 @@ async componentDidMount(){
           data, 
           isLoading: false,
           //the last date of the api array for save it as the last day of the calendar picker
-          dateCut: data[999].data_inici.substr(0,10).split('-').join(',')
+          dateCut: data[data.length-1].data_inici.substr(0,10).split('-').join(',')
          })
        
 
