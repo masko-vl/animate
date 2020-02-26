@@ -28,8 +28,8 @@ const EventList = (props) => {
   render()
     return(
       //if there's no events in the data, show a message for the user
-      props.apiFiltered.length===0
-      ? <p>There aren't events for this date, select another date or go back to filters!</p>
+      props.apiFiltered.length == 0
+      ? <p>No result, please choose other filters or date! :)</p>
       //else print the events
       : props.apiFiltered.map((x, i) => 
       <Fragment key={i}>

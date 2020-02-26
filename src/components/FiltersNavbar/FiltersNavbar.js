@@ -11,7 +11,10 @@ import SelectCity from "./SelectCity/SelectCity.js";
 import ButtonForm from "./ButtonForm/ButtonForm.js";
 import Slogan from './Slogan/Slogan'
 import CalendarNav from './../CalendarNav/CalendarNav.js'
-class FiltersNavbar extends Component {
+
+
+
+export default class FiltersNavbar extends Component {
   //save in this state al the categories the user decide to after save in data the event that displays with this parameters
   state={
     city:'',
@@ -56,7 +59,7 @@ class FiltersNavbar extends Component {
     },()=>{showEventsCounter(this.state.data)})  
     //console.log(this.state.date)
   }
-  chooseFilters= () => {
+  chooseFilters= (e) => {
     //take all the filters for use it in data for the display of filtred events
     const city = this.state.city
     const dateEvent = this.state.date
@@ -68,13 +71,22 @@ class FiltersNavbar extends Component {
     //create a loop in the events api array and pass if statement for select the events and display diferent errors
     this.setState({
       data:updateFilteredApi(this.props.dataApi, city, category, dateEvent),
+    }, () => {
+      if (this.state.data.length > 0) {
+        this.setState({
       showFilters: false
     })
+    } else {
+      alert("there arent results, please change the filters")
+    }
+    }
+    )
    //save in state al the events filtered
      //console.log(this.state.data)
    /*THINGS TO BE DONE:
       -CHANGE IN A BETER WAY THE ALERTS CAUGHT
       -CHANGE THE WAY OF DISPLAYS THE ALERTS AND AD THE MOMENT WHEN THERE'S NO EVENTS IN THIS DAY
+      -EXTRA:TO SHOW THE NUMBER OF EVENTS FILTERED BY THE FILTERS FOR MORE INFORMATION POR THE USER (IT'S NEEDED TO CHANGE THE LOGIC OF THE FILTES, SO IT SAVE THE INFO WHILE YOU ARE CHANGING THE FILTERS, NOT ONLY AT THE END ONCLICK BUTTON)
       */
   }
   updateEventCalendar=(e)=>{
@@ -89,11 +101,7 @@ class FiltersNavbar extends Component {
     const category = this.state.category
     this.setState({data:updateFilteredApi(this.props.dataApi, city, category, dateEvent)})
   }
-  showFilters=()=>{
-    this.setState({
-      showFilters: true
-   })
-  }
+
   render(){
   return(
       <div >
@@ -112,6 +120,8 @@ class FiltersNavbar extends Component {
                 <DatePicker date2={this.state.date} changeDate={this.saveDate} dateCut={this.props.dateCut}/>
             </MuiPickersUtilsProvider>
         </Grid>
+        <Grid  item xs={12}>{this.chooseFilters}</Grid>
+
         <Grid  item xs={12}>{showEventsCounter(this.state.data)} corresponding event(s)</Grid>
         <Grid item xs={12}><ButtonForm chooseFilters={this.chooseFilters}/></Grid> 
       </Grid>
@@ -119,5 +129,3 @@ class FiltersNavbar extends Component {
     </div>
   )
 }}
-
-export default FiltersNavbar;
