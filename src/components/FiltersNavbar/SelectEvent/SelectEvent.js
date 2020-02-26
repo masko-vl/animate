@@ -37,22 +37,22 @@ export default function SelectEvent({changeEvent, event2}) {
           labelWidth={labelWidth}
           
         >
-          <option value={'all'}>ALL EVENTS</option>
-          <option value={'festivals-i-mostres'}>FESTIVALS AND MUESTRAS</option>
-          <option value={'concerts'}>CONCERTS</option>
-          <option value={'exposicions'}>EXPOSITIONS</option>
-          <option value={'sardanes'}>SARDANAS</option>
-          <option value={'festes'}>PARTIES</option>
-          <option value={'teatre'}>THEATRE</option>
-          <option value={'infantil'}>KIDS</option>
-          <option value={'fires-i-mercats'}>FERIAS Y MERCADOS</option>
-          <option value={'rutes-i-visites'}>RUTAS Y VISITAS</option>
-          <option value={'dansa'}>DANZA</option>
-          <option value={'conferencies'}>CONFERENCIAS</option>
-          <option value={'cursos'}>CURSOS</option>
-          <option value={'cicles'}>CICLOS</option>
-          <option value={'carnavals'}>CARNAVALES</option>
-          <option value={'setmana-santa'}>SEMANA SANTA</option>
+          <option value={'all'}>All events</option>
+          <option value={'festivals-i-mostres'}>Festivals</option>
+          <option value={'concerts'}>Concerts</option>
+          <option value={'exposicions'}>Expositions</option>
+          <option value={'sardanes'}>Sardanas</option>
+          <option value={'festes'}>Parties</option>
+          <option value={'teatre'}>Theater</option>
+          <option value={'infantil'}>Kids</option>
+          <option value={'fires-i-mercats'}>Feirs and mercats</option>
+          <option value={'rutes-i-visites'}>Routes and visits</option>
+          <option value={'dansa'}>Dance</option>
+          <option value={'conferencies'}>Conferences</option>
+          <option value={'cursos'}>Courses</option>
+          <option value={'cicles'}>Cycles</option>
+          <option value={'carnavals'}>Carnavals</option>
+          <option value={'setmana-santa'}>Easter week</option>
 
         </Select>
       </FormControl>
