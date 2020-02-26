@@ -1,11 +1,12 @@
 
 import React, { Component } from "react";
+
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import 'typeface-roboto';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { format } from 'date-fns';
+import {todayDate,  getDateArray, convert, updateFilteredApi} from '../../sharedFunctions'
 import DatePicker from './DatePicker/DatePicker.js';
 import SelectEvent from "./SelectEvent/SelectEvent.js";
 import SelectCity from "./SelectCity/SelectCity.js";
@@ -13,55 +14,7 @@ import ButtonForm from "./ButtonForm/ButtonForm.js";
 import Slogan from './Slogan/Slogan'
 import CalendarNav from './../CalendarNav/CalendarNav.js'
 
-const todayDate=()=>{
   
-    var date = new Date(),
-      mnth = ("0" + (date.getMonth() + 1)).slice(-2),
-      day = ("0" + date.getDate()).slice(-2);
-    return [date.getFullYear(), mnth, day].join("-");
-  }
-
-const getDateArray = (start, end) => {
-  var arr = [];
-  var dt = start;
-  while (dt <= end) {
-      arr.push(format(dt, 'dd-MM-yyyy'));
-      dt.setDate(dt.getDate() + 1);
-  }
-  return arr;
-}
-const convert=(e) =>{
-  var date = new Date(e),
-    mnth = ("0" + (date.getMonth() + 1)).slice(-2),
-    day = ("0" + date.getDate()).slice(-2);
-  return [date.getFullYear(), mnth, day].join("-");
-}
-
-
-const sectionStyle = {
-    /* height: '100vh', 
-    backgroundColor: 'lightgrey',
-     backgroundSize: 'cover4169E1',
-    backgroundRepeat: 'no-repeat', 
-    color:'white',
-    */
-  };
-  const updateFilteredApi=(apiPased, city, category, dateEvent)=>{
-    const dataFiltered=[];
-    apiPased.map((event)=>{
-      if(event.comarca_i_municipi === `${city}` &&  category === 'all' && event.data_inici === `${dateEvent}T00:00:00.000` ){
-       //insert in state al the data filtred
-       dataFiltered.push(event)
-      
-      
-       //if we pase all the filters city/category/date
-     }else if(event.comarca_i_municipi === `${city}` && event.tags_categor_es === `agenda:categories/${category}` && event.data_inici === `${dateEvent}T00:00:00.000`){
-       //insert in state al the data filtred
-        dataFiltered.push(event)
-     }
-   })
-   return dataFiltered
-  }
 
 class FiltersNavbar extends Component {
   //save in this state al the categories the user decide to after save in data the event that displays with this parameters
@@ -95,12 +48,6 @@ class FiltersNavbar extends Component {
   
   saveDate=(e)=>{
     //convert string that we resive from calendar picker to yyyy/mm/dd format for api uses
-    /* function convert(e) {
-      var date = new Date(e),
-        mnth = ("0" + (date.getMonth() + 1)).slice(-2),
-        day = ("0" + date.getDate()).slice(-2);
-      return [date.getFullYear(), mnth, day].join("-");
-    } */
     const validDateFormat= convert(e)
     //console.log(validDateFormat)
 
@@ -140,7 +87,6 @@ class FiltersNavbar extends Component {
     
    /*THINGS TO BE DONE:
       -CHANGE IN A BETER WAY THE ALERTS CAUGHT
-      -CREATE A BUTTON IN CALENDAR THAT TAKES A METHOD HERE FOR CHANGE THE DATE FILTERED FOR THE EVENT
       -CHANGE THE WAY OF DISPLAYS THE ALERTS AND AD THE MOMENT WHEN THERE'S NO EVENTS IN THIS DAY
       -EXTRA:TO SHOW THE NUMBER OF EVENTS FILTERED BY THE FILTERS FOR MORE INFORMATION POR THE USER (IT'S NEEDED TO CHANGE THE LOGIC OF THE FILTES, SO IT SAVE THE INFO WHILE YOU ARE CHANGING THE FILTERS, NOT ONLY AT THE END ONCLICK BUTTON)
       */
@@ -171,7 +117,7 @@ class FiltersNavbar extends Component {
   
   render(){
   return(
-      <div  style={ sectionStyle }>
+      <div >
       {this.state.showFilters 
       ? <Grid   
         container
