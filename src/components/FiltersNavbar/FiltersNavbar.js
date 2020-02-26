@@ -178,16 +178,16 @@ class FiltersNavbar extends Component {
         direction="column"
         justify="center"
         alignItems="center">  
-        <Grid item xs={12}><Slogan/></Grid> 
-        <Grid item xs={12}><Typography variant="h5" component="h3" color='inherit'>Choose your preferences!</Typography> </Grid>
-        <Grid item xs={12}><SelectCity changeCity={this.saveCity} valueCities={this.props.valueCities}/></Grid>
-        <Grid item xs={12}><SelectEvent  changeEvent={this.saveCategory}/></Grid>
-        <Grid item xs={12}> 
+        <Grid item ><Slogan/></Grid> 
+        <Grid item ><Typography variant="h5" component="h3" color='inherit'>Choose your preferences!</Typography> </Grid>
+        <Grid item ><SelectCity changeCity={this.saveCity} valueCities={this.props.valueCities}/></Grid>
+        <Grid item ><SelectEvent  changeEvent={this.saveCategory}/></Grid>
+        <Grid item > 
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <DatePicker date2={this.state.date} changeDate={this.saveDate} dateCut={this.props.dateCut}/>
             </MuiPickersUtilsProvider>
         </Grid>
-        <Grid item xs={12}><ButtonForm chooseFilters={this.chooseFilters}/></Grid> 
+        <Grid item ><ButtonForm chooseFilters={this.chooseFilters}/></Grid> 
       </Grid>
     : <CalendarNav showFilters={this.showFilters} apiFiltered={this.state.data} update={this.update} getDateArray={getDateArray(new Date(), new Date(this.props.dateCut))}/>}
     
