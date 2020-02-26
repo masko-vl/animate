@@ -44,13 +44,13 @@ const useStyles = makeStyles(theme => ({
 
 export default function EventDetails (props) {
   // il statemnt that not showing you anything till you get the api call
-  if (props.apiFiltered === undefined){
-    props={
-      apiFiltered: {
+  // if (props.apiFiltered === undefined){
+  //   props={
+  //     apiFiltered: {
        
-      }
-    }
-  }
+  //     }
+  //   }
+  // }
 
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -84,48 +84,48 @@ export default function EventDetails (props) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-          <CardMedia
-          component="img"
-          alt="Event details"
-          width ="120"
-          height='120'
-          image={props.apiFiltered ['tags_categor_es'] 
-          ? 
-          categoryAvatar(props.apiFiltered ['tags_categor_es']) : undefinedCategoryAvatar()}
-          title="Event details"
-        />
-        {/* {props.apiFiltered ['tags_categor_es'] ? categoryAvatar(props.apiFiltered ['tags_categor_es']) : undefinedCategoryAvatar()} */}
-        <CardContent className={classes.root}>
-          <Typography gutterBottom variant="h5" component="h2">
-          {props.apiFiltered['denominaci']}
-          </Typography>
-          <Typography variant="subtitle1" color="textPrimary" component="p">
-            {props.apiFiltered['espai']}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-          <LocationOnIcon style={{ fontSize: 10 }}/>
-          {props.apiFiltered['adre_a']}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-          <WatchLaterIcon style={{ fontSize: 10 }} />
-          {convert(props.apiFiltered['data_inici'])}{'-'}{convert(props.apiFiltered['data_fi'])}
-          </Typography>
-          {/* <Typography variant="body2" color="textSecondary" component="p"> */}
-          {/* <CategoryIcon style={{ fontSize: 10 }} />
-          {props.apiFiltered['tags_categor_es']}
-          </Typography> */}
-          <Typography variant="body2" color="textSecondary" component="p">
-          <EuroIcon style={{ fontSize: 10 }}/>
-          {props.apiFiltered['entrades']}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-          <PublicIcon style={{ fontSize: 10 }} />
-          {props.apiFiltered['url']} 
-          </Typography>
-         <Typography variant="body2" component="p">
-         {decodeHTMLEntities(props.apiFiltered['descripcio'])}
-         </Typography>     
-        </CardContent>
+            <CardMedia
+              component="img"
+              alt="Event details"
+              width ="120"
+              height='120'
+              image={props.apiFiltered ['tags_categor_es'] 
+              ? 
+              categoryAvatar(props.apiFiltered ['tags_categor_es']) : undefinedCategoryAvatar()}
+              title="Event details"
+            />
+            {/* {props.apiFiltered ['tags_categor_es'] ? categoryAvatar(props.apiFiltered ['tags_categor_es']) : undefinedCategoryAvatar()} */}
+            <CardContent className={classes.root}>
+              <Typography gutterBottom variant="h5" component="h2">
+                {props.apiFiltered['denominaci']}
+              </Typography>
+              <Typography variant="subtitle1" color="textPrimary" component="p">
+                {props.apiFiltered['espai']}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                <LocationOnIcon style={{ fontSize: 10 }}/>
+                {props.apiFiltered['adre_a']}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                <WatchLaterIcon style={{ fontSize: 10 }} />
+                {convert(props.apiFiltered['data_inici'])}{'-'}{convert(props.apiFiltered['data_fi'])}
+              </Typography>
+              {/* <Typography variant="body2" color="textSecondary" component="p"> */}
+              {/* <CategoryIcon style={{ fontSize: 10 }} />
+              {props.apiFiltered['tags_categor_es']}
+              </Typography> */}
+              <Typography variant="body2" color="textSecondary" component="p">
+                <EuroIcon style={{ fontSize: 10 }}/>
+                {props.apiFiltered['entrades']}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                <PublicIcon style={{ fontSize: 10 }} />
+                {props.apiFiltered['url']} 
+              </Typography>
+              <Typography variant="body2" component="p">
+                {decodeHTMLEntities(props.apiFiltered['descripcio'])}
+              </Typography>     
+            </CardContent>
           </div>
         </Fade>
       </Modal>
