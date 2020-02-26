@@ -14,10 +14,6 @@ import ButtonForm from "./ButtonForm/ButtonForm.js";
 import Slogan from './Slogan/Slogan'
 import CalendarNav from './../CalendarNav/CalendarNav.js'
 
-const showCounter=(data)=>{
-  return data.length
-} 
-
 class FiltersNavbar extends Component {
   //save in this state al the categories the user decide to after save in data the event that displays with this parameters
   state={
@@ -39,12 +35,7 @@ class FiltersNavbar extends Component {
       data:updateFilteredApi(this.props.dataApi, city, category, dateEvent)
       //IS NEEDED TO PASS ALL THE CITIES OF THE DATA API
     },()=>{showEventsCounter(this.state.data)})  
-   
-    
 
-
-
-    
   }
   saveCategory=(e)=>{
     const city = this.state.city
@@ -103,7 +94,6 @@ class FiltersNavbar extends Component {
    /*THINGS TO BE DONE:
       -CHANGE IN A BETER WAY THE ALERTS CAUGHT
       -CHANGE THE WAY OF DISPLAYS THE ALERTS AND AD THE MOMENT WHEN THERE'S NO EVENTS IN THIS DAY
-      -EXTRA:TO SHOW THE NUMBER OF EVENTS FILTERED BY THE FILTERS FOR MORE INFORMATION POR THE USER (IT'S NEEDED TO CHANGE THE LOGIC OF THE FILTES, SO IT SAVE THE INFO WHILE YOU ARE CHANGING THE FILTERS, NOT ONLY AT THE END ONCLICK BUTTON)
       */
   }
   updateEventCalendar=(e)=>{
