@@ -22,10 +22,13 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
+
+
 const EventList = (props) => { 
   render()
     return(
-      props.apiFiltered.map((x, i) => 
+
+      props.apiFiltered.length.map((x, i) => 
       <Fragment key={i}>
         <List className={useStyles.root}>
           <ListItem alignItems="flex-start">

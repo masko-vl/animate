@@ -20,7 +20,7 @@ class FiltersNavbar extends Component {
   //save in this state al the categories the user decide to after save in data the event that displays with this parameters
   state={
     city:'',
-    category:'',
+    category:'all',
     date: todayDate(), /*today by default */
     data: [],
     showFilters: true
