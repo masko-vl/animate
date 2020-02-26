@@ -1,6 +1,4 @@
-
 import React, { Component } from "react";
-
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import 'typeface-roboto';
@@ -13,11 +11,6 @@ import SelectCity from "./SelectCity/SelectCity.js";
 import ButtonForm from "./ButtonForm/ButtonForm.js";
 import Slogan from './Slogan/Slogan'
 import CalendarNav from './../CalendarNav/CalendarNav.js'
-
-const showCounter=(data)=>{
-  return data.length
-} 
-
 class FiltersNavbar extends Component {
   //save in this state al the categories the user decide to after save in data the event that displays with this parameters
   state={
@@ -26,25 +19,17 @@ class FiltersNavbar extends Component {
     date: todayDate(), /*today by default */
     data: [],
     showFilters: true
-
   }
   saveCity=(e)=>{
     const city = e.target.value
     const dateEvent = this.state.date
     const category = this.state.category
-    
     this.setState({
       //return value of the city
       city: e.target.value,
       data:updateFilteredApi(this.props.dataApi, city, category, dateEvent)
       //IS NEEDED TO PASS ALL THE CITIES OF THE DATA API
     },()=>{showEventsCounter(this.state.data)})  
-   
-    
-
-
-
-    
   }
   saveCategory=(e)=>{
     const city = this.state.city
@@ -56,28 +41,22 @@ class FiltersNavbar extends Component {
       category: e.target.value,
       data:updateFilteredApi(this.props.dataApi, city, category, dateEvent)
     },()=>{showEventsCounter(this.state.data)}) 
-    
     //console.log('hijodeputaaa!',this.state.data.length)
   }
-
-  
   saveDate=(e)=>{
     //convert string that we resive from calendar picker to yyyy/mm/dd format for api uses
     const validDateFormat= convert(e)
     const city = this.state.city
     const category = this.state.category
     //console.log(validDateFormat)
-
     //change state with the new date
     this.setState({
       date: validDateFormat,
       data:updateFilteredApi(this.props.dataApi, city, category, validDateFormat)
     },()=>{showEventsCounter(this.state.data)})  
     //console.log(this.state.date)
-    
   }
   chooseFilters= () => {
-
     //take all the filters for use it in data for the display of filtred events
     const city = this.state.city
     const dateEvent = this.state.date
@@ -85,21 +64,14 @@ class FiltersNavbar extends Component {
     /* 
     if(city=== ''){
      alert('sasasasas')
-      
     }else{ */
     //create a loop in the events api array and pass if statement for select the events and display diferent errors
     this.setState({
       data:updateFilteredApi(this.props.dataApi, city, category, dateEvent),
       showFilters: false
     })
-     
-   
    //save in state al the events filtered
-
-     
      //console.log(this.state.data)
-
-    
    /*THINGS TO BE DONE:
       -CHANGE IN A BETER WAY THE ALERTS CAUGHT
       -CHANGE THE WAY OF DISPLAYS THE ALERTS AND AD THE MOMENT WHEN THERE'S NO EVENTS IN THIS DAY
@@ -116,24 +88,15 @@ class FiltersNavbar extends Component {
     const city = this.state.city
     const dateEvent = date
     const category = this.state.category
-    
-
     this.setState({data:updateFilteredApi(this.props.dataApi, city, category, dateEvent)})
-
-   
-   
-    
   }
   showFilters=()=>{
     this.setState({
       showFilters: true
    })
   }
-  
   render(){
-    
   return(
-    
       <div >
       {this.state.showFilters 
       ? <Grid   
@@ -141,30 +104,21 @@ class FiltersNavbar extends Component {
         direction="column"
         justify="center"
         alignItems="center">  
-        <Grid item ><Slogan/></Grid> 
-        <Grid item ><Typography variant="h5" component="h3" color='inherit'>Choose your preferences!</Typography> </Grid>
-        <Grid item ><SelectCity changeCity={this.saveCity} valueCities={this.props.valueCities}/></Grid>
-        <Grid item ><SelectEvent  changeEvent={this.saveCategory}/></Grid>
-        <Grid item > 
+        <Grid item xs={12}><Slogan/></Grid> 
+        <Grid item xs={12}><Typography variant="h5" component="h3" color='inherit'>Choose your preferences!</Typography> </Grid>
+        <Grid item xs={12}><SelectCity changeCity={this.saveCity} valueCities={this.props.valueCities}/></Grid>
+        <Grid item xs={12}><SelectEvent  changeEvent={this.saveCategory}/></Grid>
+        <Grid item xs={12}> 
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <DatePicker date2={this.state.date} changeDate={this.saveDate} dateCut={this.props.dateCut}/>
             </MuiPickersUtilsProvider>
         </Grid>
-
         <Grid  item xs={12}>{showEventsCounter(this.state.data)} corresponding event(s)</Grid>
         <Grid item xs={12}><ButtonForm chooseFilters={this.chooseFilters}/></Grid> 
       </Grid>
     : <CalendarNav showFilters={this.showFilters} apiFiltered={this.state.data} updateEventCalendar={this.updateEventCalendar} getDateArray={getDateArray(new Date(), new Date(this.props.dateCut))}/>}
-    
-    
     </div>
-    
-
   )
 }}
 
 export default FiltersNavbar;
-
-
-
-
