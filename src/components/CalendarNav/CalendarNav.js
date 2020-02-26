@@ -35,7 +35,7 @@ class CalendarNav extends Component {
                 <Header showFilters={this.props.showFilters} showList={this.showList} showMap={this.showMap}/>
                 <div className="dates-container">
                     {this.state.dates.map((date, i) => (
-                    <div className="date-card" key={i} onClick={this.props.update}>
+                    <div className="date-card" key={i} onClick={this.props.updateEventCalendar}>
                         <h3 className="date-text">{date}</h3>
                     </div>
                     ))}
