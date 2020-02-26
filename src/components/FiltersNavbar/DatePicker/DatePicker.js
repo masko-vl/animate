@@ -24,6 +24,9 @@ const DatePicker = props => {
       </Fragment> 
     
 )}
+
+export default DatePicker
+
       
 
 /* 
@@ -45,6 +48,5 @@ const [selectedDate] = useState(new Date());
     </Fragment> 
     );
 } */
-export default DatePicker
 
 
