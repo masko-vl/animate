@@ -14,9 +14,9 @@ function convert(e) {
 export default class EventMap extends Component {
   // in tha state are the coordinates of Catalunya
   state = {
-    lat: 41.5912,
-    lng: 1.5209,
-    zoom: 8
+    lat: parseFloat(this.props.apiFiltered[0].latitud),
+    lng: parseFloat(this.props.apiFiltered[0].longitud),
+    zoom: 14
   }
 
 
@@ -25,9 +25,9 @@ export default class EventMap extends Component {
     const position = [this.state.lat, this.state.lng]
     
    //  if the array of the props are empty, to keep the state, only if its filtred render the
-    if (this.props.apiFiltered.length ===0){
-       this.props.apiFiltered.push({latitud:41.5912, longitud:1.5209})
-    };
+    // if (this.props.apiFiltered.length ===0){
+    //    this.props.apiFiltered.push({latitud:41.5912, longitud:1.5209})
+    // };
     
     // used the parseFloat method to convert from string to inter keeping the decimals
     return (

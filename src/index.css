@@ -11,8 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* the leaflet map format */
 .leaflet-container {
-  height: 300px;
+  height: 700px;
   width: 100%;
   display:flex;
 }

@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import Header from './components/Header/Header.js';
 import FiltersNavbar from './components/FiltersNavbar/FiltersNavbar.js';
+import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner'
 class App extends Component {
   state = {
     data: {},
@@ -51,7 +52,7 @@ async componentDidMount(){
   render(){
     return (
       <div className="">
-          {this.state.isLoading?<h1>IS LOADING FILTER...</h1>:<FiltersNavbar dataApi={this.state.data} dateCut={this.state.dateCut} valueCities={this.state.valueCities}/>}
+          {this.state.isLoading? <LoadingSpinner />:<FiltersNavbar dataApi={this.state.data} dateCut={this.state.dateCut} valueCities={this.state.valueCities}/>}
       </div>
     );
   }
