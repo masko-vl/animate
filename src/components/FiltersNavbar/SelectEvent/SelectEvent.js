@@ -25,7 +25,7 @@ export default function SelectEvent({changeEvent, event2}) {
 
   return (
     <div>
-      <FormControl variant="outlined" className={classes.formControl}>
+      <FormControl required variant="outlined" className={classes.formControl}>
         <InputLabel ref={inputLabel} htmlFor="event">
           Select type of event :)
         </InputLabel>
@@ -37,7 +37,6 @@ export default function SelectEvent({changeEvent, event2}) {
           labelWidth={labelWidth}
           
         >
-          <option value=''></option>
           <option value={'all'}>ALL EVENTS</option>
           <option value={'festivals-i-mostres'}>FESTIVALS AND MUESTRAS</option>
           <option value={'concerts'}>CONCERTS</option>

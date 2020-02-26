@@ -104,4 +104,9 @@ export const undefinedCategoryAvatar = () => {
    return dataFiltered
   }
 
+  //TO SHOW THE NUMBER OF EVENT RESULTS WHEN SELECT FILTERS
+  export const showEventsCounter=(data)=>{
+    return data.length
+  } 
+
 
