@@ -2,9 +2,9 @@
     width: 100%;
     top: 0;
     left:0;
-    /* position: fixed; in case we want the navbar sticky*/
     border: solid 1px black;
     height: 15%;
+    
 }
 .header_navigation {
     display:flex;
@@ -21,7 +21,7 @@
     padding: 0 1rem;
 }
 .space {
-    flex:1;
+    flex:3;
 }
 span {
     color: grey;
