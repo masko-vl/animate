@@ -85,20 +85,22 @@ export const undefinedCategoryAvatar = () => {
       day = ("0" + date.getDate()).slice(-2);
     return [date.getFullYear(), mnth, day].join("-");
   }
+
+
+
+  //each time a filter is chosen => return the list of filtered events with this filter
+  //when you click on animate : if the list is not empty, return the list (on the calendar) / else : say to change the filters
+
   
   //RELOAD THEY API DATA FILTEREF FOR THE ANIMATE BUTTON AND CALENDAR CLICK DAYS
   export const updateFilteredApi=(apiPased, city, category, dateEvent)=>{
     const dataFiltered=[];
     apiPased.map((event)=>{
-      if(event.comarca_i_municipi === `${city}` &&  category === 'all' && event.data_inici === `${dateEvent}T00:00:00.000` ){
+      if(event.comarca_i_municipi === `${city}` ||  category === 'all' || event.tags_categor_es === `agenda:categories/${category}`|| event.data_inici === `${dateEvent}T00:00:00.000` ){
        //insert in state al the data filtred
        dataFiltered.push(event)
-      
-      
-       //if we pase all the filters city/category/date
-     }else if(event.comarca_i_municipi === `${city}` && event.tags_categor_es === `agenda:categories/${category}` && event.data_inici === `${dateEvent}T00:00:00.000`){
-       //insert in state al the data filtred
-        dataFiltered.push(event)
+     }else {
+       console.log("you need to selectionate something")
      }
    })
    return dataFiltered
