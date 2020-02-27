@@ -33,6 +33,9 @@ span {
 .icons:hover {
     background-color:rgba(218, 230, 222, 0.774);
 }
+.icons{
+    color: black;
+}
 a {
     color: black;
 }
