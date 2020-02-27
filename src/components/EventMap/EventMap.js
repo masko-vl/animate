@@ -16,7 +16,7 @@ export default class EventMap extends Component {
   state = {
     lat: parseFloat(this.props.apiFiltered[0].latitud),
     lng: parseFloat(this.props.apiFiltered[0].longitud),
-    zoom: 14
+    zoom: 12
   }
 
 
