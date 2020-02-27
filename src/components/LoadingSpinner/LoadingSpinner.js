@@ -2,7 +2,7 @@ import React from 'react';
 import './LoadingSpinner.css'
 
 const LoadingSpinner = ()=> (
-    <div class="loading" id='spinner'>
+    <div className="loading" id='spinner'>
 <svg  version="1.0" xmlns="http://www.w3.org/2000/svg"
  width="2000.000000pt" height="2000.000000pt" viewBox="0 0 2000.000000 2000.000000"
  preserveAspectRatio="xMidYMid meet">

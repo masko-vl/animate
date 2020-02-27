@@ -37,8 +37,8 @@ export default class EventMap extends Component {
                 url='https://api.mapbox.com/styles/v1/ceec/ciyxop55w000h2qo9pqyfyy9w/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2VlYyIsImEiOiJjaXl1bWlwZ2QwMW1sMzNxbjMxN3JhdGJlIn0.Y_U5JsNv727e2TqKTJ7gTQ'
               />
               {/* creating a map over the markers, for each markers, that we have declared below, to display a marker on map */}
-        {this.props.apiFiltered.map(event => (
-        <Marker key={event.codi} position={[parseFloat(event.latitud),parseFloat(event.longitud)]}>
+        {this.props.apiFiltered.map((event, index) => (
+        <Marker key={index} position={[parseFloat(event.latitud),parseFloat(event.longitud)]}>
           <Popup>
            <img width='150' height='100'
            src= {event['tags_categor_es'] 
