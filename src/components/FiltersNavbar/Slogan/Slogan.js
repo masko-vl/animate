@@ -1,11 +1,6 @@
 import React from 'react';
 import logo from './../../Header/Logo/Logo.svg';
 
-const sloganStyle = {
-    fontFamily:'Tahoma, Geneva, sans-serif',
-    fontSize: '5vw',
-    
-  };
 const Slogan = () =>{
     return(
         
