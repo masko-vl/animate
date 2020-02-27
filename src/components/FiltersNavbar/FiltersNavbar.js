@@ -4,6 +4,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import 'typeface-roboto';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+
 import {todayDate,  getDateArray, convert, updateFilteredApi, showEventsCounter} from '../../sharedFunctions'
 import DatePicker from './DatePicker/DatePicker.js';
 import SelectEvent from "./SelectEvent/SelectEvent.js";
@@ -46,8 +47,9 @@ export default class FiltersNavbar extends Component {
       //return from form the value of selected category
       category: e.target.value,
       data:updateFilteredApi(this.props.dataApi, city, category, dateEvent)
-    },()=>{showEventsCounter(this.state.data)}) 
+    },()=>{showEventsCounter(this.state.data)},()=>{if(this.state.data.lenght>0){this.setState({alertEmptyCity: false})}}) 
     //console.log('hijodeputaaa!',this.state.data.length)
+    
   }
   saveDate=(e)=>{
     //convert string that we resive from calendar picker to yyyy/mm/dd format for api uses
@@ -59,7 +61,7 @@ export default class FiltersNavbar extends Component {
     this.setState({
       date: validDateFormat,
       data:updateFilteredApi(this.props.dataApi, city, category, validDateFormat)
-    },()=>{showEventsCounter(this.state.data)})  
+    },()=>{showEventsCounter(this.state.data)},()=>{if(this.state.data.lenght>0){this.setState({alertEmptyCity: false})}})  
     //console.log(this.state.date)
   }
   chooseFilters= (e) => {
@@ -101,6 +103,12 @@ export default class FiltersNavbar extends Component {
     const category = this.state.category
     this.setState({data:updateFilteredApi(this.props.dataApi, city, category, dateEvent)})
   }
+  componentDidUpdate(prevProps, prevState){
+    //Here we create a condition if the event couter change from 0 to >0 then we want to quit this alert "there arent results, please change the filters". So we compare inside a update method this state with the previous.
+    if(this.state.data.length>0 && prevState.data.length==0){
+      this.setState({alertEmptyEvents: false})
+    }
+  }
 
   render(){
   return(
@@ -123,7 +131,7 @@ export default class FiltersNavbar extends Component {
         {/*displayed alerts for the caught errors IT WILL BE GOOD TO PUT IT IN RED*/}
         <Grid  item xs={12}>{this.state.alertEmptyCity? <p>please select a city for displaying results</p>: <p></p>}{this.state.alertEmptyEvents? <p>there arent results, please change the filters</p>: <p></p>}</Grid>
         {/*display counter of events while selecting filters*/}
-        <Grid  item xs={12}>{showEventsCounter(this.state.data)} corresponding event(s)</Grid>
+        <Grid  item xs={12}><p>{showEventsCounter(this.state.data)} corresponding event(s)</p></Grid>
         <Grid item xs={12}><ButtonForm chooseFilters={this.chooseFilters}/></Grid> 
 
       </Grid>
