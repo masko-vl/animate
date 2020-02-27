@@ -3,7 +3,10 @@ import axios from 'axios';
 import './App.css';
 import Header from './components/Header/Header.js';
 import FiltersNavbar from './components/FiltersNavbar/FiltersNavbar.js';
-import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner'
+import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
+import {format} from 'date-fns';
+
+
 class App extends Component {
   state = {
     data: {},
@@ -11,7 +14,7 @@ class App extends Component {
     dateCut: '', 
 }
 
-getDate = () => {
+getSingleDate = () => {
   //SELECT THE CURRENT DATE
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
@@ -21,9 +24,11 @@ getDate = () => {
   //console.log(today);
   return today;
 }
+
+
 async componentDidMount(){
     //insert the current date in the url so we only display 
-  const {data} = await axios(`https://analisi.transparenciacatalunya.cat/resource/rhpv-yr4f.json?$where=data_inici%3E=%22${this.getDate()}%22`)
+  const {data} = await axios(`https://analisi.transparenciacatalunya.cat/resource/rhpv-yr4f.json?$where=data_inici%3E=%22${this.getSingleDate()}%22`)
  
         this.setState({
           data, 
@@ -48,6 +53,7 @@ async componentDidMount(){
   this.setState({valueCities:valueCities})
 
 }
+
 
   render(){
     return (

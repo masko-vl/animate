@@ -16,6 +16,8 @@ class CalendarNav extends Component {
         dates : this.props.getDateArray
 
     }
+
+
     showMap=()=>{
         this.setState({
             eventListDisplay: false

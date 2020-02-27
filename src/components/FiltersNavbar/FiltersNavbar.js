@@ -13,7 +13,6 @@ import Slogan from './Slogan/Slogan'
 import CalendarNav from './../CalendarNav/CalendarNav.js'
 
 
-
 export default class FiltersNavbar extends Component {
   //save in this state al the categories the user decide to after save in data the event that displays with this parameters
   state={
@@ -22,9 +21,8 @@ export default class FiltersNavbar extends Component {
     date: todayDate(), /*today by default */
     data: [],
     showFilters: true,
-    alertEmptyEvents:false, /*state to show an display if the events for that day doesent exist, this one and the next are changed in chooseFilters botton function */
-    alertEmptyCity: false /*state to show a alert when the city it isn't choose */
   }
+  
   saveCity=(e)=>{
     const city = e.target.value
     const dateEvent = this.state.date
@@ -32,7 +30,6 @@ export default class FiltersNavbar extends Component {
     this.setState({
       //return value of the city
       city: e.target.value,
-      alertEmptyCity: false, /*if you change the city after having an alert of the oligatority, hide the alert fter change */
       data:updateFilteredApi(this.props.dataApi, city, category, dateEvent)
       //IS NEEDED TO PASS ALL THE CITIES OF THE DATA API
     },()=>{showEventsCounter(this.state.data)})  
@@ -50,45 +47,45 @@ export default class FiltersNavbar extends Component {
     //console.log('hijodeputaaa!',this.state.data.length)
   }
   saveDate=(e)=>{
-    //convert string that we resive from calendar picker to yyyy/mm/dd format for api uses
     const validDateFormat= convert(e)
     const city = this.state.city
     const category = this.state.category
-    //console.log(validDateFormat)
-    //change state with the new date
     this.setState({
       date: validDateFormat,
       data:updateFilteredApi(this.props.dataApi, city, category, validDateFormat)
     },()=>{showEventsCounter(this.state.data)})  
-    //console.log(this.state.date)
   }
+
   chooseFilters= (e) => {
-    //take all the filters for use it in data for the display of filtred events
     const city = this.state.city
     const dateEvent = this.state.date
     const category = this.state.category
     
-    if(city=== ''){
-      /*chenge to true to display in the render a message for the user to remind to put a city */
-      this.setState({
-        alertEmptyCity: true})
-       
-    }else{ 
-    //create a loop in the events api array and pass if statement for select the events and display diferent errors
     this.setState({
       data:updateFilteredApi(this.props.dataApi, city, category, dateEvent),
-
-    }, () => {
+      }, () => {
       if (this.state.data.length > 0) {
         this.setState({
-      showFilters: false,
-      
+          showFilters: false
+        })
+      } else {   // **************
+        this.setState({
+          displayAlert: true  // ****************
+        })
+      }
     })
-    } else {
-      /*if there arent event also show a display in the render and don't go to events list */
-      this.setState({alertEmptyEvents: true})
-    }})}
   }
+
+  resetAlert = () => {  // **********
+    this.setState({
+      displayAlert: false
+    })  //************************* */
+  }
+
+  getOriginalFormatDateArray=(startDate, endDate)=>{
+
+  }
+
   updateEventCalendar=(e)=>{
     //convert to api format
     let date = new Date(e.target.innerText.replace(/(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3"))
@@ -113,19 +110,18 @@ export default class FiltersNavbar extends Component {
         alignItems="center">  
         <Grid item xs={12}><Slogan/></Grid> 
         <Grid item xs={12}><Typography variant="h5" component="h3" color='inherit'>Choose your preferences!</Typography> </Grid>
-        <Grid item xs={12}><SelectCity changeCity={this.saveCity} valueCities={this.props.valueCities}/></Grid>
-        <Grid item xs={12}><SelectEvent  changeEvent={this.saveCategory}/></Grid>
+        <Grid item xs={12}><SelectCity resetAlert={this.resetAlert} changeCity={this.saveCity} valueCities={this.props.valueCities}/></Grid>
+        <Grid item xs={12}><SelectEvent resetAlert={this.resetAlert} changeEvent={this.saveCategory}/></Grid>
         <Grid item xs={12}> 
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <DatePicker date2={this.state.date} changeDate={this.saveDate} dateCut={this.props.dateCut}/>
+                <DatePicker resetAlert={this.resetAlert} date2={this.state.date} changeDate={this.saveDate} dateCut={this.props.dateCut}/>
             </MuiPickersUtilsProvider>
         </Grid>
-        {/*displayed alerts for the caught errors IT WILL BE GOOD TO PUT IT IN RED*/}
-        <Grid  item xs={12}>{this.state.alertEmptyCity? <p>please select a city for displaying results</p>: <p></p>}{this.state.alertEmptyEvents? <p>there arent results, please change the filters</p>: <p></p>}</Grid>
-        {/*display counter of events while selecting filters*/}
-        <Grid  item xs={12}>{showEventsCounter(this.state.data)} corresponding event(s)</Grid>
+        <Grid  item xs={12}>{this.chooseFilters}</Grid>
+        {/* ****** */}
+        <Grid  item xs={12}>{showEventsCounter(this.state.data, this.state.displayAlert)} corresponding event(s)</Grid>
+        {/* ******* */}
         <Grid item xs={12}><ButtonForm chooseFilters={this.chooseFilters}/></Grid> 
-
       </Grid>
     : <CalendarNav showFilters={this.showFilters} apiFiltered={this.state.data} updateEventCalendar={this.updateEventCalendar} getDateArray={getDateArray(new Date(), new Date(this.props.dateCut))}/>}
     </div>
