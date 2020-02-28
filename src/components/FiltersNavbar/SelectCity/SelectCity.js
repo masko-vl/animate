@@ -5,8 +5,8 @@ import Input from '@material-ui/core/Input';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import {makeItBeautiful} from '../.'
-
+import {makeItBeautiful} from './../../../sharedFunctions'
+// './../../../sharedFunctions.js'
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -20,8 +20,6 @@ const citySelect=(value)=>{
   city = city.replace(/([-])/g," ")
   return city
 }
-
-
 
 export default function SelectCity({changeCity, valueCities}) {
   const classes = useStyles();

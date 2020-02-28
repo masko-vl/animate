@@ -109,7 +109,7 @@ export const undefinedCategoryAvatar = () => {
     return data.length
   } 
 
-  function makeItBeautiful(str) {
+  export function makeItBeautiful(str) {
     var splitStr = str.toLowerCase().split(' ');
     for (var i = 0; i < splitStr.length; i++) {
         splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
