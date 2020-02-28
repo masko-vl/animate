@@ -4,11 +4,11 @@ import { KeyboardDatePicker } from "@material-ui/pickers";
 import { createMuiTheme } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
 import teal from "@material-ui/core/colors/teal";
-const materialTheme = createMuiTheme({
+const defaultMaterialTheme = createMuiTheme({
   overrides: {
     MuiPickersToolbar: {
       toolbar: {
-        backgroundColor: teal["500"],
+        backgroundColor: teal["800"],
       },
     },
     MuiPickersCalendarHeader: {
@@ -22,7 +22,7 @@ const materialTheme = createMuiTheme({
         color: teal.A700,
       },
       daySelected: {
-        backgroundColor: teal["900"],
+        backgroundColor: teal["800"],
       },
       dayDisabled: {
         color: teal["100"],
@@ -45,7 +45,7 @@ const DatePicker = props => {
    return(
       //package datepicker use, changed from hook version
       <Fragment>
-       <ThemeProvider theme={materialTheme}>
+       <ThemeProvider theme={defaultMaterialTheme}>
         <KeyboardDatePicker 
           autoOk
           variant="inline"
@@ -54,6 +54,7 @@ const DatePicker = props => {
           format="MM/dd/yyyy"
           value={props.date2}
           InputAdornmentProps={{ position: "start" }}
+
           onChange={date => props.changeDate(date)}
           maxDate={new Date(props.dateCut)} /*is the date of the last event that it´s pased by api, it's converted in state from App.js this prop */
           minDate={new Date()}
