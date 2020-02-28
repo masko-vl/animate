@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import './App.css';
-import Header from './components/Header/Header.js';
 import FiltersNavbar from './components/FiltersNavbar/FiltersNavbar.js';
-import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
-import {format} from 'date-fns';
 
+import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner'
+import {getDateLongEvent} from './sharedFunctions.js'
 
 class App extends Component {
   state = {
     data: {},
     isLoading: true,
     dateCut: '', 
+    dataApi:[]
 }
 
 getSingleDate = () => {
@@ -28,15 +28,36 @@ getSingleDate = () => {
 
 async componentDidMount(){
     //insert the current date in the url so we only display 
-  const {data} = await axios(`https://analisi.transparenciacatalunya.cat/resource/rhpv-yr4f.json?$where=data_inici%3E=%22${this.getSingleDate()}%22`)
- 
+  const {data} = await axios(`https://analisi.transparenciacatalunya.cat/resource/rhpv-yr4f.json?$where=data_inici%3E=%22${this.getDate()}%22`)
+  
         this.setState({
           data, 
           isLoading: false,
           //the last date of the api array for save it as the last day of the calendar picker
           dateCut: data[data.length-1].data_inici.substr(0,10).split('-').join(',')
+     
          })
-       
+
+    //Recover the dates start and end of the event and create an array of it. Then inser the array in a new array with the copy of the event object
+    const eventsLong= data.map((event, i)=>{
+    return ({...event,
+      dates: getDateLongEvent(event.data_inici, event.data_fi)
+    })
+   
+
+    //reate an object of event and this date arrayc
+/*     var obj = {};
+    obj[event] = getDateLongEvent(event.data_inici, event.data_fi);
+    //push in the array all the objects of events
+    eventsLong.push(obj) */
+
+  })
+  //console.log(eventsLong);
+  //save in state this new array for use it in filters
+  this.setState({dataApi:eventsLong})
+
+  
+
 
 //CREATE AN ARRAY OF CITYS AFTER API IS LOADED
   var arrayMunicipi=[];
@@ -58,7 +79,7 @@ async componentDidMount(){
   render(){
     return (
       <div className="">
-          {this.state.isLoading? <LoadingSpinner />:<FiltersNavbar dataApi={this.state.data} dateCut={this.state.dateCut} valueCities={this.state.valueCities}/>}
+          {this.state.isLoading? <LoadingSpinner />:<FiltersNavbar dataApi={this.state.dataApi} dateCut={this.state.dateCut} valueCities={this.state.valueCities}/>}
       </div>
     );
   }
