@@ -85,7 +85,32 @@ export const undefinedCategoryAvatar = () => {
      }
    })
    return dataFiltered
-  }
+  } 
+
+  //RELOAD THEY API DATA FILTEREF FOR THE ANIMATE BUTTON AND CALENDAR CLICK DAYS
+  /* export const updateFilteredApi=(apiPased, city, category, dateEvent)=>{
+    const dataFiltered=[];
+    //let datePased =  event.dates.map((date)=>{if(date === `${dateEvent}T00:00:00.000`){return date}})
+    apiPased.map((event)=>{
+      //let dateFiltered= event.dates.filter((date)=>{return date === dateEvent})
+      
+      if(event.comarca_i_municipi === `${city}` &&  category === 'all' && event.dates.map((date)=>{if(date === dateEvent){return date}})){
+       //insert in state al the data filtred
+       dataFiltered.push(event)
+
+       //if we pase all the filters city/category/date
+     }else if(event.comarca_i_municipi === `${city}` && event.tags_categor_es === `agenda:categories/${category}`&& event.dates.map((date)=>{if(date === dateEvent){return date}})){
+       
+       //insert in state al the data filtred
+        dataFiltered.push(event)
+     }
+   })
+   console.log(dataFiltered)
+   return dataFiltered
+  } */
+
+
+
   //TO SHOW THE NUMBER OF EVENT RESULTS WHEN SELECT FILTERS
   export const showEventsCounter=(data)=>{
     return data.length
@@ -110,3 +135,17 @@ export const undefinedCategoryAvatar = () => {
       {value:"infantil", name:"Kids"} ,
    
 ]
+//GET DATES FOR CALENDAR ARRAY DISPLAY
+export const getDateLongEvent = (data_inici, data_fi) => {
+  const start= new Date(data_inici.slice(0,10))
+  const end= new Date(data_fi.slice(0,10))
+  //console.log(start, end)
+   var EventDays = [];
+
+  var dt = start;
+  while (dt <= end) {
+      EventDays.push(format(dt, 'yyyy-MM-dd'));
+      dt.setDate(dt.getDate() + 1);
+  }
+  return EventDays ; 
+}

@@ -1,14 +1,51 @@
 
 import React, { Fragment } from "react";
 import { KeyboardDatePicker } from "@material-ui/pickers";
-
- 
+import { createMuiTheme } from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/styles";
+import teal from "@material-ui/core/colors/teal";
+const materialTheme = createMuiTheme({
+  overrides: {
+    MuiPickersToolbar: {
+      toolbar: {
+        backgroundColor: teal["500"],
+      },
+    },
+    MuiPickersCalendarHeader: {
+      switchHeader: {
+        // backgroundColor: teal.A200,
+        // color: "white",
+      },
+    },
+    MuiPickersDay: {
+      day: {
+        color: teal.A700,
+      },
+      daySelected: {
+        backgroundColor: teal["900"],
+      },
+      dayDisabled: {
+        color: teal["100"],
+      },
+      current: {
+        color: teal["900"],
+      },
+    },
+    MuiPickersModal: {
+      dialogAction: {
+        color: teal["400"],
+      },
+    },
+  },
+});
   
 const DatePicker = props => {
+  //const [selectedDate, handleDateChange] = useState(new Date());
   //console.log(props.dateCut)
    return(
       //package datepicker use, changed from hook version
       <Fragment>
+       <ThemeProvider theme={materialTheme}>
         <KeyboardDatePicker 
           autoOk
           variant="inline"
@@ -21,6 +58,7 @@ const DatePicker = props => {
           maxDate={new Date(props.dateCut)} /*is the date of the last event that it´s pased by api, it's converted in state from App.js this prop */
           minDate={new Date()}
         />
+        </ThemeProvider>
       </Fragment> 
     
 )}

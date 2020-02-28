@@ -56,7 +56,7 @@ export default class FiltersNavbar extends Component {
     const validDateFormat= convert(e)
     const city = this.state.city
     const category = this.state.category
-    //console.log(validDateFormat)
+    console.log(validDateFormat)
     //change state with the new date
     this.setState({
       date: validDateFormat,
@@ -77,6 +77,8 @@ export default class FiltersNavbar extends Component {
        
     }else{ 
     //create a loop in the events api array and pass if statement for select the events and display diferent errors
+    console.log(dateEvent)
+    
     this.setState({
       data:updateFilteredApi(this.props.dataApi, city, category, dateEvent),
 
@@ -90,6 +92,7 @@ export default class FiltersNavbar extends Component {
       /*if there arent event also show a display in the render and don't go to events list */
       this.setState({alertEmptyEvents: true})
     }})}
+    console.log(updateFilteredApi(this.props.dataApi, city, category, dateEvent))
   }
   updateEventCalendar=(e)=>{
     //convert to api format
