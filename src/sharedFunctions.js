@@ -71,21 +71,31 @@ export const undefinedCategoryAvatar = () => {
       day = ("0" + date.getDate()).slice(-2);
     return [date.getFullYear(), mnth, day].join("-");
   }
+  
   //RELOAD THEY API DATA FILTEREF FOR THE ANIMATE BUTTON AND CALENDAR CLICK DAYS
-  export const updateFilteredApi=(apiPased, city, category, dateEvent)=>{
-    const dataFiltered=[];
+   export const updateFilteredApi=(apiPased, city, category, dateEvent)=>{
+    let dataFiltered=[];
     apiPased.map((event)=>{
-      if(event.comarca_i_municipi === `${city}` &&  category === 'all' && event.data_inici === `${dateEvent}T00:00:00.000` ){
+      if(event.comarca_i_municipi === `${city}` &&  category === 'all' && event.dates.includes((dateEvent))){
        //insert in state al the data filtred
        dataFiltered.push(event)
+       
+
        //if we pase all the filters city/category/date
-     }else if(event.comarca_i_municipi === `${city}` && event.tags_categor_es === `agenda:categories/${category}` && event.data_inici === `${dateEvent}T00:00:00.000`){
+     }else if(event.comarca_i_municipi === `${city}` && event.tags_categor_es === `agenda:categories/${category}`&& event.dates.includes((dateEvent))){
+       
        //insert in state al the data filtred
         dataFiltered.push(event)
      }
    })
-   return dataFiltered
-  }
+   //in dataFiltered is returned duplicated and triplicated events so with this we select only once the events
+   const finalDataFiltered = [...new Map(dataFiltered.map(event => [event.codi, event])).values()]
+  
+   return finalDataFiltered
+  } 
+
+
+
   //TO SHOW THE NUMBER OF EVENT RESULTS WHEN SELECT FILTERS
   export const showEventsCounter=(data)=>{
     return data.length
@@ -134,4 +144,18 @@ export function citySort(property) {
           return a[property].localeCompare(b[property]);
       }        
   }
+}
+//GET DATES FOR CALENDAR ARRAY DISPLAY
+export const getDateLongEvent = (data_inici, data_fi) => {
+  const start= new Date(data_inici.slice(0,10))
+  const end= new Date(data_fi.slice(0,10))
+  //console.log(start, end)
+   var EventDays = [];
+
+  var dt = start;
+  while (dt <= end) {
+      EventDays.push(format(dt, 'yyyy-MM-dd'));
+      dt.setDate(dt.getDate() + 1);
+  }
+  return EventDays ; 
 }
