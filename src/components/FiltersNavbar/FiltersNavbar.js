@@ -93,12 +93,12 @@ export default class FiltersNavbar extends Component {
       /*if there arent event also show a display in the render and don't go to events list */
       this.setState({alertEmptyEvents: true})
     }})}
-    console.log(updateFilteredApi(this.props.dataApi, city, category, dateEvent))
+    // console.log(updateFilteredApi(this.props.dataApi, city, category, dateEvent))
   }
 
   updateEventCalendar=(e)=>{
     //convert to api format
-    let date = new Date(e.target.innerText.replace(/(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3"))
+    let date = new Date(e.target.id.replace(/(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3"))
     date = convert(date)
     console.log(date)
     this.setState({date:date}) 

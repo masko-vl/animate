@@ -15,10 +15,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import EventList from './../EventList/EventList.js';
-import EventMap from './../EventMap/EventMap.js'
 import {categoryAvatar, decodeHTMLEntities, undefinedCategoryAvatar} from './../../sharedFunctions.js'
-
 const useStyles = makeStyles(theme => ({
   modal: {
     display: 'flex',
@@ -26,7 +23,6 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     width: "220",
   },
-  
   paper: {
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
@@ -34,51 +30,33 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2, 4, 3),
   }
 }));
-
-
-
   function convert(e) {
     var date = new Date(e),
       mnth = ("0" + (date.getMonth() + 1)).slice(-2),
       day = ("0" + date.getDate()).slice(-2);
     return [day,mnth,date.getFullYear()].join("/");
   }
-  
-   
-
 export default function EventDetails (props) {
   // il statemnt that not showing you anything till you get the api call
   // if (props.apiFiltered === undefined){
   //   props={
   //     apiFiltered: {
-       
   //     }
   //   }
   // }
-
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const [eventListDisplay] = React.useState(true);
-
   const handleOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
   };
-
   return (
-
     <div>
       <button type="button" onClick={handleOpen}>
-      {
-        this.state.eventListDisplay
-        ? <EventList apiFiltered={this.props.apiFiltered} />
-        : <EventMap apiFiltered={this.props.apiFiltered}/>
-      } 
+        Find more
       </button>
-     
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
