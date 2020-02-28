@@ -5,12 +5,12 @@ import './CalendarNav.css';
 import EventList from './../EventList/EventList.js';
 import EventMap from './../EventMap/EventMap.js'
 import Header from '../Header/Header'
+import { render } from '@testing-library/react';
 
 
 const changeDateFormat = (date) => {
     let format= date.split("-").reverse().join("-")
     format = new Date(format).toString().slice(0, 10)
-    
     return format
 
 }
