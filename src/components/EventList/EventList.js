@@ -22,10 +22,16 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
+
+
 const EventList = (props) => { 
   render()
     return(
-      props.apiFiltered.map((x, i) => 
+      //if there's no events in the data, show a message for the user
+      props.apiFiltered.length == 0
+      ? <p>No result, please choose other filters or date! :)</p>
+      //else print the events
+      : props.apiFiltered.map((x, i) => 
       <Fragment key={i}>
         <List className={useStyles.root}>
           <ListItem alignItems="flex-start">
