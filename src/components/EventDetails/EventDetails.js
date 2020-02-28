@@ -15,6 +15,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import EventList from './../EventList/EventList.js';
+import EventMap from './../EventMap/EventMap.js'
 import {categoryAvatar, decodeHTMLEntities, undefinedCategoryAvatar} from './../../sharedFunctions.js'
 
 const useStyles = makeStyles(theme => ({
@@ -32,6 +34,8 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2, 4, 3),
   }
 }));
+
+
 
   function convert(e) {
     var date = new Date(e),
@@ -54,6 +58,7 @@ export default function EventDetails (props) {
 
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [eventListDisplay] = React.useState(true);
 
   const handleOpen = () => {
     setOpen(true);
@@ -67,7 +72,11 @@ export default function EventDetails (props) {
 
     <div>
       <button type="button" onClick={handleOpen}>
-        
+      {
+        this.state.eventListDisplay
+        ? <EventList apiFiltered={this.props.apiFiltered} />
+        : <EventMap apiFiltered={this.props.apiFiltered}/>
+      } 
       </button>
      
       <Modal

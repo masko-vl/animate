@@ -9,7 +9,9 @@ import Typography from '@material-ui/core/Typography';
 import EventDetails from './../EventDetails/EventDetails.js';
 import { render } from '@testing-library/react';
 import Avatar from '@material-ui/core/Avatar';
+
 import {minPrice, getDateArray, categoryAvatar, undefinedCategoryAvatar} from './../../sharedFunctions.js';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,9 +31,6 @@ Date.prototype.addDays = function(days) {
 }
 
 
-
-
-
 const EventList = (props) => { 
   render()
     return(
@@ -41,7 +40,6 @@ const EventList = (props) => {
       //else print the events
       : props.apiFiltered.map((x, i) => 
       <Fragment key={i}>
-            <button type="button" onClick={handleOpen}>
         <List className={useStyles.root}>
           <ListItem alignItems="flex-start">
             <ListItemAvatar>
@@ -70,7 +68,6 @@ const EventList = (props) => {
             />
           </ListItem>
         </List>
-        </button>
         <EventDetails apiFiltered={x}/>
       </Fragment>  
     )
