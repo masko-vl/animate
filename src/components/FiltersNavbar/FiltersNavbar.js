@@ -4,7 +4,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import 'typeface-roboto';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-
+import './FiltersNavbar.js'
 import {todayDate,  getDateArray, convert, updateFilteredApi, showEventsCounter} from '../../sharedFunctions'
 import DatePicker from './DatePicker/DatePicker.js';
 import SelectEvent from "./SelectEvent/SelectEvent.js";
@@ -124,13 +124,14 @@ export default class FiltersNavbar extends Component {
 
   render(){
   return(
-      <div >
+      <div>
       {this.state.showFilters 
       ? <Grid   
         container
         direction="column"
         justify="center"
-        alignItems="center">  
+        alignItems="center"
+        >  
         <Grid item xs={12}><Slogan/></Grid> 
         <Grid item xs={12}><Typography variant="h5" component="h3" color='inherit'>Choose your preferences!</Typography> </Grid>
         <Grid item xs={12}><SelectCity changeCity={this.saveCity} valueCities={this.props.valueCities}/></Grid>
