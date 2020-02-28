@@ -1,17 +1,15 @@
 import React from 'react';
-import {eventsCategories} from './../../images/images.js';
+import logo from './../../Header/Logo/Logo.svg';
 
-const sloganStyle = {
-    fontFamily:'Tahoma, Geneva, sans-serif',
-    fontSize: '5vw',
-    
-  };
 const Slogan = () =>{
     return(
+        
     <div>
-        <img alt="animate_logo" src={eventsCategories["logo"]} />
-        <h1>Besos</h1>
-    </div>
+        <img alt="animate_logo" className='logo_slogan' 
+        height='120vmin' display='flex' width='100%' src={logo} />
+      {/* <h2 className='text_slogan' >Discover Catalunyan events!</h2> */}
+      </div> 
+    
     )
 }
 
