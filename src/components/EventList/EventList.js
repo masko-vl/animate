@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import { format } from 'date-fns';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -8,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import EventDetails from './../EventDetails/EventDetails.js';
 import { render } from '@testing-library/react';
 import Avatar from '@material-ui/core/Avatar';
-import {minPrice, categoryAvatar, undefinedCategoryAvatar} from './../../sharedFunctions.js'
+import {minPrice, getDateArray, categoryAvatar, undefinedCategoryAvatar} from './../../sharedFunctions.js';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,6 +21,13 @@ const useStyles = makeStyles(theme => ({
     display: 'inline',
   },
 }));
+
+Date.prototype.addDays = function(days) {
+  var date = new Date(this.valueOf());
+  date.setDate(date.getDate() + days);
+  return date;
+}
+
 
 
 
@@ -33,6 +41,7 @@ const EventList = (props) => {
       //else print the events
       : props.apiFiltered.map((x, i) => 
       <Fragment key={i}>
+            <button type="button" onClick={handleOpen}>
         <List className={useStyles.root}>
           <ListItem alignItems="flex-start">
             <ListItemAvatar>
@@ -61,6 +70,7 @@ const EventList = (props) => {
             />
           </ListItem>
         </List>
+        </button>
         <EventDetails apiFiltered={x}/>
       </Fragment>  
     )

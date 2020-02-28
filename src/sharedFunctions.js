@@ -74,7 +74,19 @@ export const undefinedCategoryAvatar = () => {
   //RELOAD THEY API DATA FILTEREF FOR THE ANIMATE BUTTON AND CALENDAR CLICK DAYS
   export const updateFilteredApi=(apiPased, city, category, dateEvent)=>{
     const dataFiltered=[];
+
+  // GETTING A DATEEVENT FOR BOTH CASES OF single and PERIODIC EVENTS :
+  // getDateArray2(start,end) will be a function that registers all the dates of an event from the first to the last one in the api_format
+  // if (data_inici == data_fi OR data_ini? && !data_fi) >>> start = end = date_inici  >> there will be only one date in the array
+
+
+// && for(let i=0; i<allDates.length; i++) {
+//   event.data_inici === allDates[i]
+// }
+
+
     apiPased.map((event)=>{
+
       if(event.comarca_i_municipi === `${city}` &&  category === 'all' && event.data_inici === `${dateEvent}T00:00:00.000` ){
        //insert in state al the data filtred
        dataFiltered.push(event)

@@ -23,9 +23,8 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     justifyContent: 'center',
     width: "220",
-    
-    
   },
+  
   paper: {
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
@@ -67,7 +66,7 @@ export default function EventDetails (props) {
 
     <div>
       <button type="button" onClick={handleOpen}>
-        Find more
+        
       </button>
      
       <Modal
