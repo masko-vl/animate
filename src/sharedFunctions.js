@@ -102,3 +102,31 @@ export const undefinedCategoryAvatar = () => {
   export const showEventsCounter=(data)=>{
     return data.length
   } 
+
+  export function makeItBeautiful(str) {
+    var splitStr = str.toLowerCase().split(' ');
+    for (var i = 0; i < splitStr.length; i++) {
+        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+    }
+    return splitStr.join(' ').replace(" L ", " l'").replace("L ", "").replace(" A ", " a ").replace(" D ", " ")
+  }
+//array of categories
+  export const eventsssCategories= [
+      {value:"all", name:"All events"},
+      {value:"festivals_i_mostres", name:"Festivals"},
+      {value:"concerts", name:"Concerts"},
+      {value:"expositions", name:"Expositions"},
+      {value:"sardanes", name:"Sardanas"},
+      {value:"festes", name:"Parties"},
+      {value:"teatre", name:"Theater"},
+      {value:"rutes-i-visites", name:"Routes and visits"},
+      {value:"fires-i-mercats", name:"Feirs and mercats"},
+      {value:"carnavals", name:"Carnavals"},
+      {value:"setmana-santa", name:"Easter week"},
+      {value:"cicles", name:"Cycles"} ,
+      {value:"conferencies", name:"Conferences"}, 
+      {value:"cursos", name:"Courses"} ,
+      {value:"dansa", name:"Dance"} ,
+      {value:"infantil", name:"Kids"} ,
+   
+]

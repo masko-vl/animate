@@ -1,16 +1,16 @@
 import React from 'react';
 // import Card from '@material-ui/core/Card';
-// import CardActionArea from '@material-ui/core/CardActionArea';
-// import CardActions from '@material-ui/core/CardActions';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-// import Button from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
 import EuroIcon from '@material-ui/icons/Euro';
 import PublicIcon from '@material-ui/icons/Public';
-import CategoryIcon from '@material-ui/icons/Category';
+// import CategoryIcon from '@material-ui/icons/Category';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -40,6 +40,7 @@ const useStyles = makeStyles(theme => ({
     return [day,mnth,date.getFullYear()].join("/");
   }
   
+   
 
 export default function EventDetails (props) {
   // il statemnt that not showing you anything till you get the api call
@@ -83,6 +84,7 @@ export default function EventDetails (props) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
+          <CardActionArea>
             <CardMedia
               component="img"
               alt="Event details"
@@ -123,12 +125,17 @@ export default function EventDetails (props) {
               </Typography>
               <Typography variant="body2" component="p">
                 {decodeHTMLEntities(props.apiFiltered['descripcio'])}
-              </Typography>     
+              </Typography>   
             </CardContent>
+            </CardActionArea>
+            <CardActions>
+        <Button href={props.apiFiltered['url']} target="_blank" >
+          See Event Web Page
+        </Button>
+        </CardActions>
           </div>
         </Fade>
       </Modal>
     </div>
   )
 };
- 

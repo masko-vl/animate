@@ -4,6 +4,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import 'typeface-roboto';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+
 import {todayDate,  getDateArray, convert, updateFilteredApi, showEventsCounter} from '../../sharedFunctions'
 import DatePicker from './DatePicker/DatePicker.js';
 import SelectEvent from "./SelectEvent/SelectEvent.js";
@@ -103,6 +104,12 @@ export default class FiltersNavbar extends Component {
     const dateEvent = date
     const category = this.state.category
     this.setState({data:updateFilteredApi(this.props.dataApi, city, category, dateEvent)})
+  }
+  componentDidUpdate(prevProps, prevState){
+    //Here we create a condition if the event couter change from 0 to >0 then we want to quit this alert "there arent results, please change the filters". So we compare inside a update method this state with the previous.
+    if(this.state.data.length>0 && prevState.data.length==0){
+      this.setState({alertEmptyEvents: false})
+    }
   }
 
   componentDidUpdate(prevProps, prevState){
