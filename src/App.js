@@ -14,7 +14,7 @@ class App extends Component {
     dataApi:[]
 }
 
-getSingleDate = () => {
+getDate = () => {
   //SELECT THE CURRENT DATE
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
