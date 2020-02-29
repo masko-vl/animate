@@ -159,3 +159,21 @@ export const getDateLongEvent = (data_inici, data_fi) => {
   }
   return EventDays ; 
 }
+/**
+ * Function that given 2 params, will return an array of objects without any key value duplicate. If any, it will keep the 1st result.
+ * @param {Array} myCities - Array of cities, each city is an object with different properties.
+ * @param {string} property - The property used to check for duplicates.
+ */
+export const deleteDuplicatedCities = (myCities, property) => {
+  let helperArray = []; // empty array that will store each city at the start
+  let result = []; // the returning array with the proper result
+
+  myCities.forEach(city => { // I use a for each to check each city (not a map since I don't need a return)
+    if (!helperArray.includes(city[property])) { // if the helper array doesn't include the property value we want...
+      result.push(city); // we push that item in the result array
+      helperArray.push(city[property]); // and we also push that property in the array
+    }
+    // the for each loop will keep looping and adding property values to the helper array and the city item to the result. At the moment that it finds a property we already have, it will skip the if statement, so it won't be pushed
+  })
+  return result;
+}
