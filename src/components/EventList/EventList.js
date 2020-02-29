@@ -9,7 +9,6 @@ import EventDetails from './../EventDetails/EventDetails.js';
 import { render } from '@testing-library/react';
 import Avatar from '@material-ui/core/Avatar';
 import {minPrice, categoryAvatar, undefinedCategoryAvatar} from './../../sharedFunctions.js'
-
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
@@ -20,10 +19,6 @@ const useStyles = makeStyles(theme => ({
     display: 'inline',
   },
 }));
-
-
-
-
 const EventList = (props) => { 
   render()
     return(
@@ -66,6 +61,5 @@ const EventList = (props) => {
     )
   )
 };
-
   export default EventList;
   
