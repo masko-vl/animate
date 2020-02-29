@@ -2,40 +2,25 @@
 import React, { Fragment } from "react";
 import { KeyboardDatePicker } from "@material-ui/pickers";
 import { createMuiTheme } from "@material-ui/core";
-import { ThemeProvider } from "@material-ui/styles";
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import teal from "@material-ui/core/colors/teal";
+
 const defaultMaterialTheme = createMuiTheme({
   overrides: {
     MuiPickersToolbar: {
-      toolbar: {
+      toolbar: {//cabecera calendario
         backgroundColor: teal["800"],
-      },
-    },
-    MuiPickersCalendarHeader: {
-      switchHeader: {
-        // backgroundColor: teal.A200,
-        // color: "white",
       },
     },
     MuiPickersDay: {
-      day: {
+      /* day: {
         color: teal.A700,
-      },
-      daySelected: {
-        backgroundColor: teal["800"],
-      },
-      dayDisabled: {
-        color: teal["100"],
-      },
-      current: {
-        color: teal["900"],
-      },
-    },
-    MuiPickersModal: {
-      dialogAction: {
-        color: teal["400"],
-      },
-    },
+      }, */
+     daySelected: {
+        backgroundColor: teal["700"],
+
+      }
+    }
   },
 });
   
@@ -45,7 +30,7 @@ const DatePicker = props => {
    return(
       //package datepicker use, changed from hook version
       <Fragment>
-       <ThemeProvider theme={defaultMaterialTheme}>
+       <MuiThemeProvider theme={defaultMaterialTheme}>
         <KeyboardDatePicker 
           autoOk
           variant="inline"
@@ -59,7 +44,7 @@ const DatePicker = props => {
           maxDate={new Date(props.dateCut)} /*is the date of the last event that it´s pased by api, it's converted in state from App.js this prop */
           minDate={new Date()}
         />
-        </ThemeProvider>
+        </MuiThemeProvider>
       </Fragment> 
     
 )}

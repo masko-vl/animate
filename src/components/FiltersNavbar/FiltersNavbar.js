@@ -4,7 +4,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import 'typeface-roboto';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-
+import "./FiltersNavbar.css"
 import {todayDate,  getDateArray, convert, updateFilteredApi, showEventsCounter} from '../../sharedFunctions'
 import DatePicker from './DatePicker/DatePicker.js';
 import SelectEvent from "./SelectEvent/SelectEvent.js";
@@ -132,7 +132,7 @@ export default class FiltersNavbar extends Component {
             </MuiPickersUtilsProvider>
         </Grid>
         {/*displayed alerts for the caught errors IT WILL BE GOOD TO PUT IT IN RED*/}
-        <Grid  item xs={12}>{this.state.alertEmptyCity? <p>please select a city for displaying results</p>: <p></p>}{this.state.alertEmptyEvents? <p>there arent results, please change the filters</p>: <p></p>}</Grid>
+        <Grid  item xs={12}>{this.state.alertEmptyCity? <p className="alert">*Please select a city for displaying results</p>  : <p></p>}{this.state.alertEmptyEvents?<p className="alert">*There aren't results, please change the filters</p>: <p></p>}</Grid>
         {/*display counter of events while selecting filters*/}
         <Grid  item xs={12}><p>{showEventsCounter(this.state.data)} corresponding event(s)</p></Grid>
         <Grid item xs={12}><ButtonForm chooseFilters={this.chooseFilters}/></Grid> 

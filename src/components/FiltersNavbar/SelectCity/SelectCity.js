@@ -11,7 +11,7 @@ import {makeItBeautiful} from './../../../sharedFunctions'
 const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 260,
+    minWidth: 268,
   },
 }));
 const citySelect=(value)=>{

@@ -9,8 +9,8 @@ import {eventsssCategories} from '../../../sharedFunctions'
 const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(2),/*space between inputs */
-    minWidth: 250,
-  },
+    minWidth: 268,
+  }
 }));
 
 export default function SelectEvent({changeEvent, event2}) {
