@@ -2,7 +2,7 @@
     width: 100%;
     top: 0;
     left:0;
-    border: solid 1px black;
+    border: solid 1px #004d40;
     height: 15%;
     
 }
@@ -31,11 +31,11 @@ span {
 
 }
 .icons:hover {
-    background-color:rgba(218, 230, 222, 0.774);
+    background-color: #e0f2f1;
 }
 .icons{
-    color: black;
+    color: #004d40
 }
 a {
-    color: black;
+    color: #004d40;
 }
