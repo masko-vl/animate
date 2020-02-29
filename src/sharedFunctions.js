@@ -1,6 +1,5 @@
 import {eventsCategories} from './components/images/images.js';
 import { format } from 'date-fns';
-import React from 'react';
 //USING THE EVENTS IMAGES :
 // import the images.js file
 // call an image as src=eventsCategories["name_of_the_image_you_want_to_use"]
@@ -10,7 +9,7 @@ import React from 'react';
     const numbersArray = []
     let result = ""
     for (let i = 0; i < array.length; i++) {
-      if (!isNaN(Number(array[i])) == true) {
+      if (!isNaN(Number(array[i])) === true) {
         numbersArray.push(Number(array[i]));
       }  
       if (numbersArray.length > 0) {
@@ -87,6 +86,7 @@ export const undefinedCategoryAvatar = () => {
        //insert in state al the data filtred
         dataFiltered.push(event)
      }
+     return dataFiltered
    })
    //in dataFiltered is returned duplicated and triplicated events so with this we select only once the events
    const finalDataFiltered = [...new Map(dataFiltered.map(event => [event.codi, event])).values()]
@@ -138,7 +138,7 @@ export function citySort(property) {
   }
 
   return function (a,b) {
-      if(sortOrder == -1){
+      if(sortOrder === -1){
           return b[property].localeCompare(a[property]);
       }else{
           return a[property].localeCompare(b[property]);

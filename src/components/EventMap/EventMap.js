@@ -17,7 +17,7 @@ const clearLtLong =(apifiltered)=>{
     if(event.latitud!== undefined && event.longitud!== undefined ){
       cordApi.push(event)
     }
-    
+    return cordApi
   })
   console.log(cordApi)
  return cordApi

@@ -23,7 +23,7 @@ const EventList = (props) => {
   render()
     return(
       //if there's no events in the data, show a message for the user
-      props.apiFiltered.length == 0
+      props.apiFiltered.length === 0
       ? <p>No result, please choose other filters or date! :)</p>
       //else print the events
       : props.apiFiltered.map((x, i) => 
@@ -48,7 +48,7 @@ const EventList = (props) => {
                   >
                   </Typography>
                   {x.descripcio ? x.descripcio.slice(0, 100) + "..." : "Click here for more information!!" }<br/>
-                  {x.data_inici == x.data_fi ? "" : "until " + new Date(x.data_fi.toString()).toString().slice(0, 9)} <br />
+                  {x.data_inici === x.data_fi ? "" : "until " + new Date(x.data_fi.toString()).toString().slice(0, 9)} <br />
                   {x.horari ? x.horari.slice(0, 50) + "[...]" : "Click to get time table"}<br/> 
                   {x.entrades ? "Price :" + minPrice(x.entrades): "free"}<br/>  
                 </React.Fragment>

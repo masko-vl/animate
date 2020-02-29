@@ -4,7 +4,6 @@ import MapIcon from '@material-ui/icons/Map';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import logo from './Logo/Logo.svg'
-import teal from "@material-ui/core/colors/teal";
 
  const Header= props =>(
     <header className='header'>

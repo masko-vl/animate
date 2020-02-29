@@ -108,16 +108,10 @@ export default class FiltersNavbar extends Component {
     const category = this.state.category
     this.setState({data:updateFilteredApi(this.props.dataApi, city, category, dateEvent)})
   }
-  componentDidUpdate(prevProps, prevState){
-    //Here we create a condition if the event couter change from 0 to >0 then we want to quit this alert "there arent results, please change the filters". So we compare inside a update method this state with the previous.
-    if(this.state.data.length>0 && prevState.data.length==0){
-      this.setState({alertEmptyEvents: false})
-    }
-  }
 
   componentDidUpdate(prevProps, prevState){
     //Here we create a condition if the event couter change from 0 to >0 then we want to quit this alert "there arent results, please change the filters". So we compare inside a update method this state with the previous.
-    if(this.state.data.length>0 && prevState.data.length==0){
+    if(this.state.data.length>0 && prevState.data.length===0){
       this.setState({alertEmptyEvents: false})
     }
   }
@@ -144,7 +138,7 @@ export default class FiltersNavbar extends Component {
         <Grid  item xs={12}>{this.state.alertEmptyCity? <p className="alert">*Please select a city for displaying results</p>  : <p></p>}{this.state.alertEmptyEvents?<p className="alert">*There aren't results, please change the filters</p>: <p></p>}</Grid>
         {/*display counter of events while selecting filters*/}
         <Grid  item xs={12}><p>{showEventsCounter(this.state.data)} corresponding event(s)</p></Grid>
-        <Grid item xs={12}><ButtonForm chooseFilters={this.chooseFilters}/></Grid> 
+        <Grid item xs={12}><ButtonForm  className="button" chooseFilters={this.chooseFilters}/></Grid> 
       </Grid>
     : <CalendarNav showFilters={this.showFilters} apiFiltered={this.state.data} updateEventCalendar={this.updateEventCalendar} getDateArray={getDateArray(new Date(), new Date(this.props.dateCut))}/>}
     </div>
