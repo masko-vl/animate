@@ -1,3 +1,6 @@
+
+
+
 .dates-container{
   display: flex;
   flex-wrap: nowrap;
@@ -8,7 +11,9 @@
 
 .date-text {
   padding: 10px; 
-  cursor: pointer
+  cursor: lighter;
+  font-weight: thin;
+
 }
 
 .date-card {
@@ -24,7 +29,6 @@
 
 .date-text:focus {
   padding: 10px;
-
   background-color: #004d40;
   color: white;
   border-radius: 25px;
@@ -34,5 +38,4 @@
   background-color: #004d40;
   color: white;
   border-radius: 25px;
-  font-weight: 500;
 }

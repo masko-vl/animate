@@ -9,8 +9,11 @@ import { render } from '@testing-library/react';
 
 
 const changeDateFormat = (date) => {
-    let format= date.split("-").reverse().join("-")
+    console.log(date)  // >>>> 29-02-2020
+    let format= date.split("-").reverse().join("-") 
+    console.log(format) //>>>> 2020-02-28
     format = new Date(format).toString().slice(0, 10)
+    //console.log(format)   // >>>> Sat Feb 29
     return format
 
 }
@@ -40,6 +43,7 @@ class CalendarNav extends Component {
                 <div className="dates-container">
                     {this.state.dates.map((date, i) => (
                     <div className="date-card" key={i} onClick={this.props.updateEventCalendar}>
+                    {console.log(date)}
                         <h3 className="date-text" id={date}>{changeDateFormat(date)}</h3>
                     </div>
                     ))}
