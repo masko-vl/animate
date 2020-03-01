@@ -126,7 +126,7 @@ export default class FiltersNavbar extends Component {
         justify="center"
         alignItems="center">  
         <Grid item xs={12}><Slogan/></Grid> 
-        <Grid item xs={12}><Typography variant="h5" component="h3" color='inherit'>Choose your preferences!</Typography> </Grid>
+        <Grid item xs={12}><Typography variant="h6" component="h3" color='inherit'>Choose your preferences!</Typography> </Grid>
         <Grid item xs={12}><SelectCity changeCity={this.saveCity} valueCities={this.props.valueCities}/></Grid>
         <Grid item xs={12}><SelectEvent  changeEvent={this.saveCategory}/></Grid>
         <Grid item xs={12}> 
