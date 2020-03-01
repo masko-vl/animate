@@ -55,7 +55,7 @@ export default class EventMap extends Component {
         {clearLtLong(this.props.apiFiltered).map((event, index) => (
         <Marker key={index} position={[parseFloat(event.latitud),parseFloat(event.longitud)]}>
           <Popup>
-           <img width='75px' height='75px' align='center' 
+           <img width='100%' align='center' 
            src= {event['tags_categor_es'] 
            ? 
             categoryAvatar(event['tags_categor_es']) 
@@ -64,7 +64,7 @@ export default class EventMap extends Component {
             ? 
             categoryAvatar(event['tags_categor_es']) 
             : undefinedCategoryAvatar()}></img>
-            <div align='center' >
+            <div align='left' >
             <br /><b>{event['denominaci']}</b>
             <br /> {convert(event['data_inici'])}{'-'}{convert(event['data_fi'])}
             <br />{event['horari']}
