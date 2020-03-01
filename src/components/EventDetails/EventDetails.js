@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
     
   },
  color: {
-    color: "white"
+    color: "white"+"!important"
   },
  button:{
     backgroundColor: "#004d40" 
@@ -110,10 +110,10 @@ export default function EventDetails (props) {
             <CardMedia
               className={classes.card}
               component="img"
-              alt="{props.apiFiltered ['tags_categor_es']}"
-              image={props.apiFiltered ['tags_categor_es'] 
+              alt="Event details"
+              image={props.apiFiltered['tags_categor_es'] 
               ? 
-              categoryAvatar(props.apiFiltered ['tags_categor_es']) : undefinedCategoryAvatar()}
+              categoryAvatar(props.apiFiltered['tags_categor_es']): undefinedCategoryAvatar()}
               title="Event details"
             />
             {/* {props.apiFiltered ['tags_categor_es'] ? categoryAvatar(props.apiFiltered ['tags_categor_es']) : undefinedCategoryAvatar()} */}

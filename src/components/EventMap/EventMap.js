@@ -18,7 +18,7 @@ const clearLtLong =(apifiltered)=>{
     if(event.latitud!== undefined && event.longitud!== undefined ){
       cordApi.push(event)
     }
-    
+    return cordApi
   })
   console.log(cordApi)
  return cordApi
@@ -26,6 +26,7 @@ const clearLtLong =(apifiltered)=>{
 
 export default class EventMap extends Component {
   // in tha state are the coordinates of Catalunya
+  
   state = {
     lat: parseFloat(clearLtLong(this.props.apiFiltered)[0].latitud),
     lng: parseFloat(clearLtLong(this.props.apiFiltered)[0].longitud),
@@ -34,7 +35,7 @@ export default class EventMap extends Component {
   render() {
      console.log('gfcgycuh', this.props.apiFiltered)
     const position = [this.state.lat, this.state.lng]
-    
+    console.log(this.props.apiFiltered)
    //  if the array of the props are empty, to keep the state, only if its filtred render the
     // if (this.props.apiFiltered.length ===0){
     //    this.props.apiFiltered.push({latitud:41.5912, longitud:1.5209})

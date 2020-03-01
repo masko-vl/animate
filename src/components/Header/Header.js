@@ -4,7 +4,6 @@ import MapIcon from '@material-ui/icons/Map';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import logo from './Logo/Logo.svg'
-import teal from "@material-ui/core/colors/teal";
 
  const Header= props =>(
     <header className='header'>
@@ -15,7 +14,7 @@ import teal from "@material-ui/core/colors/teal";
         <div className='space'/>
         <div className='header_items'>
             <ul>
-                <li className='icons' onClick={props.showMap} ><MapIcon style={{ fontSize: 30 }} onClick={style={{backgroundColor:'#004d40'}}} id="map"/></li>
+                <li className='icons' onClick={props.showMap} ><MapIcon style={{ fontSize: 30 }}  id="map"/></li>
                 <li className='icons' onClick={props.showList}><DateRangeIcon style={{ fontSize: 30 }} /> </li>
                 <li className='icons' onClick={props.showFilters}><a href='/'><FilterListIcon style={{ fontSize: 30 }}/> </a></li>
             </ul>
