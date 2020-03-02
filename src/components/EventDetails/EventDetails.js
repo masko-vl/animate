@@ -10,12 +10,12 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
 import EuroIcon from '@material-ui/icons/Euro';
 import PublicIcon from '@material-ui/icons/Public';
-// import CategoryIcon from '@material-ui/icons/Category';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import {categoryAvatar, decodeHTMLEntities, undefinedCategoryAvatar} from './../../sharedFunctions.js'
+
 const useStyles = makeStyles(theme => ({
   modal: {
     display: 'flex',
@@ -37,13 +37,7 @@ const useStyles = makeStyles(theme => ({
     return [day,mnth,date.getFullYear()].join("/");
   }
 export default function EventDetails (props) {
-  // il statemnt that not showing you anything till you get the api call
-  // if (props.apiFiltered === undefined){
-  //   props={
-  //     apiFiltered: {
-  //     }
-  //   }
-  // }
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
@@ -54,9 +48,9 @@ export default function EventDetails (props) {
   };
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
-        Find more
-      </button>
+      <Button type="button"  size="small" color="primary" onClick={handleOpen}>
+        Know More
+      </Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -77,9 +71,10 @@ export default function EventDetails (props) {
               alt="Event details"
               width ="120"
               height='120'
-              image={props.apiFiltered['tags_categor_es'] 
-              ? 
-              categoryAvatar(props.apiFiltered['tags_categor_es']): undefinedCategoryAvatar()}
+              image={props.apiFiltered['tags_categor_es']
+              ? categoryAvatar(props.apiFiltered['tags_categor_es'])
+              : undefinedCategoryAvatar()
+              }
               title="Event details"
             />
             {/* {props.apiFiltered ['tags_categor_es'] ? categoryAvatar(props.apiFiltered ['tags_categor_es']) : undefinedCategoryAvatar()} */}

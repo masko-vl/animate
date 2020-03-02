@@ -1,20 +1,20 @@
-import carnavals from './../images/carnavals.jpg';
-import cicles from "./../images/cicles.jpg";
-import concerts from "./../images/concerts.jpg";
-import conferencies from "./../images/conferencies.jpg";
-import cursos from "./../images/cursos.jpg";
-import dansa from "./../images/dansa.jpg";
-import exposicions from "./../images/exposicions.jpg";
-import festivals_i_mostres from "./../images/festivals_i_mostres.jpg";
-import fires_i_mercats from "./../images/fires_i_mercats.jpg";
-import infantil from "./../images/infantil.jpg";
-import festes from "./../images/festes.jpg";
-import rutes_i_visites from "./../images/rutes_i_visites.jpg";
-import sardanes from "./../images/sardanes.jpg";
-import setmana_santa from "./../images/setmana_santa.jpg";
-import teatre from "./../images/teatre.jpg";
-import undefined_event from "./../images/undefined_event.jpg";
-import logo from "./../images/logo.png";
+import carnavals from './carnavals.jpg';
+import cicles from "./cicles.jpg";
+import concerts from "./concerts.jpg";
+import conferencies from "./conferencies.jpg";
+import cursos from "./cursos.jpg";
+import dansa from "./dansa.jpg";
+import exposicions from "./exposicions.jpg";
+import festivals_i_mostres from "./festivals_i_mostres.jpg";
+import fires_i_mercats from "./fires_i_mercats.jpg";
+import infantil from "./infantil.jpg";
+import festes from "./festes.jpg";
+import rutes_i_visites from "./rutes_i_visites.jpg";
+import sardanes from "./sardanes.jpg";
+import setmana_santa from "./setmana_santa.jpg";
+import teatre from "./teatre.jpg";
+import undefined_event from "./undefined_event.jpg";
+import logo from "./logo.png";
 
 
 

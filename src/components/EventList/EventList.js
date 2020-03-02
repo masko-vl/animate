@@ -23,6 +23,9 @@ import Typography from '@material-ui/core/Typography';
 import {minPrice, categoryAvatar, undefinedCategoryAvatar} from './../../sharedFunctions.js'
 import EventDetails from './../EventDetails/EventDetails.js';
 import {eventsCategories} from '../images/images.js';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+
 
 // const displayCategoryPic = (category) => {
 //   {category 
@@ -31,25 +34,55 @@ import {eventsCategories} from '../images/images.js';
 //   }
 // }
 
+const checkDisplayDate = (start, end) => {
+  if(start === end) {
+    return "until " + new Date(end.toString()).toString().slice(0, 10)
+  } else if (start == true ){
+    return start
+  } else {
+    return "Click on know More for infos"
+  }
+}
 
-const useStyles = makeStyles({
+const checkDisplayOpeningHours = (openingHours) => {
+  if ( typeof openingHours !== 'undefined') {
+    return openingHours.slice(0, 50) + (openingHours.length > 50 ? "[...]" : "")
+  }else {
+    return "Click for more details"
+}}
+
+const useStyles = makeStyles(theme => ({
   root: {
-    maxWidth: 345,
+    flexGrow: 1,
   },
   media: {
     height: 140,
   },
-});
+
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+}));
 
 export default function EventList(props) {
   const classes = useStyles();
 
   return (
-    props.apiFiltered.length === 0
-      ?<p>No result, please choose other filters or date! 8=></p>
+    <Fragment className={classes.root}>
+    <Grid
+      container
+      direction="row"
+      justify="center"
+      alignItems="center"
+    >
+    {props.apiFiltered.length === 0
+      ?<p>No result, please choose other filters or date!</p>
 //else print the events
-      : props.apiFiltered.map((x, i) => 
-      <Fragment key={i}>
+      : props.apiFiltered.map((x, i) =>
+      <Grid item xs={10} md={6}>
+
         <Card className={classes.root}>
           <CardActionArea>
             <CardMedia
@@ -61,31 +94,33 @@ export default function EventList(props) {
             ? <img src={categoryAvatar(x.tags_categor_es)} alt={x.tags_categor_es}></img>
             : <img src={undefinedCategoryAvatar()} alt="event"></img>
             }
+            
               title="Contemplative Reptile"
             >
             </CardMedia>
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                Lizard
+              <Typography gutterBottom variant="body2" component="p">
+              <b>{x.denominaci}</b>
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-                Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                across all continents except Antarctica
+                {x.descripcio ? x.descripcio.slice(0, 70) + "..." : "Click here for more information!!" }<br/>
+                <b>Dates : </b>{checkDisplayDate(x.data_inici, x.data_fi)}<br />
+                <b>Open times : </b>{checkDisplayOpeningHours(x.horari)}<br/> 
+                {console.log(x.horari? x.horari.length : "no hours")}
+                <b>Price : </b>{x.entrades ? "Price :" + minPrice(x.entrades): "free"}<br/>
               </Typography>
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <Button size="small" color="primary">
-              Share
-            </Button>
-            <Button size="small" color="primary">
-              Learn More
-            </Button>
+            <EventDetails apiFiltered={x}/>
           </CardActions>
         </Card>
-        <EventDetails apiFiltered={x}/>
-      </Fragment> 
-    )
+      </Grid>
+      )
+    }
+    </Grid>
+  </Fragment> 
+    
   )
 }
 
@@ -94,9 +129,8 @@ export default function EventList(props) {
 
 
 
-//       //if there's no events in the data, show a message for the user
-//       props.apiFiltered.length === 0
-//       ? <p>No result, please choose other filters or date! :)</p>
+
+
 //       //else print the events
 //       : props.apiFiltered.map((x, i) => 
 //       <Fragment key={i}>
@@ -110,6 +144,8 @@ export default function EventList(props) {
 //             </ListItemAvatar>
 //             <ListItemText
 //               primary={x.denominaci}
+
+
 //               secondary={
 //                 <React.Fragment>
 //                   <Typography
