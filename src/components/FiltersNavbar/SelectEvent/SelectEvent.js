@@ -9,20 +9,19 @@ import {eventsssCategories} from '../../../sharedFunctions'
 const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(2),/*space between inputs */
-    minWidth: 250,
-  },
+    minWidth: 268,
+  }
 }));
 
 export default function SelectEvent({changeEvent, event2}) {
 
   const classes = useStyles();
-  const [state, setState] = React.useState({});
 
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
   React.useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth);
-  });
+  },[]);
 
   return (
     <div>

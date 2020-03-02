@@ -77,9 +77,9 @@ export default function EventDetails (props) {
               alt="Event details"
               width ="120"
               height='120'
-              image={props.apiFiltered ['tags_categor_es'] 
+              image={props.apiFiltered['tags_categor_es'] 
               ? 
-              categoryAvatar(props.apiFiltered ['tags_categor_es']) : undefinedCategoryAvatar()}
+              categoryAvatar(props.apiFiltered['tags_categor_es']): undefinedCategoryAvatar()}
               title="Event details"
             />
             {/* {props.apiFiltered ['tags_categor_es'] ? categoryAvatar(props.apiFiltered ['tags_categor_es']) : undefinedCategoryAvatar()} */}

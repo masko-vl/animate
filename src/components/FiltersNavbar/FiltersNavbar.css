@@ -1,25 +1,6 @@
-/* .containerFiltersNav{
-    
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    border: 2px solid darkorchid;
-    padding-bottom: 70px;
-    padding-top: 50px;
-    box-sizing: border-box;
+.alert{
+    color: red;
 }
-.containerFiltersNav h4{
-    text-align: center;
-}
-.formFilters{
-    display: flex;
-     width:60%; 
-    align-items: center;
-    flex-direction: column;
-    
-} */
-.background{
-    background-image: url('BackGround/background.jpg');
-    background-size: contain;
+.button{
+    color:black !important
 }

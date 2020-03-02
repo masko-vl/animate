@@ -1,21 +1,17 @@
 import React, {Component, Fragment} from 'react';
 import 'dayjs/locale/ca';
-import { format } from 'date-fns';
 import './CalendarNav.css';
 import EventList from './../EventList/EventList.js';
 import EventMap from './../EventMap/EventMap.js'
 import Header from '../Header/Header'
-import { render } from '@testing-library/react';
 
 
 const changeDateFormat = (date) => {
-    console.log(date)  // >>>> 29-02-2020
-    let format= date.split("-").reverse().join("-") 
-    console.log(format) //>>>> 2020-02-28
+    let format= date.split("-").reverse().join("-")
     format = new Date(format).toString().slice(0, 10)
-    //console.log(format)   // >>>> Sat Feb 29
-    return format
-
+    let newArr = format.split(" ")
+    newArr = [newArr[0], newArr[1], newArr[2]] = [newArr[0], newArr[2], newArr[1]]
+    return newArr.join(" ")
 }
 
 class CalendarNav extends Component {
@@ -36,7 +32,7 @@ class CalendarNav extends Component {
             eventListDisplay: true
         }) 
     }
-    render(props) {
+    render() {
         return(
             <Fragment>
                 <Header showFilters={this.props.showFilters} showList={this.showList} showMap={this.showMap}/>

@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import './App.css';
 import FiltersNavbar from './components/FiltersNavbar/FiltersNavbar.js';
-
 import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner'
 import {getDateLongEvent} from './sharedFunctions.js'
 
@@ -67,6 +65,7 @@ async componentDidMount(){
     if(event.comarca_i_municipi!== undefined){
       arrayMunicipi.push(event.comarca_i_municipi)
     }
+    return arrayMunicipi
   })
   //select only the cities once (not repited)
   let valueCities = arrayMunicipi.reduce((total, city) => total.includes(city) ? total : [...total, city], [])
