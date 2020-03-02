@@ -25,20 +25,22 @@ import EventDetails from './../EventDetails/EventDetails.js';
 import {eventsCategories} from '../images/images.js';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import {changeDateFormat} from '../../sharedFunctions'
 
 
-// const displayCategoryPic = (category) => {
-//   {category 
-//     ? categoryAvatar(category)
-//     : undefinedCategoryAvatar()
-//   }
-// }
+ 
+const displayCategoryPic = (category) => {
+  return category 
+    ? categoryAvatar(category) 
+     : undefinedCategoryAvatar() 
+    }
+ 
+
 
 const checkDisplayDate = (start, end) => {
   if(start === end) {
     return "until " + new Date(end.toString()).toString().slice(0, 10)
-  } else if (start == true ){
-    return start
+  } else if (start !== undefined ){
   } else {
     return "Click on know More for infos"
   }
@@ -74,14 +76,15 @@ export default function EventList(props) {
     <Grid
       container
       direction="row"
-      justify="center"
-      alignItems="center"
+      justify="left"
+      alignItems="left"
+      justify="space-around"
     >
     {props.apiFiltered.length === 0
       ?<p>No result, please choose other filters or date!</p>
-//else print the events
-      : props.apiFiltered.map((x, i) =>
-      <Grid item xs={10} md={6}>
+      : props.apiFiltered.map(x =>
+
+      <Grid item xs={10} md={5}>
 
         <Card className={classes.root}>
           <CardActionArea>
@@ -90,12 +93,10 @@ export default function EventList(props) {
               component="img"
               alt=""
               height="140"
-              image={x.tags_category_es
-            ? <img src={categoryAvatar(x.tags_categor_es)} alt={x.tags_categor_es}></img>
-            : <img src={undefinedCategoryAvatar()} alt="event"></img>
-            }
+              image= {displayCategoryPic(x.tags_categor_es)}
+              
             
-              title="Contemplative Reptile"
+              title="Event Barcelona"
             >
             </CardMedia>
             <CardContent>
@@ -106,7 +107,6 @@ export default function EventList(props) {
                 {x.descripcio ? x.descripcio.slice(0, 70) + "..." : "Click here for more information!!" }<br/>
                 <b>Dates : </b>{checkDisplayDate(x.data_inici, x.data_fi)}<br />
                 <b>Open times : </b>{checkDisplayOpeningHours(x.horari)}<br/> 
-                {console.log(x.horari? x.horari.length : "no hours")}
                 <b>Price : </b>{x.entrades ? "Price :" + minPrice(x.entrades): "free"}<br/>
               </Typography>
             </CardContent>
@@ -115,6 +115,7 @@ export default function EventList(props) {
             <EventDetails apiFiltered={x}/>
           </CardActions>
         </Card>
+        <br/>
       </Grid>
       )
     }
@@ -131,7 +132,8 @@ export default function EventList(props) {
 
 
 
-//       //else print the events
+ 
+//else print the events
 //       : props.apiFiltered.map((x, i) => 
 //       <Fragment key={i}>
 //         <List className={useStyles.root}>

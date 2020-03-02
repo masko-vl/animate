@@ -29,7 +29,8 @@ export const categoryAvatar = (apiCategory) => {
   const array = apiCategory.split("/")
   
   // get the name of the category from the api
-  const category = array[array.length - 1]
+  const category = array[array.length - 1].replace(/-/g, "_")
+  console.log(category)
  
   // Choosing the corresponding image in the images.js file. (don't forget to import the images file!!) !! Each name of image should take the exact same name as the api cathegory name to make them match !!
   const categoryImage = eventsCategories[category]
@@ -146,6 +147,17 @@ export const chooseCategoryImage = (category) => {
       {value:"infantil", name:"Kids"} ,
    
 ]
+
+//DISPLAY API DATE FORMAT IN A MORE FRIENDLY ONE : ex: Thu 10 Mar
+export const changeDateFormat = (date) => {
+  let format= date.split("-").reverse().join("-")
+  format = new Date(format).toString().slice(0, 10)
+  let newArr = format.split(" ")
+  newArr = [newArr[0], newArr[1], newArr[2]] = [newArr[0], newArr[2], newArr[1]]
+  return newArr.join(" ")
+}
+
+
 // this function sort the cities alphabeticaly
 export function citySort(property) {
   var sortOrder = 1;
@@ -154,6 +166,9 @@ export function citySort(property) {
       sortOrder = -1;
       property = property.substr(1);
   }
+
+
+
 
   return function (a,b) {
       if(sortOrder === -1){
