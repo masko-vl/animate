@@ -141,7 +141,7 @@ export const changeDateFormat = (date) => {
   let format= date.split("-").reverse().join("-")
   format = new Date(format).toString().slice(0, 10)
   let newArr = format.split(" ")
-  newArr = [newArr[0], newArr[1], newArr[2]] = [newArr[0], newArr[2], newArr[1]]
+  newArr = [newArr[0], newArr[2], newArr[1]]
   return newArr.join(" ")
 }
 
