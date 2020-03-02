@@ -16,7 +16,7 @@ import 'dayjs/locale/ca';
       if (numbersArray.length > 0) {
         result = "Des de " + Math.min(...numbersArray) + "€"
       } else {
-        result = "Click for more Info"
+        result = "Clic per més informació"
       };
     }
     return result 
