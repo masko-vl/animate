@@ -26,7 +26,7 @@ export default function SelectEvent({changeEvent, event2}) {
   return (
     <div>
       <FormControl required variant="outlined" className={classes.formControl}>
-        <InputLabel ref={inputLabel} htmlFor="event">
+        <InputLabel ref={inputLabel} htmlFor="event" style={{color: 'black'}}>
           Select type of event :)
         </InputLabel>
         <Select

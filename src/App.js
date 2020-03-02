@@ -3,7 +3,7 @@ import axios from 'axios';
 import FiltersNavbar from './components/FiltersNavbar/FiltersNavbar.js';
 import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner'
 import {getDateLongEvent} from './sharedFunctions.js'
-
+import './App.css'
 class App extends Component {
   state = {
     data: {},

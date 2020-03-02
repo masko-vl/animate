@@ -1,6 +1,13 @@
 .alert{
     color: red;
+    font-size: 0.8em;
+
 }
 .button{
-    color:black !important
+    color:white !important;
+    
+}
+.textcolor{
+     color: black !important;
+     font-weight: bold !important;
 }

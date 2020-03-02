@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
+import InputBase from '@material-ui/core/InputBase';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
@@ -15,7 +16,11 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1),
     minWidth: 268,
   },
-}));
+  filled:{
+    border:'2 px solid #004d40'
+  }
+}))
+
 const citySelect = (value) => {
   let arrayCities = value.split('/')
   let city = arrayCities[arrayCities.length - 1]
@@ -48,8 +53,8 @@ export default function SelectCity({ changeCity, valueCities }) {
     <div>
 
       <FormControl variant="outlined" className={classes.formControl}>
-        <InputLabel htmlFor="grouped-select" >Select city</InputLabel>
-        <Select defaultValue="" onChange={changeCity} input={<Input id="grouped-select" required />}>
+        <InputLabel htmlFor="grouped-select" style={{color: 'black'}}>Select city</InputLabel>
+        <Select className={classes.filled} defaultValue="" onChange={changeCity} input={<Input id="grouped-select" required />}>
           {/*show the city categories */}
           {!valueCities ? <MenuItem value={'barcelona'}>Barcelona</MenuItem> : cityArr.map((city, index) => {
             return (<MenuItem key={index} value={city.value}>{city.displayText}</MenuItem>)

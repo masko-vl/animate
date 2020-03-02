@@ -14,7 +14,7 @@ import logo from './Logo/Logo.svg'
         <div className='space'/>
         <div className='header_items'>
             <ul>
-                <li className='icons' onClick={props.showMap}><MapIcon style={{ fontSize: 30 }}  id="map"/></li>
+                <li className='icons' onClick={props.showMap} ><MapIcon style={{ fontSize: 30 }}  id="map"/></li>
                 <li className='icons' onClick={props.showList}><DateRangeIcon style={{ fontSize: 30 }} /> </li>
                 <li className='icons' onClick={props.showFilters}><a href='/'><FilterListIcon style={{ fontSize: 30 }}/> </a></li>
             </ul>
