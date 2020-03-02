@@ -8,11 +8,13 @@
 
 .date-text {
   padding: 10px; 
-  cursor: pointer
+  cursor: lighter;
+  font-weight: thin;
+
 }
 
 .date-card {
-  font-size: 12px;
+  font-size: 8px;
   border-radius: 25px;
   min-width: 71px;
   min-height: 50px;
@@ -24,7 +26,6 @@
 
 .date-text:focus {
   padding: 10px;
-
   background-color: #004d40;
   color: white;
   border-radius: 25px;
@@ -34,5 +35,4 @@
   background-color: #004d40;
   color: white;
   border-radius: 25px;
-  font-weight: 500;
 }

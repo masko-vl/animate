@@ -20,19 +20,39 @@ import { format } from 'date-fns';
     }
     return result 
   };
+
+
+
 // GETTING THE IMAGE CORREPONDING TO THE API NAME OF CATHEGORY (in the render call the function that way : categoryAvatar(x.tags_categor_es))
 export const categoryAvatar = (apiCategory) => {
+  
   const array = apiCategory.split("/")
+  
   // get the name of the category from the api
-  const category = array[array.length - 1]
+  const category = array[array.length - 1].replace(/-/g, "_")
+  console.log(category)
+ 
   // Choosing the corresponding image in the images.js file. (don't forget to import the images file!!) !! Each name of image should take the exact same name as the api cathegory name to make them match !!
   const categoryImage = eventsCategories[category]
+  console.log(categoryImage)
   return categoryImage
 };
 // GETTING AN IMAGE IN CASE OF UNDEFINED CATHEGORY
 export const undefinedCategoryAvatar = () => {
   return eventsCategories["undefined_event"]
 }
+
+export const chooseCategoryImage = (category) => {
+  category ? categoryAvatar() : undefinedCategoryAvatar()
+}
+
+// const displayCategoryPic = (category) => {
+//   {category 
+//     ? categoryAvatar(category)
+//     : undefinedCategoryAvatar()
+//   }
+
+
 // REPLACE THE ENCODINGS FROM THE text we recieve from API
   export const decodeHTMLEntities= (str)=> {
     if(str && typeof str === 'string') {
@@ -95,7 +115,6 @@ export const undefinedCategoryAvatar = () => {
   } 
 
 
-
   //TO SHOW THE NUMBER OF EVENT RESULTS WHEN SELECT FILTERS
   export const showEventsCounter=(data)=>{
     return data.length
@@ -128,6 +147,17 @@ export const undefinedCategoryAvatar = () => {
       {value:"infantil", name:"Kids"} ,
    
 ]
+
+//DISPLAY API DATE FORMAT IN A MORE FRIENDLY ONE : ex: Thu 10 Mar
+export const changeDateFormat = (date) => {
+  let format= date.split("-").reverse().join("-")
+  format = new Date(format).toString().slice(0, 10)
+  let newArr = format.split(" ")
+  newArr = [newArr[0], newArr[1], newArr[2]] = [newArr[0], newArr[2], newArr[1]]
+  return newArr.join(" ")
+}
+
+
 // this function sort the cities alphabeticaly
 export function citySort(property) {
   var sortOrder = 1;
@@ -136,6 +166,9 @@ export function citySort(property) {
       sortOrder = -1;
       property = property.substr(1);
   }
+
+
+
 
   return function (a,b) {
       if(sortOrder === -1){

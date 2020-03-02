@@ -57,7 +57,6 @@ export default class FiltersNavbar extends Component {
     const validDateFormat= convert(e)
     const city = this.state.city
     const category = this.state.category
-    console.log(validDateFormat)
     //change state with the new date
     this.setState({
       date: validDateFormat,
@@ -79,7 +78,6 @@ export default class FiltersNavbar extends Component {
        
     }else{ 
     //create a loop in the events api array and pass if statement for select the events and display diferent errors
-    console.log(dateEvent)
     
     this.setState({
       data:updateFilteredApi(this.props.dataApi, city, category, dateEvent),
@@ -100,7 +98,6 @@ export default class FiltersNavbar extends Component {
     //convert to api format
     let date = new Date(e.target.id.replace(/(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3"))
     date = convert(date)
-    console.log(date)
     this.setState({date:date}) 
     //change data api filtered
     const city = this.state.city
@@ -118,17 +115,19 @@ export default class FiltersNavbar extends Component {
 
   render(){
   return(
-      <div >
+      <div>
       {this.state.showFilters 
       ? <Grid   
+        
         container
         direction="column"
         justify="center"
-        alignItems="center">  
+        alignItems="center"
+        >  
         <Grid item xs={12}><Slogan/></Grid> 
-        <Grid item xs={12}><Typography variant="h6" component="h3" color='inherit'>Choose your preferences!</Typography> </Grid>
+        <Grid item xs={12}><Typography className={'textcolor'} variant="h6" component="h3" color='inherit'>Choose your preferences!</Typography> </Grid>
         <Grid item xs={12}><SelectCity changeCity={this.saveCity} valueCities={this.props.valueCities}/></Grid>
-        <Grid item xs={12}><SelectEvent  changeEvent={this.saveCategory}/></Grid>
+        <Grid item xs={12}><SelectEvent changeEvent={this.saveCategory}/></Grid>
         <Grid item xs={12}> 
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <DatePicker date2={this.state.date} changeDate={this.saveDate} dateCut={this.props.dateCut}/>

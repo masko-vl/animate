@@ -5,6 +5,7 @@ import { createMuiTheme } from "@material-ui/core";
 import { MuiThemeProvider }from '@material-ui/core/styles';
 import teal from "@material-ui/core/colors/teal";
 
+
 const defaultMaterialTheme = createMuiTheme({
   overrides: {
     MuiPickersToolbar: {
@@ -39,7 +40,7 @@ const DatePicker = props => {
           format="MM/dd/yyyy"
           value={props.date2}
           InputAdornmentProps={{ position: "start" }}
-
+          
           onChange={date => props.changeDate(date)}
           maxDate={new Date(props.dateCut)} /*is the date of the last event that it´s pased by api, it's converted in state from App.js this prop */
           minDate={new Date()}

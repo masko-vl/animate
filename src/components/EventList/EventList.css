@@ -1,5 +1,12 @@
+img {
+    height: auto;
+    width: width;
+    object-fit: cover;
+  }
 
 
-Fragment {
-    transition: 0.2s;
-}
+  .cardText {
+      font-size: 8px;
+      color: red;
+  }
+  

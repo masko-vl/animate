@@ -4,24 +4,8 @@ import './CalendarNav.css';
 import EventList from './../EventList/EventList.js';
 import EventMap from './../EventMap/EventMap.js'
 import Header from '../Header/Header'
+import {changeDateFormat} from '../../sharedFunctions'
 
-/* 
-const changeDateFormat = (date) => {
-    let format= date.split("-").reverse().join("-")
-    format = new Date(format).toString().slice(0, 10)
-    return format
-
-} */
-
-
-const changeDateFormat = (date) => {
-    let format= date.split("-").reverse().join("-")
-    format = new Date(format).toString().slice(0, 10)
-    let newArr = format.split(" ")
-    newArr = [newArr[0], newArr[1], newArr[2]] = [newArr[0], newArr[2], newArr[1]]
-    return newArr.join(" ")
-   
-}
 
 class CalendarNav extends Component {
     state = {
@@ -54,13 +38,15 @@ class CalendarNav extends Component {
                         <h3 className="date-text" id={date}>{changeDateFormat(date)}</h3>
                     </div>
                     ))}
-                </div>
-                {
-                    this.state.eventListDisplay
-                    ? <EventList apiFiltered={this.props.apiFiltered} />
-                    : <EventMap apiFiltered={this.props.apiFiltered}/>
-                }              
-            </Fragment>
+                
+                ))}
+            </div>
+            {
+                this.state.eventListDisplay
+                ? <EventList apiFiltered={this.props.apiFiltered} />
+                : <EventMap apiFiltered={this.props.apiFiltered}/>
+            }              
+        </Fragment>
         )
     }
 };

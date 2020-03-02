@@ -14,7 +14,9 @@ const useStyles = makeStyles(theme => ({
   },
   color:{
     color:'white'+'!important',
+    
   }
+
 }));
    
   export default function ButtonForm({chooseFilters}) {
