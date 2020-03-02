@@ -27,7 +27,7 @@ export default function SelectEvent({changeEvent, event2}) {
     <div>
       <FormControl required variant="outlined" className={classes.formControl}>
         <InputLabel ref={inputLabel} htmlFor="event" style={{color: 'black'}}>
-          Select type of event :)
+          Tipus d'esdeveniment :)
         </InputLabel>
         <Select
         /*default properties with material-ui */

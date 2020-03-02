@@ -81,7 +81,7 @@ export default function EventList(props) {
       justify="space-around"
     >
     {props.apiFiltered.length === 0
-      ?<p>No result, please choose other filters or date!</p>
+      ?<p>Cap resultat, trieu altres filtres o dates!</p>
       : props.apiFiltered.map(x =>
 
       <Grid item xs={10} md={5}>
@@ -104,10 +104,10 @@ export default function EventList(props) {
               <b>{x.denominaci}</b>
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-                {x.descripcio ? x.descripcio.slice(0, 70) + "..." : "Click here for more information!!" }<br/>
+                {x.descripcio ? x.descripcio.slice(0, 70) + "..." : "Clic aquí per obtenir més informació!!" }<br/>
                 <b>Dates : </b>{checkDisplayDate(x.data_inici, x.data_fi)}<br />
-                <b>Open times : </b>{checkDisplayOpeningHours(x.horari)}<br/> 
-                <b>Price : </b>{x.entrades ? "Price :" + minPrice(x.entrades): "free"}<br/>
+                <b>Horaris : </b>{checkDisplayOpeningHours(x.horari)}<br/> 
+                <b>Preus : </b>{x.entrades ? "Des de" + minPrice(x.entrades): "free"}<br/>
               </Typography>
             </CardContent>
           </CardActionArea>
@@ -124,51 +124,3 @@ export default function EventList(props) {
     
   )
 }
-
-
-
-
-
-
-
-
- 
-//else print the events
-//       : props.apiFiltered.map((x, i) => 
-//       <Fragment key={i}>
-//         <List className={useStyles.root}>
-//           <ListItem alignItems="flex-start">
-//             <ListItemAvatar>
-//             {x.tags_categor_es 
-//             ? <Avatar alt="evento animate" src={categoryAvatar(x.tags_categor_es)} />  
-//             : <Avatar alt="evento animate" src={undefinedCategoryAvatar()} /> 
-//             }
-//             </ListItemAvatar>
-//             <ListItemText
-//               primary={x.denominaci}
-
-
-//               secondary={
-//                 <React.Fragment>
-//                   <Typography
-//                     component="span"
-//                     variant="body2"
-//                     className={useStyles.inline}
-//                     color="textPrimary"
-//                   >
-//                   </Typography>
-//                   {x.descripcio ? x.descripcio.slice(0, 100) + "..." : "Click here for more information!!" }<br/>
-//                   {x.data_inici === x.data_fi ? "" : "until " + new Date(x.data_fi.toString()).toString().slice(0, 9)} <br />
-//                   {x.horari ? x.horari.slice(0, 50) + "[...]" : "Click to get time table"}<br/> 
-//                   {x.entrades ? "Price :" + minPrice(x.entrades): "free"}<br/>  
-//                 </React.Fragment>
-//               }
-//             />
-//           </ListItem>
-//         </List>
-//         <EventDetails apiFiltered={x}/>
-//       </Fragment>  
-//     )
-//   )
-// };
-  

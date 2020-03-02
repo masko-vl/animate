@@ -1,5 +1,6 @@
 import {eventsCategories} from './components/images/images.js';
 import { format } from 'date-fns';
+import 'dayjs/locale/ca';
 //USING THE EVENTS IMAGES :
 // import the images.js file
 // call an image as src=eventsCategories["name_of_the_image_you_want_to_use"]
@@ -123,14 +124,14 @@ export const chooseCategoryImage = (category) => {
   }
 //array of categories
   export const eventsssCategories= [
-      {value:"all", name:"All events"},
-      {value:"festivals_i_mostres", name:"Festivals"},
+      {value:"all", name:"Tots els esdeveniments"},
+      {value:"festivals_i_mostres", name:"Festivals i mostres"},
       {value:"concerts", name:"Concerts"},
       {value:"expositions", name:"Expositions"},
-      {value:"sardanes", name:"Sardanas"},
-      {value:"festes", name:"Parties"},
-      {value:"teatre", name:"Theater"},
-      {value:"rutes-i-visites", name:"Routes and visits"},
+      {value:"sardanes", name:"Sardanes"},
+      {value:"festes", name:"Festes"},
+      {value:"teatre", name:"Teater"},
+      {value:"rutes-i-visites", name:"Rutes i visites"},
       {value:"fires-i-mercats", name:"Feirs and mercats"},
       {value:"carnavals", name:"Carnavals"},
       {value:"setmana-santa", name:"Easter week"},

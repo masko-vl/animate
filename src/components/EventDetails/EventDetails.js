@@ -93,7 +93,7 @@ export default function EventDetails (props) {
   return (
     <div>
       <Button className={classes.button} type="button" onClick={handleOpen}>
-        <span className ={classes.color}>Find more</span> 
+        <span className ={classes.color}>Més detalls</span> 
       </Button>  
       <Modal
         className={classes.modal}
@@ -136,10 +136,6 @@ export default function EventDetails (props) {
                 <EuroIcon style={{ fontSize: 11 }}/>
                 {props.apiFiltered['entrades'] ? "Price :" + minPrice(props.apiFiltered['entrades']): "free"}
               </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                <PublicIcon style={{ fontSize: 11}} />
-                {props.apiFiltered['url']} 
-              </Typography>
               <Typography variant="body2" component="p">
                 {decodeHTMLEntities(props.apiFiltered['descripcio'])}
               </Typography>   
@@ -147,10 +143,6 @@ export default function EventDetails (props) {
             </CardActionArea>
             <CardActions>
             {checkLinkExists(props.apiFiltered['url'])}
-  
-        {/* <Button className={classes.button} href={props.apiFiltered['url']} target="_blank" >
-         <span className ={classes.color}>Check Event's Official Page</span> 
-        </Button> */}
         </CardActions>
           </div>
         </Fade>

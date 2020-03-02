@@ -76,7 +76,7 @@ export default class FiltersNavbar extends Component {
        
     }else{ 
     //create a loop in the events api array and pass if statement for select the events and display diferent errors
-    
+    e.preventDefault()
     this.setState({
       data:updateFilteredApi(this.props.dataApi, city, category, dateEvent),
     }, () => {
@@ -108,6 +108,8 @@ export default class FiltersNavbar extends Component {
     if(this.state.data.length>0 && prevState.data.length===0){
       this.setState({alertEmptyEvents: false})
     }
+    
+
   }
 
   render(){
@@ -121,7 +123,7 @@ export default class FiltersNavbar extends Component {
         alignItems="center"
         >  
         <Grid item xs={12}><Slogan/></Grid> 
-        <Grid item xs={12}><Typography className={'textcolor'} variant="h6" component="h3" color='inherit'>Choose your preferences!</Typography> </Grid>
+        <Grid item xs={12}><Typography className={'textcolor'} variant="h6" component="h3" color='inherit'>Escull les teves preferències!</Typography> </Grid>
         <Grid item xs={12}><SelectCity changeCity={this.saveCity} valueCities={this.props.valueCities}/></Grid>
         <Grid item xs={12}><SelectEvent changeEvent={this.saveCategory}/></Grid>
         <Grid item xs={12}> 
@@ -129,9 +131,9 @@ export default class FiltersNavbar extends Component {
                 <DatePicker date2={this.state.date} changeDate={this.saveDate} dateCut={this.props.dateCut}/>
             </MuiPickersUtilsProvider>
         </Grid>
-        <Grid  item xs={12}>{this.state.alertEmptyCity? <p className="alert">*Please select a city for displaying results</p>  : <p></p>}{this.state.alertEmptyEvents?<p className="alert">*There aren't results, please change the filters</p>: <p></p>}</Grid>
+        <Grid  item xs={12}>{this.state.alertEmptyCity? <p className="alert">*Seleccioneu una ciutat per mostrar resultats</p>  : <p></p>}{this.state.alertEmptyEvents?<p className="alert">*No hi ha resultats, canvieu els filtres</p>: <p></p>}</Grid>
         {/*display counter of events while selecting filters*/}
-        <Grid  item xs={12}><p>{showEventsCounter(this.state.data)} corresponding event(s)</p></Grid>
+        <Grid  item xs={12}><p>{showEventsCounter(this.state.data)} esdeveniment(s) propers</p></Grid>
         <Grid item xs={12}><ButtonForm  className="button" chooseFilters={this.chooseFilters}/></Grid> 
       </Grid>
     : <CalendarNav 

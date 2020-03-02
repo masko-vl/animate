@@ -36,7 +36,7 @@ const DatePicker = props => {
           autoOk
           variant="inline"
           inputVariant="outlined"
-          label="WHEN?"
+          label="QUAN?"
           format="MM/dd/yyyy"
           value={props.date2}
           InputAdornmentProps={{ position: "start" }}
