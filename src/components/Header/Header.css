@@ -29,12 +29,18 @@ span {
     height: 10vmin;
 
 }
-.icons:hover {
-    background-color: #e0f2f1;
-}
-.icons{
-    color: black;
-}
-a {
+
+.icons a{
     color:black;
+}
+
+a:hover { 
+    color: #004d40 ;
+}
+.icons:hover {
+    color: #004d40 ;
+}
+
+.default {
+    color: #004d40;  
 }

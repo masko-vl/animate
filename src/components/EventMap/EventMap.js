@@ -20,7 +20,6 @@ const clearLtLong =(apifiltered)=>{
     }
     return cordApi
   })
-  console.log(cordApi)
  return cordApi
 }
 
@@ -33,17 +32,7 @@ export default class EventMap extends Component {
     zoom: 12
   }
   render() {
-     console.log('gfcgycuh', this.props.apiFiltered)
     const position = [this.state.lat, this.state.lng]
-    console.log(this.props.apiFiltered)
-   //  if the array of the props are empty, to keep the state, only if its filtred render the
-    // if (this.props.apiFiltered.length ===0){
-    //    this.props.apiFiltered.push({latitud:41.5912, longitud:1.5209})
-    // };
-    
-// if ( (this.props.apiFiltered[0].latitud === '') && (this.props.apiFiltered[0].longitud === '')) {
-//   this.props.apiFiltered.push({latitud:41.5912, longitud:1.5209})
-// };
     // used the parseFloat method to convert from string to inter keeping the decimals
     return (
       <Map center={position} zoom={this.state.zoom}>
@@ -55,7 +44,7 @@ export default class EventMap extends Component {
         {clearLtLong(this.props.apiFiltered).map((event, index) => (
         <Marker key={index} position={[parseFloat(event.latitud),parseFloat(event.longitud)]}>
           <Popup>
-           <img width='75px' height='75px' align='center' 
+           <img width='100%' align='center' 
            src= {event['tags_categor_es'] 
            ? 
             categoryAvatar(event['tags_categor_es']) 
@@ -64,11 +53,10 @@ export default class EventMap extends Component {
             ? 
             categoryAvatar(event['tags_categor_es']) 
             : undefinedCategoryAvatar()}></img>
-            <div align='center' >
+            <div align='left' >
             <br /><b>{event['denominaci']}</b>
             <br /> {convert(event['data_inici'])}{'-'}{convert(event['data_fi'])}
             <br />{event['horari']}
-            {/*{x.descripcio ? x.descripcio.slice(0, 100) + "..." : "Click here for more information!!" }<br/> */}
             <br />{decodeHTMLEntities(event['descripcio']? event['descripcio'].slice(0, 75) + "..." : "Click here for more information!!") }
             <br/>{event['entrades'] ? "Price :" + minPrice(event['entrades']): "free"}
             {/* passing the props as the event, to recieve the event details of the pop clicked */}
