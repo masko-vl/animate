@@ -53,7 +53,7 @@ export default function SelectCity({ changeCity, valueCities }) {
     <div>
 
       <FormControl variant="outlined" className={classes.formControl}>
-        <InputLabel htmlFor="grouped-select" >Select city</InputLabel>
+        <InputLabel htmlFor="grouped-select" style={{color: 'black'}}>Select city</InputLabel>
         <Select className={classes.filled} defaultValue="" onChange={changeCity} input={<Input id="grouped-select" required />}>
           {/*show the city categories */}
           {!valueCities ? <MenuItem value={'barcelona'}>Barcelona</MenuItem> : cityArr.map((city, index) => {
