@@ -73,6 +73,20 @@ export default function EventDetails (props) {
   const handleOpen = () => {
     setOpen(true);
   };
+
+
+ 
+
+  const checkLinkExists = (link) => {
+    console.log(link)
+    return link 
+    ? 
+    <Button className={classes.button} href={link} target="_blank" >
+    <span className ={classes.color}>Check Event's Official Page</span> 
+   </Button>
+    : ""
+  }
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -132,9 +146,11 @@ export default function EventDetails (props) {
             </CardContent>
             </CardActionArea>
             <CardActions>
-        <Button className={classes.button} href={props.apiFiltered['url']} target="_blank" >
+            {checkLinkExists(props.apiFiltered['url'])}
+  
+        {/* <Button className={classes.button} href={props.apiFiltered['url']} target="_blank" >
          <span className ={classes.color}>Check Event's Official Page</span> 
-        </Button>
+        </Button> */}
         </CardActions>
           </div>
         </Fade>
