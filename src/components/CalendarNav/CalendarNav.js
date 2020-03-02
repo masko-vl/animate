@@ -38,8 +38,6 @@ class CalendarNav extends Component {
                         <h3 className="date-text" id={date}>{changeDateFormat(date)}</h3>
                     </div>
                     ))}
-                
-                ))}
             </div>
             {
                 this.state.eventListDisplay

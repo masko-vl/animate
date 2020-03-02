@@ -57,8 +57,8 @@ export default class EventMap extends Component {
             <br /><b>{event['denominaci']}</b>
             <br /> {convert(event['data_inici'])}{'-'}{convert(event['data_fi'])}
             <br />{event['horari']}
-            <br />{decodeHTMLEntities(event['descripcio']? event['descripcio'].slice(0, 75) + "..." : "Click here for more information!!") }
-            <br/>{event['entrades'] ? "Price :" + minPrice(event['entrades']): "free"}
+            <br />{decodeHTMLEntities(event['descripcio']? event['descripcio'].slice(0, 75) + "..." : "Clic aquí per obtenir més informació!!") }
+            <br/>{event['entrades'] ? "Preus :" + minPrice(event['entrades']): "gratis"}
             {/* passing the props as the event, to recieve the event details of the pop clicked */}
             
         <EventDetails apiFiltered={event}>
