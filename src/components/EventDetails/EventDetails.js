@@ -1,5 +1,4 @@
 import React from 'react';
-// import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -10,7 +9,6 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
 import EuroIcon from '@material-ui/icons/Euro';
 import PublicIcon from '@material-ui/icons/Public';
-// import CategoryIcon from '@material-ui/icons/Category';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -33,7 +31,6 @@ const useStyles = makeStyles(theme => ({
   paper: {
     backgroundColor: theme.palette.background.paper,
     border: '1px solid #004d40',
-    // boxShadow: theme.shadows[5],
     padding: theme.spacing(1, 2, 2),
     
   },
@@ -44,16 +41,8 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#004d40" 
   },
 card :{
-    height:'250px',
-    // width:'100px',
-//     margin: '0 auto',
-//     marginTop: '15%',
+    height:'250px'
   },
-// root : {
-//     height:'100%',
-//     width:'100%'
-// }
- 
 }));
 export const minPrice = (sentence) => {
   const array = sentence.split(" ")
@@ -90,9 +79,8 @@ export default function EventDetails (props) {
   return (
     <div>
       <Button className={classes.button} type="button" onClick={handleOpen}>
-      <span className ={classes.color}>Find more</span> 
-      </Button>
-      
+        <span className ={classes.color}>Find more</span> 
+      </Button>  
       <Modal
         className={classes.modal}
         open={open}
@@ -100,10 +88,9 @@ export default function EventDetails (props) {
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
-          timeout: 500,
-          
+          timeout: 500,   
         }}
-      >
+       >
         <Fade in={open}>
           <div className={classes.paper}>
           <CardActionArea className={classes.root}>
@@ -116,7 +103,6 @@ export default function EventDetails (props) {
               categoryAvatar(props.apiFiltered['tags_categor_es']): undefinedCategoryAvatar()}
               title="Event details"
             />
-            {/* {props.apiFiltered ['tags_categor_es'] ? categoryAvatar(props.apiFiltered ['tags_categor_es']) : undefinedCategoryAvatar()} */}
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
                 {props.apiFiltered['denominaci']}
@@ -132,10 +118,6 @@ export default function EventDetails (props) {
                 <WatchLaterIcon style={{ fontSize: 11 }} />
                 {convert(props.apiFiltered['data_inici'])}{'-'}{convert(props.apiFiltered['data_fi'])}
               </Typography>
-              {/* <Typography variant="body2" color="textSecondary" component="p"> */}
-              {/* <CategoryIcon style={{ fontSize: 10 }} />
-              {props.apiFiltered['tags_categor_es']}
-              </Typography> */}
               <Typography variant="body2" color="textSecondary" component="p">
                 <EuroIcon style={{ fontSize: 11 }}/>
                 {props.apiFiltered['entrades'] ? "Price :" + minPrice(props.apiFiltered['entrades']): "free"}
