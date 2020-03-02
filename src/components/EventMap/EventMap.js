@@ -3,6 +3,7 @@ import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import EventDetails from '../EventDetails/EventDetails'
 import {minPrice, categoryAvatar, undefinedCategoryAvatar, decodeHTMLEntities} from './../../sharedFunctions.js'
 
+
 // format of the date we recieve from API
 function convert(e) {
   var date = new Date(e),
@@ -54,7 +55,7 @@ export default class EventMap extends Component {
         {clearLtLong(this.props.apiFiltered).map((event, index) => (
         <Marker key={index} position={[parseFloat(event.latitud),parseFloat(event.longitud)]}>
           <Popup>
-           <img width='150' height='100'
+           <img width='75px' height='75px' align='center' 
            src= {event['tags_categor_es'] 
            ? 
             categoryAvatar(event['tags_categor_es']) 
@@ -63,6 +64,7 @@ export default class EventMap extends Component {
             ? 
             categoryAvatar(event['tags_categor_es']) 
             : undefinedCategoryAvatar()}></img>
+            <div align='center' >
             <br /><b>{event['denominaci']}</b>
             <br /> {convert(event['data_inici'])}{'-'}{convert(event['data_fi'])}
             <br />{event['horari']}
@@ -70,8 +72,10 @@ export default class EventMap extends Component {
             <br />{decodeHTMLEntities(event['descripcio']? event['descripcio'].slice(0, 75) + "..." : "Click here for more information!!") }
             <br/>{event['entrades'] ? "Price :" + minPrice(event['entrades']): "free"}
             {/* passing the props as the event, to recieve the event details of the pop clicked */}
+            
         <EventDetails apiFiltered={event}>
         </EventDetails>
+        </div>
           </Popup>
         </Marker>
       ))}

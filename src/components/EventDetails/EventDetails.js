@@ -15,21 +15,62 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import '../EventDetails/EventDetails.css'
 import {categoryAvatar, decodeHTMLEntities, undefinedCategoryAvatar} from './../../sharedFunctions.js'
+
 const useStyles = makeStyles(theme => ({
   modal: {
-    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: "220",
+    overflow:'scroll',
+    height:'85%',
+    width:'85%',
+    margin: '0 auto',
+    marginTop: '5%',
+    outline: 0,
+    dysplay: 'block'
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  }
+    border: '1px solid #004d40',
+    // boxShadow: theme.shadows[5],
+    padding: theme.spacing(1, 2, 2),
+    
+  },
+ color: {
+    color: "white"+"!important"
+  },
+ button:{
+    backgroundColor: "#004d40" 
+  },
+card :{
+    height:'250px',
+    // width:'100px',
+//     margin: '0 auto',
+//     marginTop: '15%',
+  },
+// root : {
+//     height:'100%',
+//     width:'100%'
+// }
+ 
 }));
+export const minPrice = (sentence) => {
+  const array = sentence.split(" ")
+  const numbersArray = []
+  let result = ""
+  for (let i = 0; i < array.length; i++) {
+    if (!isNaN(Number(array[i])) == true) {
+      numbersArray.push(Number(array[i]));
+    }  
+    if (numbersArray.length > 0) {
+      result = " from " + Math.min(...numbersArray) + "€"
+    } else {
+      result = "Check event's page for more Info"
+    };
+  }
+  return result 
+};
   function convert(e) {
     var date = new Date(e),
       mnth = ("0" + (date.getMonth() + 1)).slice(-2),
@@ -37,13 +78,7 @@ const useStyles = makeStyles(theme => ({
     return [day,mnth,date.getFullYear()].join("/");
   }
 export default function EventDetails (props) {
-  // il statemnt that not showing you anything till you get the api call
-  // if (props.apiFiltered === undefined){
-  //   props={
-  //     apiFiltered: {
-  //     }
-  //   }
-  // }
+ 
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
@@ -54,12 +89,11 @@ export default function EventDetails (props) {
   };
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
-        Find more
-      </button>
+      <Button className={classes.button} type="button" onClick={handleOpen}>
+      <span className ={classes.color}>Find more</span> 
+      </Button>
+      
       <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
         className={classes.modal}
         open={open}
         onClose={handleClose}
@@ -67,23 +101,23 @@ export default function EventDetails (props) {
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500,
+          
         }}
       >
         <Fade in={open}>
           <div className={classes.paper}>
-          <CardActionArea>
+          <CardActionArea className={classes.root}>
             <CardMedia
+              className={classes.card}
               component="img"
               alt="Event details"
-              width ="120"
-              height='120'
               image={props.apiFiltered['tags_categor_es'] 
               ? 
               categoryAvatar(props.apiFiltered['tags_categor_es']): undefinedCategoryAvatar()}
               title="Event details"
             />
             {/* {props.apiFiltered ['tags_categor_es'] ? categoryAvatar(props.apiFiltered ['tags_categor_es']) : undefinedCategoryAvatar()} */}
-            <CardContent className={classes.root}>
+            <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
                 {props.apiFiltered['denominaci']}
               </Typography>
@@ -91,11 +125,11 @@ export default function EventDetails (props) {
                 {props.apiFiltered['espai']}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-                <LocationOnIcon style={{ fontSize: 10 }}/>
+                <LocationOnIcon style={{ fontSize: 11 }}/>
                 {props.apiFiltered['adre_a']}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-                <WatchLaterIcon style={{ fontSize: 10 }} />
+                <WatchLaterIcon style={{ fontSize: 11 }} />
                 {convert(props.apiFiltered['data_inici'])}{'-'}{convert(props.apiFiltered['data_fi'])}
               </Typography>
               {/* <Typography variant="body2" color="textSecondary" component="p"> */}
@@ -103,11 +137,11 @@ export default function EventDetails (props) {
               {props.apiFiltered['tags_categor_es']}
               </Typography> */}
               <Typography variant="body2" color="textSecondary" component="p">
-                <EuroIcon style={{ fontSize: 10 }}/>
-                {props.apiFiltered['entrades']}
+                <EuroIcon style={{ fontSize: 11 }}/>
+                {props.apiFiltered['entrades'] ? "Price :" + minPrice(props.apiFiltered['entrades']): "free"}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-                <PublicIcon style={{ fontSize: 10 }} />
+                <PublicIcon style={{ fontSize: 11}} />
                 {props.apiFiltered['url']} 
               </Typography>
               <Typography variant="body2" component="p">
@@ -116,8 +150,8 @@ export default function EventDetails (props) {
             </CardContent>
             </CardActionArea>
             <CardActions>
-        <Button href={props.apiFiltered['url']} target="_blank" >
-          See Event Web Page
+        <Button className={classes.button} href={props.apiFiltered['url']} target="_blank" >
+         <span className ={classes.color}>Check Event's Official Page</span> 
         </Button>
         </CardActions>
           </div>
