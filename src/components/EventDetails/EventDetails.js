@@ -8,7 +8,6 @@ import Typography from '@material-ui/core/Typography';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
 import EuroIcon from '@material-ui/icons/Euro';
-import PublicIcon from '@material-ui/icons/Public';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -35,7 +34,7 @@ const useStyles = makeStyles(theme => ({
     
   },
  color: {
-    color: "white"+"!important"
+    color: "white !important"
   },
  button:{
     backgroundColor: "#004d40" 
@@ -49,7 +48,7 @@ export const minPrice = (sentence) => {
   const numbersArray = []
   let result = ""
   for (let i = 0; i < array.length; i++) {
-    if (!isNaN(Number(array[i])) == true) {
+    if (!isNaN(Number(array[i])) === true) {
       numbersArray.push(Number(array[i]));
     }  
     if (numbersArray.length > 0) {
@@ -78,7 +77,6 @@ export default function EventDetails (props) {
  
 
   const checkLinkExists = (link) => {
-    console.log(link)
     return link 
     ? 
     <Button className={classes.button} href={link} target="_blank" >

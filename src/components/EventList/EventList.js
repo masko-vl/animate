@@ -1,15 +1,3 @@
-// import React, {Fragment} from 'react';
-// import { makeStyles } from '@material-ui/core/styles';
-// import List from '@material-ui/core/List';
-// import ListItem from '@material-ui/core/ListItem';
-// import ListItemText from '@material-ui/core/ListItemText';
-// import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-// import Typography from '@material-ui/core/Typography';
-// import EventDetails from './../EventDetails/EventDetails.js';
-// import { render } from '@testing-library/react';
-// import Avatar from '@material-ui/core/Avatar';
-// import {minPrice, categoryAvatar, undefinedCategoryAvatar} from './../../sharedFunctions.js'
-
 
 import React, {Fragment} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
@@ -18,14 +6,10 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import {minPrice, categoryAvatar, undefinedCategoryAvatar} from './../../sharedFunctions.js'
 import EventDetails from './../EventDetails/EventDetails.js';
-import {eventsCategories} from '../images/images.js';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import {changeDateFormat} from '../../sharedFunctions'
 
 
  
@@ -72,19 +56,19 @@ export default function EventList(props) {
   const classes = useStyles();
 
   return (
-    <Fragment className={classes.root}>
+    <Fragment>
     <Grid
+      className={classes.root}
       container
       direction="row"
-      justify="left"
-      alignItems="left"
+      alignItems="flex-start"
       justify="space-around"
     >
     {props.apiFiltered.length === 0
       ?<p>Cap resultat, trieu altres filtres o dates!</p>
-      : props.apiFiltered.map(x =>
+      : props.apiFiltered.map((x, i) =>
 
-      <Grid item xs={10} md={5}>
+      <Grid item xs={10} md={5} key={i}>
 
         <Card className={classes.root}>
           <CardActionArea>
@@ -94,8 +78,6 @@ export default function EventList(props) {
               alt=""
               height="140"
               image= {displayCategoryPic(x.tags_categor_es)}
-              
-            
               title="Event Barcelona"
             >
             </CardMedia>
