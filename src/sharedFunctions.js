@@ -30,11 +30,11 @@ export const categoryAvatar = (apiCategory) => {
   
   // get the name of the category from the api
   const category = array[array.length - 1].replace(/-/g, "_")
-  console.log(category)
+ 
  
   // Choosing the corresponding image in the images.js file. (don't forget to import the images file!!) !! Each name of image should take the exact same name as the api cathegory name to make them match !!
   const categoryImage = eventsCategories[category]
-  console.log(categoryImage)
+
   return categoryImage
 };
 // GETTING AN IMAGE IN CASE OF UNDEFINED CATHEGORY
@@ -45,12 +45,6 @@ export const undefinedCategoryAvatar = () => {
 export const chooseCategoryImage = (category) => {
   category ? categoryAvatar() : undefinedCategoryAvatar()
 }
-
-// const displayCategoryPic = (category) => {
-//   {category 
-//     ? categoryAvatar(category)
-//     : undefinedCategoryAvatar()
-//   }
 
 
 // REPLACE THE ENCODINGS FROM THE text we recieve from API

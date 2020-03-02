@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+
 import FiltersNavbar from './components/FiltersNavbar/FiltersNavbar.js';
 import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner'
+
 import {getDateLongEvent} from './sharedFunctions.js'
 import './App.css'
+
 class App extends Component {
   state = {
     data: {},
@@ -19,7 +22,6 @@ getDate = () => {
   var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
   var yyyy = today.getFullYear();
   today = yyyy + '-' + mm + '-' + dd;
-  //console.log(today);
   return today;
 }
 
@@ -42,20 +44,9 @@ async componentDidMount(){
       dates: getDateLongEvent(event.data_inici, event.data_fi)
     })
    
-
-    //reate an object of event and this date arrayc
-/*     var obj = {};
-    obj[event] = getDateLongEvent(event.data_inici, event.data_fi);
-    //push in the array all the objects of events
-    eventsLong.push(obj) */
-
   })
-  //console.log(eventsLong);
   //save in state this new array for use it in filters
   this.setState({dataApi:eventsLong})
-
-  
-
 
 //CREATE AN ARRAY OF CITYS AFTER API IS LOADED
   var arrayMunicipi=[];
@@ -73,8 +64,6 @@ async componentDidMount(){
   this.setState({valueCities:valueCities})
 
 }
-
-
   render(){
     return (
       <div className="">
@@ -82,5 +71,5 @@ async componentDidMount(){
       </div>
     );
   }
-  }
+}
 export default App;

@@ -1,0 +1,7 @@
+.color{
+    color:white;
+    transition: 1s;
+}
+.color:hover{
+    color:black
+}

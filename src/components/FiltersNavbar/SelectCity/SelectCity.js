@@ -25,7 +25,6 @@ const citySelect = (value) => {
   let arrayCities = value.split('/')
   let city = arrayCities[arrayCities.length - 1]
   city = city.replace(/([-])/g, " ")
-  // console.log(city)
 
   return city
 }
@@ -46,7 +45,6 @@ export default function SelectCity({ changeCity, valueCities }) {
     cityArr = deleteDuplicatedCities(cityArr, 'displayText') //call the function with our city array and the key name we need
     cityArr.sort(citySort('displayText'))
   }
-  console.log(cityArr)
 
   return (
 

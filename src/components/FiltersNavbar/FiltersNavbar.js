@@ -1,18 +1,18 @@
 import React, { Component } from "react";
+
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import 'typeface-roboto';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import "./FiltersNavbar.css"
 import {todayDate,  getDateArray, convert, updateFilteredApi, showEventsCounter} from '../../sharedFunctions'
-import DatePicker from './DatePicker/DatePicker.js';
-import SelectEvent from "./SelectEvent/SelectEvent.js";
-import SelectCity from "./SelectCity/SelectCity.js";
 import ButtonForm from "./ButtonForm/ButtonForm.js";
-import Slogan from './Slogan/Slogan'
 import CalendarNav from './../CalendarNav/CalendarNav.js'
-
+import DatePicker from './DatePicker/DatePicker.js';
+import Grid from '@material-ui/core/Grid';
+import SelectCity from "./SelectCity/SelectCity.js";
+import SelectEvent from "./SelectEvent/SelectEvent.js";
+import Slogan from './Slogan/Slogan'
+import Typography from '@material-ui/core/Typography';
 
 export default class FiltersNavbar extends Component {
   //save in this state al the categories the user decide to after save in data the event that displays with this parameters
@@ -43,13 +43,12 @@ export default class FiltersNavbar extends Component {
     const city = this.state.city
     const dateEvent = this.state.date
     const category = e.target.value
-    //console.log(e.target)
+  
     this.setState({
       //return from form the value of selected category
       category: e.target.value,
       data:updateFilteredApi(this.props.dataApi, city, category, dateEvent)
     },()=>{showEventsCounter(this.state.data)},()=>{if(this.state.data.lenght>0){this.setState({alertEmptyCity: false})}}) 
-    //console.log('hijodeputaaa!',this.state.data.length)
     
   }
   saveDate=(e)=>{
@@ -62,7 +61,6 @@ export default class FiltersNavbar extends Component {
       date: validDateFormat,
       data:updateFilteredApi(this.props.dataApi, city, category, validDateFormat)
     },()=>{showEventsCounter(this.state.data)},()=>{if(this.state.data.lenght>0){this.setState({alertEmptyCity: false})}})  
-    //console.log(this.state.date)
   }
 
   chooseFilters= (e) => {
@@ -91,7 +89,6 @@ export default class FiltersNavbar extends Component {
       /*if there arent event also show a display in the render and don't go to events list */
       this.setState({alertEmptyEvents: true})
     }})}
-    // console.log(updateFilteredApi(this.props.dataApi, city, category, dateEvent))
   }
 
   updateEventCalendar=(e)=>{
@@ -117,8 +114,7 @@ export default class FiltersNavbar extends Component {
   return(
       <div>
       {this.state.showFilters 
-      ? <Grid   
-        
+      ? <Grid
         container
         direction="column"
         justify="center"
@@ -133,13 +129,17 @@ export default class FiltersNavbar extends Component {
                 <DatePicker date2={this.state.date} changeDate={this.saveDate} dateCut={this.props.dateCut}/>
             </MuiPickersUtilsProvider>
         </Grid>
-        {/*displayed alerts for the caught errors IT WILL BE GOOD TO PUT IT IN RED*/}
         <Grid  item xs={12}>{this.state.alertEmptyCity? <p className="alert">*Please select a city for displaying results</p>  : <p></p>}{this.state.alertEmptyEvents?<p className="alert">*There aren't results, please change the filters</p>: <p></p>}</Grid>
         {/*display counter of events while selecting filters*/}
         <Grid  item xs={12}><p>{showEventsCounter(this.state.data)} corresponding event(s)</p></Grid>
         <Grid item xs={12}><ButtonForm  className="button" chooseFilters={this.chooseFilters}/></Grid> 
       </Grid>
-    : <CalendarNav showFilters={this.showFilters} apiFiltered={this.state.data} updateEventCalendar={this.updateEventCalendar} getDateArray={getDateArray(new Date(), new Date(this.props.dateCut))}/>}
+    : <CalendarNav 
+        showFilters={this.showFilters} 
+        apiFiltered={this.state.data} 
+        updateEventCalendar={this.updateEventCalendar} 
+        getDateArray={getDateArray(new Date(), new Date(this.props.dateCut))}
+        />}
     </div>
   )
 }}
