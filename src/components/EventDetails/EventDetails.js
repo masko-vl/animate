@@ -77,11 +77,7 @@ export const minPrice = (sentence) => {
     return [day,mnth,date.getFullYear()].join("/");
   }
 export default function EventDetails (props) {
-<<<<<<< HEAD
-
-=======
  
->>>>>>> f5f23032e3a010532fd15bd179f45526348f7d09
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
@@ -92,16 +88,10 @@ export default function EventDetails (props) {
   };
   return (
     <div>
-<<<<<<< HEAD
-      <Button type="button"  size="small" color="primary" onClick={handleOpen}>
-        Know More
-      </Button>
-=======
       <Button className={classes.button} type="button" onClick={handleOpen}>
       <span className ={classes.color}>Find more</span> 
       </Button>
       
->>>>>>> f5f23032e3a010532fd15bd179f45526348f7d09
       <Modal
         className={classes.modal}
         open={open}
@@ -120,18 +110,9 @@ export default function EventDetails (props) {
               className={classes.card}
               component="img"
               alt="Event details"
-<<<<<<< HEAD
-              width ="120"
-              height='120'
-              image={props.apiFiltered['tags_categor_es']
-              ? categoryAvatar(props.apiFiltered['tags_categor_es'])
-              : undefinedCategoryAvatar()
-              }
-=======
               image={props.apiFiltered['tags_categor_es'] 
               ? 
               categoryAvatar(props.apiFiltered['tags_categor_es']): undefinedCategoryAvatar()}
->>>>>>> f5f23032e3a010532fd15bd179f45526348f7d09
               title="Event details"
             />
             {/* {props.apiFiltered ['tags_categor_es'] ? categoryAvatar(props.apiFiltered ['tags_categor_es']) : undefinedCategoryAvatar()} */}
