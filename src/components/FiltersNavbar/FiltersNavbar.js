@@ -108,8 +108,6 @@ export default class FiltersNavbar extends Component {
     if(this.state.data.length>0 && prevState.data.length===0){
       this.setState({alertEmptyEvents: false})
     }
-    
-
   }
 
   render(){

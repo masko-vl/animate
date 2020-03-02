@@ -14,20 +14,14 @@ const defaultMaterialTheme = createMuiTheme({
       },
     },
     MuiPickersDay: {
-      /* day: {
-        color: teal.A700,
-      }, */
      daySelected: {
         backgroundColor: teal["700"],
-
       }
     }
   },
 });
   
 const DatePicker = props => {
-  //const [selectedDate, handleDateChange] = useState(new Date());
-  //console.log(props.dateCut)
    return(
       //package datepicker use, changed from hook version
       <Fragment>
@@ -51,27 +45,4 @@ const DatePicker = props => {
 )}
 
 export default DatePicker
-
-      
-
-/* 
-const DatePicker = ({changeDate}) => {
-const [selectedDate] = useState(new Date());
-//console.log(selectedDate)
-  return (
-    <Fragment>
-      <KeyboardDatePicker 
-        autoOk
-        variant="inline"
-        inputVariant="outlined"
-        label="WHEN?"
-        format="MM/dd/yyyy"
-        value={selectedDate}
-        InputAdornmentProps={{ position: "start" }}
-        onChange={date => changeDate(date)}
-      />
-    </Fragment> 
-    );
-} */
-
 

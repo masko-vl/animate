@@ -14,7 +14,7 @@ import 'dayjs/locale/ca';
         numbersArray.push(Number(array[i]));
       }  
       if (numbersArray.length > 0) {
-        result = " from " + Math.min(...numbersArray) + "€"
+        result = "Des de " + Math.min(...numbersArray) + "€"
       } else {
         result = "Click for more Info"
       };
@@ -26,18 +26,14 @@ import 'dayjs/locale/ca';
 
 // GETTING THE IMAGE CORREPONDING TO THE API NAME OF CATHEGORY (in the render call the function that way : categoryAvatar(x.tags_categor_es))
 export const categoryAvatar = (apiCategory) => {
-  
   const array = apiCategory.split("/")
-  
   // get the name of the category from the api
   const category = array[array.length - 1].replace(/-/g, "_")
- 
- 
   // Choosing the corresponding image in the images.js file. (don't forget to import the images file!!) !! Each name of image should take the exact same name as the api cathegory name to make them match !!
   const categoryImage = eventsCategories[category]
-
   return categoryImage
 };
+
 // GETTING AN IMAGE IN CASE OF UNDEFINED CATHEGORY
 export const undefinedCategoryAvatar = () => {
   return eventsCategories["undefined_event"]
@@ -93,11 +89,8 @@ export const chooseCategoryImage = (category) => {
       if(event.comarca_i_municipi === `${city}` &&  category === 'all' && event.dates.includes((dateEvent))){
        //insert in state al the data filtred
        dataFiltered.push(event)
-       
-
        //if we pase all the filters city/category/date
-     }else if(event.comarca_i_municipi === `${city}` && event.tags_categor_es === `agenda:categories/${category}`&& event.dates.includes((dateEvent))){
-       
+     }else if(event.comarca_i_municipi === `${city}` && event.tags_categor_es === `agenda:categories/${category}`&& event.dates.includes((dateEvent))){ 
        //insert in state al the data filtred
         dataFiltered.push(event)
      }
@@ -161,8 +154,6 @@ export function citySort(property) {
       sortOrder = -1;
       property = property.substr(1);
   }
-
-
 
 
   return function (a,b) {
