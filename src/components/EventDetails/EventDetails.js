@@ -31,6 +31,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.paper,
     border: '1px solid #004d40',
     padding: theme.spacing(1, 2, 2),
+    // height:'100vh'
     
   },
  color: {
@@ -42,6 +43,9 @@ const useStyles = makeStyles(theme => ({
 card :{
     height:'250px'
   },
+root :{
+  height : '100vh'
+}  
 }));
 export const minPrice = (sentence) => {
   const array = sentence.split(" ")
@@ -138,10 +142,10 @@ export default function EventDetails (props) {
                 {decodeHTMLEntities(props.apiFiltered['descripcio'])}
               </Typography>   
             </CardContent>
-            </CardActionArea>
             <CardActions>
             {checkLinkExists(props.apiFiltered['url'])}
-        </CardActions>
+              </CardActions>
+            </CardActionArea>
           </div>
         </Fade>
       </Modal>
