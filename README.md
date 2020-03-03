@@ -23,6 +23,24 @@ Inside the filters navbar we manage with diferent functions the selects of city,
 
 In the Calendar we recive the data api filtered to pass it to the event list and also to manage the dates with a onclick in each day the change the state of filters so the events are changing also. The calendar is an array that displays from today to the end of the data api events date.
 
+### Header
+
+Is the component of `CalendarNav`, because it appears only after you choose the filters.
+In the `Header` you find the navbar that contains a logo and the icons for other displayed components: eventmap, event list and home-Filerts.
+
+### EventMap
+
+For this component we used the Leaflet map package [here](https://leafletjs.com/),
+with the styling from OpenStreetMap.
+This is linked directly in index.css and index.html
+After that we create the `EventMap` component that receives the information from the parent and used some functions to convert what we receive from the API.
+
+For the markers on the map, we pass the coordinates of the selected cities and specific events and convert them to inter from string(how it comes from API). 
+
+The `EventDetails` is a modal with scroll bar made with MUI and receives props from the parent,with icons as titles, and images for each category.
+
+
+
 
 
 
