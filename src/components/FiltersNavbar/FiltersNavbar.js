@@ -138,7 +138,7 @@ export default class FiltersNavbar extends Component {
         showFilters={this.showFilters} 
         apiFiltered={this.state.data} 
         updateEventCalendar={this.updateEventCalendar} 
-        getDateArray={getDateArray(new Date(), new Date(this.props.dateCut))}
+        getDateArray={getDateArray(new Date(), new Date(this.props.dateCut.replace(/,/g, "/")))}
         />}
     </div>
   )
