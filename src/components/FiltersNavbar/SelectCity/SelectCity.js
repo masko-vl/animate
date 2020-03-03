@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
@@ -9,7 +9,15 @@ import { makeItBeautiful } from './../../../sharedFunctions'
 import { citySort } from './../../../sharedFunctions'
 import { deleteDuplicatedCities } from './../../../sharedFunctions'
 
+const getList=(cityArr)=>{
+  {/* <MenuItem value={'barcelona'}>Barcelona</MenuItem> 
+  <MenuItem value={'barcelona'}>Girona</MenuItem> 
+  <MenuItem value={'barcelona'}>Tarragona</MenuItem>  */}
+  cityArr.map((city, index) => {
+    return (<MenuItem key={index} value={city.value}>{city.displayText}</MenuItem>)
 
+  })
+}
 const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(1),
@@ -53,10 +61,18 @@ export default function SelectCity({ changeCity, valueCities }) {
         <InputLabel htmlFor="grouped-select" style={{color: 'black'}}>Selecciona ciutat</InputLabel>
         <Select className={classes.filled} defaultValue="" onChange={changeCity} input={<Input id="grouped-select" required />}>
           {/*show the city categories */}
-          {!valueCities ? <MenuItem value={'barcelona'}>Barcelona</MenuItem> : cityArr.map((city, index) => {
-            return (<MenuItem key={index} value={city.value}>{city.displayText}</MenuItem>)
+          <MenuItem style={{fontWeight:'bold'}} value={'agenda:ubicacions/barcelona/barcelones/barcelona'}>Barcelona</MenuItem>
+          <MenuItem style={{fontWeight:'bold'}} value={"agenda:ubicacions/girona/girones/girona"}>Girona</MenuItem>
+          <MenuItem style={{fontWeight:'bold'}} value={"agenda:ubicacions/tarragona/tarragones/tarragona"}>Tarragona</MenuItem>
+          <MenuItem style={{fontWeight:'bold'}} value={'agenda:ubicacions/lleida/segria/lleida'}>Lleida</MenuItem>
+          <hr></hr>
+          {!valueCities 
+          ? <MenuItem value={'barcelona'}>Barcelona</MenuItem> 
+          :cityArr.map((city, index) => {
+            //console.log(city)
+    return (<MenuItem key={index} value={city.value}>{city.displayText}</MenuItem>)
 
-          })}
+  })}
 
         </Select>
       </FormControl>
