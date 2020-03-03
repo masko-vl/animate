@@ -52,9 +52,9 @@ export const minPrice = (sentence) => {
       numbersArray.push(Number(array[i]));
     }  
     if (numbersArray.length > 0) {
-      result = " from " + Math.min(...numbersArray) + "€"
+      result = " Des de" + Math.min(...numbersArray) + "€"
     } else {
-      result = "Check event's page for more Info"
+      result = "Consulteu pàgina oficial"
     };
   }
   return result 
@@ -63,7 +63,7 @@ export const minPrice = (sentence) => {
     var date = new Date(e),
       mnth = ("0" + (date.getMonth() + 1)).slice(-2),
       day = ("0" + date.getDate()).slice(-2);
-    return [day,mnth,date.getFullYear()].join("/");
+    return [mnth,day,date.getFullYear()].join("/");
   }
 export default function EventDetails (props) {
  
@@ -80,7 +80,7 @@ export default function EventDetails (props) {
     return link 
     ? 
     <Button className={classes.button} href={link} target="_blank" >
-    <span className ={classes.color}>Check Event's Official Page</span> 
+    <span className ={classes.color}>Pàgina oficial</span> 
    </Button>
     : ""
   }
@@ -132,7 +132,7 @@ export default function EventDetails (props) {
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
                 <EuroIcon style={{ fontSize: 11 }}/>
-                {props.apiFiltered['entrades'] ? "Price :" + minPrice(props.apiFiltered['entrades']): "free"}
+                {props.apiFiltered['entrades'] ? "Preus :" + minPrice(props.apiFiltered['entrades']): "gratis"}
               </Typography>
               <Typography variant="body2" component="p">
                 {decodeHTMLEntities(props.apiFiltered['descripcio'])}

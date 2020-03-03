@@ -24,7 +24,7 @@ const clearLtLong =(apifiltered)=>{
 }
 
 export default class EventMap extends Component {
-  // in tha state are the coordinates of Catalunya
+  // in tha state are the coordinates of city you are in
   
   state = {
     lat: parseFloat(clearLtLong(this.props.apiFiltered)[0].latitud),

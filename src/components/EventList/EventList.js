@@ -27,7 +27,7 @@ const checkDisplayDate = (start, end) => {
   } else if (start !== 'undefined'){
     return new Date(end.toString()).toString().slice(0, 10)
   } else {
-    return "Click on know More for infos"
+    return "Clic par més detalls"
   }
 }
 
@@ -35,7 +35,7 @@ const checkDisplayOpeningHours = (openingHours) => {
   if ( typeof openingHours !== 'undefined') {
     return openingHours.slice(0, 50) + (openingHours.length > 50 ? "[...]" : "")
   }else {
-    return "Click for more details"
+    return "Clic par més detalls"
 }}
 
 const useStyles = makeStyles(theme => ({
@@ -90,7 +90,7 @@ export default function EventList(props) {
                 {x.descripcio ? x.descripcio.slice(0, 70) + "..." : "Clic aquí per obtenir més informació!!" }<br/>
                 <b>Dates : </b>{checkDisplayDate(x.data_inici, x.data_fi)}<br />
                 <b>Horaris : </b>{checkDisplayOpeningHours(x.horari)}<br/> 
-                <b>Preus : </b>{x.entrades ? minPrice(x.entrades): "free"}<br/>
+                <b>Preus : </b>{x.entrades ? minPrice(x.entrades): "gratis"}<br/>
               </Typography>
             </CardContent>
           </CardActionArea>
