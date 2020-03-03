@@ -69,7 +69,7 @@ export const chooseCategoryImage = (category) => {
     var arr = [];
     var dt = start;
     while (dt <= end) {
-        arr.push(format(dt, 'dd-MM-yyyy'));
+        arr.push(format(dt, 'dd-MMM-yyyy'));
         dt.setDate(dt.getDate() + 1);
     }
     return arr;
