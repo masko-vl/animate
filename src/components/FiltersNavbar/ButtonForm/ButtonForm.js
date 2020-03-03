@@ -14,8 +14,6 @@ const useStyles = makeStyles(theme => ({
    
   export default function ButtonForm({chooseFilters}) {
     const classes = useStyles();
-    
-    
     return (
       <div className={classes.root} >
         
@@ -23,7 +21,6 @@ const useStyles = makeStyles(theme => ({
         <span className='color'>ANÍMATE!</span>
         </Button>
        </div>
-     
     );
   } 
   

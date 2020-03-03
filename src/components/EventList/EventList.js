@@ -11,20 +11,21 @@ import {minPrice, categoryAvatar, undefinedCategoryAvatar} from './../../sharedF
 import EventDetails from './../EventDetails/EventDetails.js';
 import Grid from '@material-ui/core/Grid';
 
-
- 
 const displayCategoryPic = (category) => {
-  return category 
-    ? categoryAvatar(category) 
-     : undefinedCategoryAvatar() 
-    }
+  if (category.split(" ").length > 1 || category == 'undefined') {
+    return undefinedCategoryAvatar()
+  } else {
+    return categoryAvatar(category) 
+  }
+}
  
-
-
 const checkDisplayDate = (start, end) => {
-  if(start === end) {
-    return "until " + new Date(end.toString()).toString().slice(0, 10)
-  } else if (start !== undefined ){
+  if(start == end) {
+    return new Date(end.toString()).toString().slice(0, 10)
+  } else if (start !== end ){
+    return "fins " + new Date(end.toString()).toString().slice(0, 10)
+  } else if (start !== 'undefined'){
+    return new Date(end.toString()).toString().slice(0, 10)
   } else {
     return "Click on know More for infos"
   }
@@ -89,7 +90,7 @@ export default function EventList(props) {
                 {x.descripcio ? x.descripcio.slice(0, 70) + "..." : "Clic aquí per obtenir més informació!!" }<br/>
                 <b>Dates : </b>{checkDisplayDate(x.data_inici, x.data_fi)}<br />
                 <b>Horaris : </b>{checkDisplayOpeningHours(x.horari)}<br/> 
-                <b>Preus : </b>{x.entrades ? "Des de" + minPrice(x.entrades): "free"}<br/>
+                <b>Preus : </b>{x.entrades ? minPrice(x.entrades): "free"}<br/>
               </Typography>
             </CardContent>
           </CardActionArea>
