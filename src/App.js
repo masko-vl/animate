@@ -62,7 +62,6 @@ async componentDidMount(){
   let valueCities = arrayMunicipi.reduce((total, city) => total.includes(city) ? total : [...total, city], [])
   //create a state for city value in filters select
   this.setState({valueCities:valueCities})
-
 }
   render(){
     return (
@@ -71,5 +70,5 @@ async componentDidMount(){
       </div>
     );
   }
-}
+  }
 export default App;
