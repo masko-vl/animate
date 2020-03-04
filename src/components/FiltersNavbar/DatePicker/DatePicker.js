@@ -31,7 +31,7 @@ const DatePicker = props => {
           variant="inline"
           inputVariant="outlined"
           label="QUAN?"
-          format="MM/dd/yyyy"
+          format="dd/MM/yyyy"
           value={props.date2}
           InputAdornmentProps={{ position: "start" }}
           
