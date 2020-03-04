@@ -17,12 +17,14 @@ class CalendarNav extends Component {
         dates : this.props.getDateArray
     }
     showMap=()=>{
+        if(this.props.apiFiltered.length!== 0){
         this.setState({
             eventListDisplay: false,
             eventMapDisplay: true
-        })
+        })}
       }
       showList=()=>{
+          
         this.setState({
             eventListDisplay: true,
             eventMapDisplay: false
