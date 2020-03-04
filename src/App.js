@@ -17,11 +17,13 @@ class App extends Component {
 
 getDate = () => {
   //SELECT THE CURRENT DATE
-  var today = new Date();
+  var today = new Date()
+  today.setMonth(1, 25);
   var dd = String(today.getDate()).padStart(2, '0');
   var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
   var yyyy = today.getFullYear();
   today = yyyy + '-' + mm + '-' + dd;
+  console.log(today)
   return today;
 }
 
@@ -37,6 +39,7 @@ async componentDidMount(){
           dateCut: data[data.length-1].data_inici.substr(0,10).split('-').join(',')
      
          })
+         console.log(this.state.data)
 
     //Recover the dates start and end of the event and create an array of it. Then inser the array in a new array with the copy of the event object
     const eventsLong= data.map((event, i)=>{
