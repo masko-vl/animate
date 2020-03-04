@@ -168,7 +168,7 @@ export function citySort(property) {
 export const getDateLongEvent = (data_inici, data_fi) => {
   const start= new Date(data_inici.slice(0,10))
   const end= new Date(data_fi.slice(0,10))
-  //console.log(start, end)
+ 
    var EventDays = [];
 
   var dt = start;

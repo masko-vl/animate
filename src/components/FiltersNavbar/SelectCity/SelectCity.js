@@ -69,7 +69,7 @@ export default function SelectCity({ changeCity, valueCities }) {
           {!valueCities 
           ? <MenuItem value={'barcelona'}>Barcelona</MenuItem> 
           :cityArr.map((city, index) => {
-            //console.log(city)
+          
     return (<MenuItem key={index} value={city.value}>{city.displayText}</MenuItem>)
 
   })}
