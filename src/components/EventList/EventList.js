@@ -12,7 +12,7 @@ import EventDetails from './../EventDetails/EventDetails.js';
 import Grid from '@material-ui/core/Grid';
 
 const displayCategoryPic = (category) => {
-  if (category.split(" ").length > 1 || category == 'undefined') {
+  if (category === undefined) {
     return undefinedCategoryAvatar()
   } else {
     return categoryAvatar(category) 

@@ -123,16 +123,16 @@ export const chooseCategoryImage = (category) => {
       {value:"expositions", name:"Expositions"},
       {value:"sardanes", name:"Sardanes"},
       {value:"festes", name:"Festes"},
-      {value:"teatre", name:"Teater"},
+      {value:"teatre", name:"Teatre"},
       {value:"rutes-i-visites", name:"Rutes i visites"},
-      {value:"fires-i-mercats", name:"Feirs and mercats"},
+      {value:"fires-i-mercats", name:"Fires i mercats"},
       {value:"carnavals", name:"Carnavals"},
-      {value:"setmana-santa", name:"Easter week"},
-      {value:"cicles", name:"Cycles"} ,
-      {value:"conferencies", name:"Conferences"}, 
-      {value:"cursos", name:"Courses"} ,
-      {value:"dansa", name:"Dance"} ,
-      {value:"infantil", name:"Kids"} ,
+      {value:"setmana-santa", name:"Setmana santa"},
+      {value:"cicles", name:"Cicles"} ,
+      {value:"conferencies", name:"Conferencies"}, 
+      {value:"cursos", name:"Cursos"} ,
+      {value:"dansa", name:"Dansa"} ,
+      {value:"infantil", name:"Infantil"} ,
    
 ]
 
@@ -168,7 +168,7 @@ export function citySort(property) {
 export const getDateLongEvent = (data_inici, data_fi) => {
   const start= new Date(data_inici.slice(0,10))
   const end= new Date(data_fi.slice(0,10))
-  //console.log(start, end)
+ 
    var EventDays = [];
 
   var dt = start;
