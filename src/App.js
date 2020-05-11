@@ -18,11 +18,14 @@ class App extends Component {
 getDate = () => {
   //SELECT THE CURRENT DATE
   var today = new Date()
-  today.setMonth(1, 25);
+  //get events 10 days before todays date to generate more events
+  today.setDate(today.getDate() - 10)
+  
   var dd = String(today.getDate()).padStart(2, '0');
   var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
   var yyyy = today.getFullYear();
   today = yyyy + '-' + mm + '-' + dd;
+  console.log(today)
   return today;
 }
 
